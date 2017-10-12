@@ -43,7 +43,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="revover" min="-2" max="-2" attributes="0"/>
+                  <Component id="remover" min="-2" max="-2" attributes="0"/>
                   <Component id="pesquisar" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="168" max="32767" attributes="0"/>
@@ -56,7 +56,7 @@
               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               <Component id="pesquisar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-              <Component id="revover" min="-2" max="-2" attributes="0"/>
+              <Component id="remover" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="110" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -71,7 +71,7 @@
         <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
       </AccessibilityProperties>
     </Component>
-    <Component class="javax.swing.JButton" name="revover">
+    <Component class="javax.swing.JButton" name="remover">
       <Properties>
         <Property name="text" type="java.lang.String" value="Remover"/>
       </Properties>

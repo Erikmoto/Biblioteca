@@ -5,8 +5,6 @@
  */
 package biblioteca;
 
-import java.util.Arrays;
-
 /**
  *
  * @author Gabriel
@@ -105,7 +103,6 @@ public class Adm extends javax.swing.JFrame {
     private void consultaAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaAcervoActionPerformed
              Acervo acervo = new Acervo();
              acervo.setVisible(true);
-             
     }//GEN-LAST:event_consultaAcervoActionPerformed
 
     private void removeAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeAcervoActionPerformed
