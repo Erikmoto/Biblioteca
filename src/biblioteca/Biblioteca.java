@@ -20,6 +20,11 @@ public class Biblioteca extends javax.swing.JFrame {
         buttonInf.setText("Informações");
 
         buttonAcervo.setText("Acervo");
+        buttonAcervo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAcervoActionPerformed(evt);
+            }
+        });
 
         buttonLogin.setText("Login");
         buttonLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +65,13 @@ public class Biblioteca extends javax.swing.JFrame {
         Login login = new Login(this, true);
         login.setVisible(true);
     }//GEN-LAST:event_buttonLoginActionPerformed
+
+    private void buttonAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAcervoActionPerformed
+        this.dispose();
+        Acervo acervo = new Acervo();
+        acervo.setVisible(true);
+        acervo.remover.setVisible(false);
+    }//GEN-LAST:event_buttonAcervoActionPerformed
 
     public static void main(String args[]) {        
         java.awt.EventQueue.invokeLater(new Runnable() {

@@ -101,8 +101,8 @@ public class Adm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void consultaAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaAcervoActionPerformed
-             Acervo acervo = new Acervo();
-             acervo.setVisible(true);
+        Acervo acervo = new Acervo();
+        acervo.setVisible(true);
     }//GEN-LAST:event_consultaAcervoActionPerformed
 
     private void removeAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeAcervoActionPerformed

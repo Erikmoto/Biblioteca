@@ -5,6 +5,7 @@
  */
 package biblioteca;
 
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,11 +36,16 @@ public class Login extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         buttonEntrar = new javax.swing.JButton();
-        buttonLogin = new javax.swing.JTextField();
-        buttonSenha = new javax.swing.JPasswordField();
+        campoLogin = new javax.swing.JTextField();
+        campoSenha = new javax.swing.JPasswordField();
         buttonSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jLabel1.setText("Login:");
 
@@ -72,9 +78,9 @@ public class Login extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buttonEntrar))
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                    .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonLogin, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(campoLogin, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -83,11 +89,11 @@ public class Login extends javax.swing.JDialog {
                 .addGap(72, 72, 72)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonEntrar)
@@ -99,20 +105,34 @@ public class Login extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntrarActionPerformed
-        if(buttonLogin.getText().equals("") && buttonSenha.getText().equals("")){
-             this.dispose();
-             JOptionPane.showMessageDialog(null, "Bem Vindo!");
-             Adm adm = new Adm();
-             adm.setVisible(true);
-        }
-        else
-            JOptionPane.showMessageDialog(null, "Dados Incorretos!");
+        verificaSenha(campoLogin.getText(), campoSenha.getPassword());
     }//GEN-LAST:event_buttonEntrarActionPerformed
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_buttonSairActionPerformed
 
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if(evt.getKeyChar() == '\n') {
+            verificaSenha(campoLogin.getText(), campoSenha.getPassword());
+        }
+    }//GEN-LAST:event_formKeyPressed
+
+    private void verificaSenha(String login, char[] senha) {
+        String ad = "ad";
+        String us = "us";
+        char[] s = {};
+        
+        if(login.equals(ad) && Arrays.equals(senha, s)){
+            this.dispose();
+            JOptionPane.showMessageDialog(null, "Bem Vindo!");
+            Adm adm = new Adm();
+            adm.setVisible(true);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Dados Incorretos!");
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -157,9 +177,9 @@ public class Login extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEntrar;
-    private javax.swing.JTextField buttonLogin;
     private javax.swing.JButton buttonSair;
-    private javax.swing.JPasswordField buttonSenha;
+    private javax.swing.JTextField campoLogin;
+    private javax.swing.JPasswordField campoSenha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
