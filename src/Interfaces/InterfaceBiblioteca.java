@@ -1,8 +1,8 @@
-package biblioteca;
+package Interfaces;
 
-public class Biblioteca extends javax.swing.JFrame {
+public class InterfaceBiblioteca extends javax.swing.JFrame {
 
-    public Biblioteca() {
+    public InterfaceBiblioteca() {
        
         initComponents();
     }
@@ -62,13 +62,13 @@ public class Biblioteca extends javax.swing.JFrame {
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         this.dispose();
-        Login login = new Login(this, true);
+        InterfaceLogin login = new InterfaceLogin(this, true);
         login.setVisible(true);
     }//GEN-LAST:event_buttonLoginActionPerformed
 
     private void buttonAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAcervoActionPerformed
         this.dispose();
-        Acervo acervo = new Acervo();
+        ConsultarAcervo acervo = new ConsultarAcervo();
         acervo.setVisible(true);
         acervo.remover.setVisible(false);
     }//GEN-LAST:event_buttonAcervoActionPerformed
@@ -76,7 +76,7 @@ public class Biblioteca extends javax.swing.JFrame {
     public static void main(String args[]) {        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Biblioteca().setVisible(true);
+                new InterfaceBiblioteca().setVisible(true);
             }
         });
     }

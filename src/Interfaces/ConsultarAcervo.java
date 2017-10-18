@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package biblioteca;
+package Interfaces;
 
 /**
  *
  * @author a1658948
  */
-public class Acervo extends javax.swing.JFrame {
+public class ConsultarAcervo extends javax.swing.JFrame {
 
     /**
      * Creates new form Acervo
      */
-    public Acervo() {
+    public ConsultarAcervo() {
         initComponents();
     }
 
@@ -89,7 +89,7 @@ public class Acervo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        Biblioteca biblioteca = new Biblioteca();
+        InterfaceBiblioteca biblioteca = new InterfaceBiblioteca();
         biblioteca.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -110,20 +110,21 @@ public class Acervo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Acervo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarAcervo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Acervo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarAcervo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Acervo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarAcervo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Acervo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarAcervo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Acervo().setVisible(true);
+                new ConsultarAcervo().setVisible(true);
             }
         });
     }

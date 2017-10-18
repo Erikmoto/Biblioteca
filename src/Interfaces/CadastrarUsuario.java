@@ -3,18 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package biblioteca;
+package Interfaces;
+
+import javax.swing.JFormattedTextField;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
  * @author a1658948
  */
-public class Cadastrar extends javax.swing.JFrame {
+public class CadastrarUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form CadatrarUsuario
      */
-    public Cadastrar() {
+    public CadastrarUsuario() {
         initComponents();
     }
 
@@ -38,12 +42,12 @@ public class Cadastrar extends javax.swing.JFrame {
         UF = new javax.swing.JLabel();
         CEP = new javax.swing.JLabel();
         selecionaUF = new javax.swing.JComboBox<>();
-        campoCEP = new javax.swing.JFormattedTextField();
         campoRG = new javax.swing.JFormattedTextField();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
         selecionaAdmin = new javax.swing.JRadioButton();
         selecionaUser = new javax.swing.JRadioButton();
         tipoUsuario = new javax.swing.JLabel();
+        campoCEP = new javax.swing.JFormattedTextField();
         cadastro = new javax.swing.JLabel();
         confirmaCadastro = new javax.swing.JButton();
         painelInferior = new javax.swing.JLayeredPane();
@@ -69,19 +73,7 @@ public class Cadastrar extends javax.swing.JFrame {
         CEP.setText("CEP");
 
         selecionaUF.setMaximumRowCount(27);
-        selecionaUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACRE", "ALAGOAS", "AMAPÁ", "AMAZONAS", "BAHIA", "CEARÁ", "DISTRITO FEDERAL", "ESPÍRITO SANTO", "GOIÁS", "MARANHÃO", "MATO GROSSO", "MATO GROSSO DO SUL", "MINAS GERAIS", "PARÁ", "PARAÍBA", "PARANÁ", "PERNAMBUCO", "PIAUÍ", "RIO DE JANEIRO", "RIO GRANDE DO NORTE", "RIO GRANDE DO SUL", "RONDÔNIA", "RORAIMA", "SANTA CATARINA", "SÃO PAULO", "SERGIPE", "TOCANTINS" }));
-
-        try {
-            campoCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        campoCEP.setText("00000-000");
-        campoCEP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoCEPActionPerformed(evt);
-            }
-        });
+        selecionaUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "ACRE", "ALAGOAS", "AMAPÁ", "AMAZONAS", "BAHIA", "CEARÁ", "DISTRITO FEDERAL", "ESPÍRITO SANTO", "GOIÁS", "MARANHÃO", "MATO GROSSO", "MATO GROSSO DO SUL", "MINAS GERAIS", "PARÁ", "PARAÍBA", "PARANÁ", "PERNAMBUCO", "PIAUÍ", "RIO DE JANEIRO", "RIO GRANDE DO NORTE", "RIO GRANDE DO SUL", "RONDÔNIA", "RORAIMA", "SANTA CATARINA", "SÃO PAULO", "SERGIPE", "TOCANTINS" }));
 
         try {
             campoRG.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
@@ -101,9 +93,23 @@ public class Cadastrar extends javax.swing.JFrame {
         });
 
         selecionaTipoUsuario.add(selecionaUser);
+        selecionaUser.setSelected(true);
         selecionaUser.setText("Usuário Comum");
 
         tipoUsuario.setText("Tipo de Usuário");
+
+        try{
+            formataCEP = new MaskFormatter("*****-***");
+            formataCEP.setValidCharacters("_0123456789");
+            campoCEP = new JFormattedTextField(formataCEP);
+        } catch(Exception e){
+        }
+        campoCEP.setText("_____-___");
+        campoCEP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoCEPFocusGained(evt);
+            }
+        });
 
         painelSuperior.setLayer(campoCidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelSuperior.setLayer(cidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -114,12 +120,12 @@ public class Cadastrar extends javax.swing.JFrame {
         painelSuperior.setLayer(UF, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelSuperior.setLayer(CEP, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelSuperior.setLayer(selecionaUF, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(campoCEP, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelSuperior.setLayer(campoRG, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelSuperior.setLayer(jFormattedTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelSuperior.setLayer(selecionaAdmin, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelSuperior.setLayer(selecionaUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelSuperior.setLayer(tipoUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelSuperior.setLayer(campoCEP, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout painelSuperiorLayout = new javax.swing.GroupLayout(painelSuperior);
         painelSuperior.setLayout(painelSuperiorLayout);
@@ -151,9 +157,9 @@ public class Cadastrar extends javax.swing.JFrame {
                             .addComponent(selecionaUF, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(UF)
                             .addComponent(CEP)
-                            .addComponent(campoCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(RG)
-                            .addComponent(campoRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(campoRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27))
                     .addGroup(painelSuperiorLayout.createSequentialGroup()
                         .addComponent(tipoUsuario)
@@ -302,13 +308,18 @@ public class Cadastrar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
-    private void campoCEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCEPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoCEPActionPerformed
-
     private void selecionaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionaAdminActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_selecionaAdminActionPerformed
+
+    private void campoCEPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCEPFocusGained
+        try {
+            formataCEP.setMask("#####-###");
+            campoCEP.setFormatterFactory(new DefaultFormatterFactory(formataCEP));
+        } catch(Exception e) {
+
+        }
+    }//GEN-LAST:event_campoCEPFocusGained
 
     /**
      * @param args the command line arguments
@@ -327,14 +338,18 @@ public class Cadastrar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastrarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -343,11 +358,12 @@ public class Cadastrar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cadastrar().setVisible(true);
+                new CadastrarUsuario().setVisible(true);
             }
         });
     }
-
+    
+    private javax.swing.text.MaskFormatter formataCEP;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CEP;
     private javax.swing.JLabel RG;

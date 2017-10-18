@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package biblioteca;
+package Interfaces;
 
 /**
  *
  * @author Gabriel
  */
-public class Adm extends javax.swing.JFrame {
+public class InterfaceAdm extends javax.swing.JFrame {
 
     /**
      * Creates new form Adm
      */
-    public Adm() {
+    public InterfaceAdm() {
         initComponents();
     }
 
@@ -101,7 +101,7 @@ public class Adm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void consultaAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaAcervoActionPerformed
-        Acervo acervo = new Acervo();
+        ConsultarAcervo acervo = new ConsultarAcervo();
         acervo.setVisible(true);
     }//GEN-LAST:event_consultaAcervoActionPerformed
 
@@ -110,7 +110,7 @@ public class Adm extends javax.swing.JFrame {
     }//GEN-LAST:event_removeAcervoActionPerformed
 
     private void cadastraPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraPessoaActionPerformed
-        Cadastrar cadastrar = new Cadastrar();
+        CadastrarUsuario cadastrar = new CadastrarUsuario();
         cadastrar.setVisible(true);
     }//GEN-LAST:event_cadastraPessoaActionPerformed
 
@@ -131,20 +131,21 @@ public class Adm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Adm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Adm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Adm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Adm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Adm().setVisible(true);
+                new InterfaceAdm().setVisible(true);
             }
         });
     }
