@@ -130,7 +130,15 @@ public class InterfaceLogin extends javax.swing.JDialog {
             adm.setVisible(true);
         }
         else {
-            JOptionPane.showMessageDialog(null, "Dados Incorretos!");
+            if(login.equals(us) && Arrays.equals(senha, s)) {
+                this.dispose();
+                InterfaceUsuario usuario = new InterfaceUsuario();
+                usuario.setVisible(true);
+            }
+            
+            else {
+                JOptionPane.showMessageDialog(null, "Dados Incorretos!");
+            }
         }
     }
     /**

@@ -76,36 +76,36 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
+                              <Component id="campoEndereco" alignment="0" max="32767" attributes="0"/>
                               <Component id="campoCidade" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="endereco" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cidade" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="nome" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labEndereco" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labCidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labNome" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="283" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jFormattedTextField2" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="campoNome" alignment="0" pref="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="selecionaAdmin" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="277" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="selecionaUF" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
-                              <Component id="UF" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="CEP" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labUF" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labCEP" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="RG" min="-2" max="-2" attributes="0"/>
                               <Component id="campoRG" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="campoCEP" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="tipoUsuario" min="-2" max="-2" attributes="0"/>
+                          <Component id="labTipoUsuario" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -117,28 +117,28 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="nome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labNome" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="RG" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="campoRG" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="CEP" min="-2" max="-2" attributes="0"/>
-                      <Component id="endereco" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="labCEP" min="-2" max="-2" attributes="0"/>
+                      <Component id="labEndereco" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="campoCEP" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="UF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labUF" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -146,7 +146,7 @@
                       <Component id="selecionaUF" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="tipoUsuario" min="-2" max="-2" attributes="0"/>
+                  <Component id="labTipoUsuario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="selecionaAdmin" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -159,12 +159,12 @@
       <SubComponents>
         <Component class="javax.swing.JTextField" name="campoCidade">
         </Component>
-        <Component class="javax.swing.JLabel" name="cidade">
+        <Component class="javax.swing.JLabel" name="labCidade">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cidade"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="nome">
+        <Component class="javax.swing.JLabel" name="labNome">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nome Completo"/>
           </Properties>
@@ -174,19 +174,22 @@
             <Property name="text" type="java.lang.String" value="RG"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="campoEndereco">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoEnderecoFocusLost"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="endereco">
+        <Component class="javax.swing.JLabel" name="labEndereco">
           <Properties>
             <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="UF">
+        <Component class="javax.swing.JLabel" name="labUF">
           <Properties>
             <Property name="text" type="java.lang.String" value="Estado ou Unidade Federativa"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="CEP">
+        <Component class="javax.swing.JLabel" name="labCEP">
           <Properties>
             <Property name="text" type="java.lang.String" value="CEP"/>
           </Properties>
@@ -239,10 +242,13 @@
             <Property name="text" type="java.lang.String" value="00.000.000-0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField2">
+        <Component class="javax.swing.JFormattedTextField" name="campoNome">
           <Properties>
             <Property name="columns" type="int" value="200"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoNomeFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="selecionaAdmin">
           <Properties>
@@ -264,7 +270,7 @@
             <Property name="text" type="java.lang.String" value="Usu&#xe1;rio Comum"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="tipoUsuario">
+        <Component class="javax.swing.JLabel" name="labTipoUsuario">
           <Properties>
             <Property name="text" type="java.lang.String" value="Tipo de Usu&#xe1;rio"/>
           </Properties>
@@ -275,6 +281,7 @@
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoCEPFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoCEPFocusLost"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try{&#xa;    formataCEP = new MaskFormatter(&quot;*****-***&quot;);&#xa;    formataCEP.setValidCharacters(&quot;_0123456789&quot;);&#xa;    campoCEP = new JFormattedTextField(formataCEP);&#xa;} catch(Exception e){&#xa;}"/>
@@ -301,21 +308,21 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Component id="login" min="-2" max="-2" attributes="0"/>
+                  <Component id="labLogin" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jTextField7" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextField8" alignment="0" max="32767" attributes="0"/>
+                      <Component id="campoLogin" alignment="0" max="32767" attributes="0"/>
+                      <Component id="campoSenha" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="email" min="-2" max="-2" attributes="0"/>
-                              <Component id="senha" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labEmail" min="-2" max="-2" attributes="0"/>
+                              <Component id="labSenha" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jTextField9" alignment="0" max="32767" attributes="0"/>
+                      <Component id="campoEmail" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -324,46 +331,46 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="login" min="-2" max="-2" attributes="0"/>
+                  <Component id="labLogin" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextField7" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoLogin" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="senha" min="-2" max="-2" attributes="0"/>
+                  <Component id="labSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextField8" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="email" min="-2" max="-2" attributes="0"/>
+                  <Component id="labEmail" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jTextField9" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoEmail" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="login">
+        <Component class="javax.swing.JLabel" name="labLogin">
           <Properties>
             <Property name="text" type="java.lang.String" value="Login"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="senha">
+        <Component class="javax.swing.JLabel" name="labSenha">
           <Properties>
             <Property name="text" type="java.lang.String" value="Senha"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="email">
+        <Component class="javax.swing.JLabel" name="labEmail">
           <Properties>
             <Property name="text" type="java.lang.String" value="Email"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField7">
+        <Component class="javax.swing.JTextField" name="campoLogin">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoLoginActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField8">
+        <Component class="javax.swing.JTextField" name="campoSenha">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField9">
+        <Component class="javax.swing.JTextField" name="campoEmail">
         </Component>
       </SubComponents>
     </Container>

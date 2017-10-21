@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import java.awt.Color;
 import javax.swing.JFormattedTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
@@ -15,13 +16,18 @@ import javax.swing.text.MaskFormatter;
  */
 public class CadastrarUsuario extends javax.swing.JFrame {
 
+    private boolean[] dadosValidos = new boolean[9];
+    private final Color corValido = new Color(10, 200, 150);
+    private final Color corInvalido = new Color(125, 30, 150);
+    private final String textoValido = "     Dado Válido";
+    private final String textoInvalido = "     Dado Inválido";
     /**
      * Creates new form CadatrarUsuario
      */
     public CadastrarUsuario() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,43 +40,49 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         selecionaTipoUsuario = new javax.swing.ButtonGroup();
         painelSuperior = new javax.swing.JLayeredPane();
         campoCidade = new javax.swing.JTextField();
-        cidade = new javax.swing.JLabel();
-        nome = new javax.swing.JLabel();
+        labCidade = new javax.swing.JLabel();
+        labNome = new javax.swing.JLabel();
         RG = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        endereco = new javax.swing.JLabel();
-        UF = new javax.swing.JLabel();
-        CEP = new javax.swing.JLabel();
+        campoEndereco = new javax.swing.JTextField();
+        labEndereco = new javax.swing.JLabel();
+        labUF = new javax.swing.JLabel();
+        labCEP = new javax.swing.JLabel();
         selecionaUF = new javax.swing.JComboBox<>();
         campoRG = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        campoNome = new javax.swing.JFormattedTextField();
         selecionaAdmin = new javax.swing.JRadioButton();
         selecionaUser = new javax.swing.JRadioButton();
-        tipoUsuario = new javax.swing.JLabel();
+        labTipoUsuario = new javax.swing.JLabel();
         campoCEP = new javax.swing.JFormattedTextField();
         cadastro = new javax.swing.JLabel();
         confirmaCadastro = new javax.swing.JButton();
         painelInferior = new javax.swing.JLayeredPane();
-        login = new javax.swing.JLabel();
-        senha = new javax.swing.JLabel();
-        email = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        labLogin = new javax.swing.JLabel();
+        labSenha = new javax.swing.JLabel();
+        labEmail = new javax.swing.JLabel();
+        campoLogin = new javax.swing.JTextField();
+        campoSenha = new javax.swing.JTextField();
+        campoEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        cidade.setText("Cidade");
+        labCidade.setText("Cidade");
 
-        nome.setText("Nome Completo");
+        labNome.setText("Nome Completo");
 
         RG.setText("RG");
 
-        endereco.setText("Endereço");
+        campoEndereco.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoEnderecoFocusLost(evt);
+            }
+        });
 
-        UF.setText("Estado ou Unidade Federativa");
+        labEndereco.setText("Endereço");
 
-        CEP.setText("CEP");
+        labUF.setText("Estado ou Unidade Federativa");
+
+        labCEP.setText("CEP");
 
         selecionaUF.setMaximumRowCount(27);
         selecionaUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "ACRE", "ALAGOAS", "AMAPÁ", "AMAZONAS", "BAHIA", "CEARÁ", "DISTRITO FEDERAL", "ESPÍRITO SANTO", "GOIÁS", "MARANHÃO", "MATO GROSSO", "MATO GROSSO DO SUL", "MINAS GERAIS", "PARÁ", "PARAÍBA", "PARANÁ", "PERNAMBUCO", "PIAUÍ", "RIO DE JANEIRO", "RIO GRANDE DO NORTE", "RIO GRANDE DO SUL", "RONDÔNIA", "RORAIMA", "SANTA CATARINA", "SÃO PAULO", "SERGIPE", "TOCANTINS" }));
@@ -82,7 +94,12 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         }
         campoRG.setText("00.000.000-0");
 
-        jFormattedTextField2.setColumns(200);
+        campoNome.setColumns(200);
+        campoNome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoNomeFocusLost(evt);
+            }
+        });
 
         selecionaTipoUsuario.add(selecionaAdmin);
         selecionaAdmin.setText("Administrador");
@@ -96,7 +113,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         selecionaUser.setSelected(true);
         selecionaUser.setText("Usuário Comum");
 
-        tipoUsuario.setText("Tipo de Usuário");
+        labTipoUsuario.setText("Tipo de Usuário");
 
         try{
             formataCEP = new MaskFormatter("*****-***");
@@ -109,22 +126,25 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoCEPFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoCEPFocusLost(evt);
+            }
         });
 
         painelSuperior.setLayer(campoCidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(cidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(nome, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelSuperior.setLayer(labCidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelSuperior.setLayer(labNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelSuperior.setLayer(RG, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(jTextField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(endereco, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(UF, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(CEP, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelSuperior.setLayer(campoEndereco, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelSuperior.setLayer(labEndereco, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelSuperior.setLayer(labUF, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelSuperior.setLayer(labCEP, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelSuperior.setLayer(selecionaUF, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelSuperior.setLayer(campoRG, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(jFormattedTextField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelSuperior.setLayer(campoNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelSuperior.setLayer(selecionaAdmin, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelSuperior.setLayer(selecionaUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(tipoUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelSuperior.setLayer(labTipoUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelSuperior.setLayer(campoCEP, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout painelSuperiorLayout = new javax.swing.GroupLayout(painelSuperior);
@@ -139,30 +159,30 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(painelSuperiorLayout.createSequentialGroup()
                         .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3)
+                            .addComponent(campoEndereco)
                             .addComponent(campoCidade)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelSuperiorLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                            .addGroup(painelSuperiorLayout.createSequentialGroup()
+                                .addGap(0, 0, 0)
                                 .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(endereco)
-                                    .addComponent(cidade)
-                                    .addComponent(nome))
-                                .addGap(283, 283, 283))
-                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                    .addComponent(labEndereco)
+                                    .addComponent(labCidade)
+                                    .addComponent(labNome))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                             .addGroup(painelSuperiorLayout.createSequentialGroup()
                                 .addComponent(selecionaAdmin)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(0, 277, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
                         .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(selecionaUF, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(UF)
-                            .addComponent(CEP)
+                            .addComponent(labUF)
+                            .addComponent(labCEP)
                             .addComponent(RG)
                             .addComponent(campoRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27))
+                        .addGap(9, 9, 9))
                     .addGroup(painelSuperiorLayout.createSequentialGroup()
-                        .addComponent(tipoUsuario)
+                        .addComponent(labTipoUsuario)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         painelSuperiorLayout.setVerticalGroup(
@@ -170,30 +190,30 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelSuperiorLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
                 .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nome)
+                    .addComponent(labNome)
                     .addComponent(RG))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CEP)
-                    .addComponent(endereco))
+                    .addComponent(labCEP)
+                    .addComponent(labEndereco))
                 .addGap(4, 4, 4)
                 .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cidade)
-                    .addComponent(UF))
+                    .addComponent(labCidade)
+                    .addComponent(labUF))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(selecionaUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(tipoUsuario)
+                .addComponent(labTipoUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(selecionaAdmin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -210,58 +230,58 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
-        login.setText("Login");
+        labLogin.setText("Login");
 
-        senha.setText("Senha");
+        labSenha.setText("Senha");
 
-        email.setText("Email");
+        labEmail.setText("Email");
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        campoLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                campoLoginActionPerformed(evt);
             }
         });
 
-        painelInferior.setLayer(login, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelInferior.setLayer(senha, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelInferior.setLayer(email, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelInferior.setLayer(jTextField7, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelInferior.setLayer(jTextField8, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelInferior.setLayer(jTextField9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelInferior.setLayer(labLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelInferior.setLayer(labSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelInferior.setLayer(labEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelInferior.setLayer(campoLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelInferior.setLayer(campoSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelInferior.setLayer(campoEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout painelInferiorLayout = new javax.swing.GroupLayout(painelInferior);
         painelInferior.setLayout(painelInferiorLayout);
         painelInferiorLayout.setHorizontalGroup(
             painelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelInferiorLayout.createSequentialGroup()
-                .addComponent(login)
+                .addComponent(labLogin)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelInferiorLayout.createSequentialGroup()
                 .addGroup(painelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoLogin, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelInferiorLayout.createSequentialGroup()
                         .addGroup(painelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(email)
-                            .addComponent(senha))
+                            .addComponent(labEmail)
+                            .addComponent(labSenha))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(campoEmail, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
         );
         painelInferiorLayout.setVerticalGroup(
             painelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelInferiorLayout.createSequentialGroup()
-                .addComponent(login)
+                .addComponent(labLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(senha)
+                .addComponent(labSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(email)
+                .addComponent(labEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -301,12 +321,12 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmaCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaCadastroActionPerformed
-        // TODO add your handling code here:
+        verificaDados();
     }//GEN-LAST:event_confirmaCadastroActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void campoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_campoLoginActionPerformed
 
     private void selecionaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionaAdminActionPerformed
         // TODO add your handling code here:
@@ -321,6 +341,58 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_campoCEPFocusGained
 
+    private void campoNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNomeFocusLost
+        String nome = this.campoNome.getText();
+        
+        if(nome.trim().length() > 1) {
+            dadosValidos[0] = true;
+            this.labNome.setText("Nome Completo" + textoValido);
+            this.labNome.setForeground(corValido);
+        }
+        
+        else {
+            dadosValidos[0] = false;
+            this.labNome.setText("Nome Completo" + textoInvalido);
+            this.labNome.setForeground(corInvalido);
+        }
+    }//GEN-LAST:event_campoNomeFocusLost
+
+    private void campoEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEnderecoFocusLost
+        String endereco = this.campoEndereco.getText();
+        
+        if(!endereco.equals("")) {
+            dadosValidos[1] = true;
+            this.labEndereco.setText("Endereço" + textoValido);
+            this.labEndereco.setForeground(corValido);
+        }
+        
+        else {
+            dadosValidos[1] = false;
+            this.labEndereco.setText("Endereço" + textoInvalido);
+            this.labEndereco.setForeground(corInvalido);
+        }
+    }//GEN-LAST:event_campoEnderecoFocusLost
+
+    private void campoCEPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCEPFocusLost
+        String CEP = this.campoCEP.getText();
+        
+        if(CEP.trim().length() == 9) {
+            dadosValidos[2] = true;
+            this.labCEP.setText("CEP" + textoValido);
+            this.labCEP.setForeground(corValido);
+        }
+        
+        else {
+            dadosValidos[2] = false;
+            this.labCEP.setText("CEP" + textoInvalido);
+            this.labCEP.setForeground(corInvalido);
+        }
+    }//GEN-LAST:event_campoCEPFocusLost
+    
+    private void verificaDados() {
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -365,31 +437,31 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     
     private javax.swing.text.MaskFormatter formataCEP;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CEP;
     private javax.swing.JLabel RG;
-    private javax.swing.JLabel UF;
     private javax.swing.JLabel cadastro;
     private javax.swing.JFormattedTextField campoCEP;
     private javax.swing.JTextField campoCidade;
+    private javax.swing.JTextField campoEmail;
+    private javax.swing.JTextField campoEndereco;
+    private javax.swing.JTextField campoLogin;
+    private javax.swing.JFormattedTextField campoNome;
     private javax.swing.JFormattedTextField campoRG;
-    private javax.swing.JLabel cidade;
+    private javax.swing.JTextField campoSenha;
     private javax.swing.JButton confirmaCadastro;
-    private javax.swing.JLabel email;
-    private javax.swing.JLabel endereco;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
-    private javax.swing.JLabel login;
-    private javax.swing.JLabel nome;
+    private javax.swing.JLabel labCEP;
+    private javax.swing.JLabel labCidade;
+    private javax.swing.JLabel labEmail;
+    private javax.swing.JLabel labEndereco;
+    private javax.swing.JLabel labLogin;
+    private javax.swing.JLabel labNome;
+    private javax.swing.JLabel labSenha;
+    private javax.swing.JLabel labTipoUsuario;
+    private javax.swing.JLabel labUF;
     private javax.swing.JLayeredPane painelInferior;
     private javax.swing.JLayeredPane painelSuperior;
     private javax.swing.JRadioButton selecionaAdmin;
     private javax.swing.ButtonGroup selecionaTipoUsuario;
     private javax.swing.JComboBox<String> selecionaUF;
     private javax.swing.JRadioButton selecionaUser;
-    private javax.swing.JLabel senha;
-    private javax.swing.JLabel tipoUsuario;
     // End of variables declaration//GEN-END:variables
 }

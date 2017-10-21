@@ -27,42 +27,70 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        consultaAcervo = new javax.swing.JButton();
+        consultarDados = new javax.swing.JButton();
+        consultarAcervo = new javax.swing.JButton();
+        nome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        consultaAcervo.setText("<html>\n<center>Consultar<br>Acervo");
-        consultaAcervo.addActionListener(new java.awt.event.ActionListener() {
+        consultarDados.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        consultarDados.setText("<html> <center>Consultar<br>Dados");
+        consultarDados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultaAcervoActionPerformed(evt);
+                consultarDadosActionPerformed(evt);
             }
         });
+
+        consultarAcervo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        consultarAcervo.setText("<html>\n<center>Consultar<br>Acervo");
+        consultarAcervo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarAcervoActionPerformed(evt);
+            }
+        });
+
+        nome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nome.setText("Nome");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(consultaAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(273, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(consultarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addComponent(consultarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(consultaAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(consultarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(consultarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void consultaAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaAcervoActionPerformed
-        ConsultarAcervo acervo = new ConsultarAcervo();
-        acervo.setVisible(true);
-        acervo.remover.setVisible(false);
-    }//GEN-LAST:event_consultaAcervoActionPerformed
+    private void consultarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarDadosActionPerformed
+        ConsultarDados consDados = new ConsultarDados();
+        consDados.setVisible(true);
+    }//GEN-LAST:event_consultarDadosActionPerformed
+
+    private void consultarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAcervoActionPerformed
+        ConsultarAcervo consAcervo = new ConsultarAcervo();
+        consAcervo.setVisible(true);
+    }//GEN-LAST:event_consultarAcervoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,6 +129,8 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton consultaAcervo;
+    private javax.swing.JButton consultarAcervo;
+    private javax.swing.JButton consultarDados;
+    private javax.swing.JLabel nome;
     // End of variables declaration//GEN-END:variables
 }
