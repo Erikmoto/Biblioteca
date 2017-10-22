@@ -43,7 +43,7 @@ public class ConsultarDados extends javax.swing.JFrame {
         cidade = new javax.swing.JLabel();
         UF = new javax.swing.JLabel();
         login = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -80,7 +80,7 @@ public class ConsultarDados extends javax.swing.JFrame {
 
         login.setBackground(new java.awt.Color(0, 153, 204));
 
-        jLabel1.setBackground(new java.awt.Color(0, 153, 204));
+        email.setBackground(new java.awt.Color(0, 153, 204));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,19 +117,18 @@ public class ConsultarDados extends javax.swing.JFrame {
                                 .addComponent(labCons)
                                 .addGap(175, 175, 175)))
                         .addGap(3, 3, 3))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(labEmail)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labCidade)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(labLogin)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labEmail)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labCidade)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labLogin)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -169,7 +168,7 @@ public class ConsultarDados extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -217,8 +216,8 @@ public class ConsultarDados extends javax.swing.JFrame {
     private javax.swing.JLabel RG;
     private javax.swing.JLabel UF;
     private javax.swing.JLabel cidade;
+    private javax.swing.JLabel email;
     private javax.swing.JLabel endereco;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labCEP;
     private javax.swing.JLabel labCidade;
     private javax.swing.JLabel labCons;

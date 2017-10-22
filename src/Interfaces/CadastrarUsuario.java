@@ -38,7 +38,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         selecionaTipoUsuario = new javax.swing.ButtonGroup();
-        painelSuperior = new javax.swing.JLayeredPane();
+        painelDados = new javax.swing.JLayeredPane();
         campoCidade = new javax.swing.JTextField();
         labCidade = new javax.swing.JLabel();
         labNome = new javax.swing.JLabel();
@@ -56,7 +56,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         campoCEP = new javax.swing.JFormattedTextField();
         cadastro = new javax.swing.JLabel();
         confirmaCadastro = new javax.swing.JButton();
-        painelInferior = new javax.swing.JLayeredPane();
+        painelLogin = new javax.swing.JLayeredPane();
         labLogin = new javax.swing.JLabel();
         labSenha = new javax.swing.JLabel();
         labEmail = new javax.swing.JLabel();
@@ -131,49 +131,45 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
-        painelSuperior.setLayer(campoCidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(labCidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(labNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(RG, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(campoEndereco, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(labEndereco, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(labUF, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(labCEP, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(selecionaUF, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(campoRG, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(campoNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(selecionaAdmin, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(selecionaUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(labTipoUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelSuperior.setLayer(campoCEP, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(campoCidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(labCidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(labNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(RG, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(campoEndereco, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(labEndereco, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(labUF, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(labCEP, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(selecionaUF, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(campoRG, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(campoNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(selecionaAdmin, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(selecionaUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(labTipoUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(campoCEP, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout painelSuperiorLayout = new javax.swing.GroupLayout(painelSuperior);
-        painelSuperior.setLayout(painelSuperiorLayout);
-        painelSuperiorLayout.setHorizontalGroup(
-            painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelSuperiorLayout.createSequentialGroup()
+        javax.swing.GroupLayout painelDadosLayout = new javax.swing.GroupLayout(painelDados);
+        painelDados.setLayout(painelDadosLayout);
+        painelDadosLayout.setHorizontalGroup(
+            painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelDadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelSuperiorLayout.createSequentialGroup()
+                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelDadosLayout.createSequentialGroup()
                         .addComponent(selecionaUser)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(painelSuperiorLayout.createSequentialGroup()
-                        .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelDadosLayout.createSequentialGroup()
+                        .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoEndereco)
                             .addComponent(campoCidade)
-                            .addGroup(painelSuperiorLayout.createSequentialGroup()
-                                .addGap(0, 0, 0)
-                                .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labEndereco)
-                                    .addComponent(labCidade)
-                                    .addComponent(labNome))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(labEndereco)
+                            .addComponent(labCidade)
+                            .addComponent(labNome)
                             .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addGroup(painelSuperiorLayout.createSequentialGroup()
+                            .addGroup(painelDadosLayout.createSequentialGroup()
                                 .addComponent(selecionaAdmin)
-                                .addGap(0, 277, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
-                        .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(selecionaUF, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labUF)
                             .addComponent(labCEP)
@@ -181,35 +177,35 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                             .addComponent(campoRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(9, 9, 9))
-                    .addGroup(painelSuperiorLayout.createSequentialGroup()
+                    .addGroup(painelDadosLayout.createSequentialGroup()
                         .addComponent(labTipoUsuario)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
-        painelSuperiorLayout.setVerticalGroup(
-            painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelSuperiorLayout.createSequentialGroup()
+        painelDadosLayout.setVerticalGroup(
+            painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDadosLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labNome)
                     .addComponent(RG))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labCEP)
                     .addComponent(labEndereco))
                 .addGap(4, 4, 4)
-                .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labCidade)
                     .addComponent(labUF))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(selecionaUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -221,8 +217,10 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        cadastro.setText("Cadastro");
+        cadastro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cadastro.setText("Cadastro de Usuário");
 
+        confirmaCadastro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         confirmaCadastro.setText("Confirmar");
         confirmaCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,35 +240,35 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
-        painelInferior.setLayer(labLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelInferior.setLayer(labSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelInferior.setLayer(labEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelInferior.setLayer(campoLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelInferior.setLayer(campoSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelInferior.setLayer(campoEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelLogin.setLayer(labLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelLogin.setLayer(labSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelLogin.setLayer(labEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelLogin.setLayer(campoLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelLogin.setLayer(campoSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelLogin.setLayer(campoEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout painelInferiorLayout = new javax.swing.GroupLayout(painelInferior);
-        painelInferior.setLayout(painelInferiorLayout);
-        painelInferiorLayout.setHorizontalGroup(
-            painelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelInferiorLayout.createSequentialGroup()
+        javax.swing.GroupLayout painelLoginLayout = new javax.swing.GroupLayout(painelLogin);
+        painelLogin.setLayout(painelLoginLayout);
+        painelLoginLayout.setHorizontalGroup(
+            painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelLoginLayout.createSequentialGroup()
                 .addComponent(labLogin)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelInferiorLayout.createSequentialGroup()
-                .addGroup(painelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLoginLayout.createSequentialGroup()
+                .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(campoLogin, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelInferiorLayout.createSequentialGroup()
-                        .addGroup(painelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelLoginLayout.createSequentialGroup()
+                        .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labEmail)
                             .addComponent(labSenha))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 660, Short.MAX_VALUE))
                     .addComponent(campoEmail, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
         );
-        painelInferiorLayout.setVerticalGroup(
-            painelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelInferiorLayout.createSequentialGroup()
+        painelLoginLayout.setVerticalGroup(
+            painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLoginLayout.createSequentialGroup()
                 .addComponent(labLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,41 +278,41 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labEmail)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelSuperior)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(220, 220, 220)
-                .addComponent(cadastro)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(painelDados)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(confirmaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(271, 271, 271))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelInferior)
-                .addContainerGap())
+                .addComponent(painelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(confirmaCadastro)
-                .addGap(40, 40, 40))
+                .addComponent(cadastro)
+                .addGap(300, 300, 300))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(9, 9, 9)
+                .addContainerGap()
                 .addComponent(cadastro)
-                .addGap(18, 18, 18)
-                .addComponent(painelSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 29, Short.MAX_VALUE)
+                .addComponent(painelDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(painelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(painelInferior)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(confirmaCadastro)
-                .addContainerGap())
+                .addComponent(confirmaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -457,8 +455,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel labSenha;
     private javax.swing.JLabel labTipoUsuario;
     private javax.swing.JLabel labUF;
-    private javax.swing.JLayeredPane painelInferior;
-    private javax.swing.JLayeredPane painelSuperior;
+    private javax.swing.JLayeredPane painelDados;
+    private javax.swing.JLayeredPane painelLogin;
     private javax.swing.JRadioButton selecionaAdmin;
     private javax.swing.ButtonGroup selecionaTipoUsuario;
     private javax.swing.JComboBox<String> selecionaUF;

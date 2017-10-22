@@ -27,92 +27,162 @@ public class InterfaceAdm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCheckBoxMenuItem9 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem10 = new javax.swing.JCheckBoxMenuItem();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        consultaAcervo = new javax.swing.JMenuItem();
-        AddAcervo = new javax.swing.JMenuItem();
-        removeAcervo = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        consultaPessoa = new javax.swing.JMenuItem();
-        cadastraPessoa = new javax.swing.JMenuItem();
-
-        jCheckBoxMenuItem9.setSelected(true);
-        jCheckBoxMenuItem9.setText("jCheckBoxMenuItem9");
-
-        jCheckBoxMenuItem10.setSelected(true);
-        jCheckBoxMenuItem10.setText("jCheckBoxMenuItem10");
+        painelAcervo = new javax.swing.JPanel();
+        labAcervo = new javax.swing.JLabel();
+        consultarAcervo = new javax.swing.JButton();
+        editarAcervo = new javax.swing.JButton();
+        painelUsuarios = new javax.swing.JPanel();
+        labUsuarios = new javax.swing.JLabel();
+        cadastrarUsuario = new javax.swing.JButton();
+        alterarUsuario = new javax.swing.JButton();
+        separador = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setSize(new java.awt.Dimension(720, 540));
 
-        jMenu1.setText("Acervo");
+        labAcervo.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        labAcervo.setText("Acervo");
 
-        consultaAcervo.setText("Consultar");
-        consultaAcervo.addActionListener(new java.awt.event.ActionListener() {
+        consultarAcervo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        consultarAcervo.setText("Consultar");
+        consultarAcervo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultaAcervoActionPerformed(evt);
+                consultarAcervoActionPerformed(evt);
             }
         });
-        jMenu1.add(consultaAcervo);
 
-        AddAcervo.setText("Adicionar");
-        jMenu1.add(AddAcervo);
-
-        removeAcervo.setText("Remover");
-        removeAcervo.addActionListener(new java.awt.event.ActionListener() {
+        editarAcervo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        editarAcervo.setText("Editar");
+        editarAcervo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeAcervoActionPerformed(evt);
+                editarAcervoActionPerformed(evt);
             }
         });
-        jMenu1.add(removeAcervo);
 
-        jMenuBar1.add(jMenu1);
+        javax.swing.GroupLayout painelAcervoLayout = new javax.swing.GroupLayout(painelAcervo);
+        painelAcervo.setLayout(painelAcervoLayout);
+        painelAcervoLayout.setHorizontalGroup(
+            painelAcervoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAcervoLayout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(labAcervo)
+                .addContainerGap(99, Short.MAX_VALUE))
+            .addGroup(painelAcervoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(painelAcervoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(editarAcervo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(consultarAcervo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                .addGap(68, 68, 68))
+        );
+        painelAcervoLayout.setVerticalGroup(
+            painelAcervoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAcervoLayout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addComponent(labAcervo)
+                .addGap(80, 80, 80)
+                .addComponent(consultarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(editarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
+        );
 
-        jMenu3.setText("Pessoas - ache um nome melhor");
+        labUsuarios.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        labUsuarios.setText("Usuários");
 
-        consultaPessoa.setText("Consultar");
-        jMenu3.add(consultaPessoa);
-
-        cadastraPessoa.setText("Cadastrar");
-        cadastraPessoa.addActionListener(new java.awt.event.ActionListener() {
+        cadastrarUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        cadastrarUsuario.setText("Cadastrar");
+        cadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastraPessoaActionPerformed(evt);
+                cadastrarUsuarioActionPerformed(evt);
             }
         });
-        jMenu3.add(cadastraPessoa);
 
-        jMenuBar1.add(jMenu3);
+        alterarUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        alterarUsuario.setText("<html>Alterar<br>Dados</html>");
+        alterarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterarUsuarioActionPerformed(evt);
+            }
+        });
 
-        setJMenuBar(jMenuBar1);
+        javax.swing.GroupLayout painelUsuariosLayout = new javax.swing.GroupLayout(painelUsuarios);
+        painelUsuarios.setLayout(painelUsuariosLayout);
+        painelUsuariosLayout.setHorizontalGroup(
+            painelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelUsuariosLayout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addGroup(painelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(alterarUsuario)
+                    .addComponent(cadastrarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addGroup(painelUsuariosLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(labUsuarios)))
+                .addContainerGap(65, Short.MAX_VALUE))
+        );
+        painelUsuariosLayout.setVerticalGroup(
+            painelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelUsuariosLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(labUsuarios)
+                .addGap(80, 80, 80)
+                .addComponent(cadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(alterarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        separador.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painelAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(painelUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painelAcervo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addComponent(separador)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void consultaAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaAcervoActionPerformed
-        ConsultarAcervo acervo = new ConsultarAcervo();
-        acervo.setVisible(true);
-    }//GEN-LAST:event_consultaAcervoActionPerformed
+    private void consultarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAcervoActionPerformed
+        this.dispose();
+        ConsultarAcervo consAcervo = new ConsultarAcervo();
+        consAcervo.setVisible(true);
+    }//GEN-LAST:event_consultarAcervoActionPerformed
 
-    private void removeAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeAcervoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_removeAcervoActionPerformed
+    private void editarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarAcervoActionPerformed
+        this.dispose();
+        EditarAcervo editAcervo = new EditarAcervo();
+        editAcervo.setVisible(true);
+    }//GEN-LAST:event_editarAcervoActionPerformed
 
-    private void cadastraPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraPessoaActionPerformed
-        CadastrarUsuario cadastrar = new CadastrarUsuario();
-        cadastrar.setVisible(true);
-    }//GEN-LAST:event_cadastraPessoaActionPerformed
+    private void cadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarUsuarioActionPerformed
+        this.dispose();
+        CadastrarUsuario cadUsuario = new CadastrarUsuario();
+        cadUsuario.setVisible(true);
+    }//GEN-LAST:event_cadastrarUsuarioActionPerformed
+
+    private void alterarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarUsuarioActionPerformed
+        this.dispose();
+        EditarUsuario editUsuario = new EditarUsuario();
+        editUsuario.setVisible(true);
+    }//GEN-LAST:event_alterarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,15 +221,14 @@ public class InterfaceAdm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem AddAcervo;
-    private javax.swing.JMenuItem cadastraPessoa;
-    private javax.swing.JMenuItem consultaAcervo;
-    private javax.swing.JMenuItem consultaPessoa;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem10;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem removeAcervo;
+    private javax.swing.JButton alterarUsuario;
+    private javax.swing.JButton cadastrarUsuario;
+    private javax.swing.JButton consultarAcervo;
+    private javax.swing.JButton editarAcervo;
+    private javax.swing.JLabel labAcervo;
+    private javax.swing.JLabel labUsuarios;
+    private javax.swing.JPanel painelAcervo;
+    private javax.swing.JPanel painelUsuarios;
+    private javax.swing.JSeparator separador;
     // End of variables declaration//GEN-END:variables
 }
