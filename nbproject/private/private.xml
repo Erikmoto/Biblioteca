@@ -3,12 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ryuic/Downloads/Biblioteca/src/biblioteca/Login.java</file>
-            <file>file:/C:/Users/ryuic/Downloads/Biblioteca/src/biblioteca/Cadastrar.java</file>
-            <file>file:/C:/Users/ryuic/Downloads/Biblioteca/src/biblioteca/Adm.java</file>
-            <file>file:/C:/Users/ryuic/Downloads/Biblioteca/src/biblioteca/Acervo.java</file>
-            <file>file:/C:/Users/ryuic/Downloads/Biblioteca/src/biblioteca/User.java</file>
-            <file>file:/C:/Users/ryuic/Downloads/Biblioteca/src/biblioteca/Biblioteca.java</file>
+            <file>file:/C:/Users/ryuic/Downloads/Biblioteca/src/Interfaces/EditarUsuario.java</file>
+            <file>file:/C:/Users/ryuic/Downloads/Biblioteca/src/Interfaces/EditarAcervo.java</file>
+            <file>file:/C:/Users/ryuic/Downloads/Biblioteca/src/Interfaces/ConsultarDados.java</file>
         </group>
     </open-files>
 </project-private>
