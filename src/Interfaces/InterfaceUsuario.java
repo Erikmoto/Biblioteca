@@ -5,16 +5,21 @@
  */
 package Interfaces;
 
+import Classes.Usuario;
+
 /**
  *
  * @author ryuic
  */
 public class InterfaceUsuario extends javax.swing.JFrame {
+    private final String msgBoasVindas = "Bem-Vindo, ";
+    
+    public InterfaceUsuario(Usuario u) {
+        initComponents();
+        this.labUsuario.setText(msgBoasVindas + u.getNome());
+    }
 
-    /**
-     * Creates new form User
-     */
-    public InterfaceUsuario() {
+    private InterfaceUsuario() {
         initComponents();
     }
 
@@ -29,7 +34,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
 
         consultarDados = new javax.swing.JButton();
         consultarAcervo = new javax.swing.JButton();
-        nome = new javax.swing.JLabel();
+        labUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,8 +54,8 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             }
         });
 
-        nome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        nome.setText("Nome");
+        labUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labUsuario.setText("Nome");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,25 +63,25 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(consultarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(consultarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
+                .addGap(100, 100, 100)
+                .addComponent(consultarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addComponent(consultarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGap(39, 39, 39)
+                .addComponent(labUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(consultarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(consultarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(96, Short.MAX_VALUE))
+                    .addComponent(consultarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(consultarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         pack();
@@ -131,6 +136,6 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton consultarAcervo;
     private javax.swing.JButton consultarDados;
-    private javax.swing.JLabel nome;
+    private javax.swing.JLabel labUsuario;
     // End of variables declaration//GEN-END:variables
 }

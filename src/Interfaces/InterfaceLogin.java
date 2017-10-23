@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import Classes.Usuario;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
@@ -16,6 +17,8 @@ public class InterfaceLogin extends javax.swing.JDialog {
 
     /**
      * Creates new form Login
+     * @param parent
+     * @param modal
      */
     public InterfaceLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -33,12 +36,12 @@ public class InterfaceLogin extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        buttonEntrar = new javax.swing.JButton();
+        labLogin = new javax.swing.JLabel();
+        labSenha = new javax.swing.JLabel();
+        confirmarLogin = new javax.swing.JButton();
         campoLogin = new javax.swing.JTextField();
         campoSenha = new javax.swing.JPasswordField();
-        buttonSair = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addKeyListener(new java.awt.event.KeyAdapter() {
@@ -47,21 +50,29 @@ public class InterfaceLogin extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setText("Login:");
+        labLogin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labLogin.setText("Nome de Usuário ou Email:");
 
-        jLabel2.setText("Senha:");
+        labSenha.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labSenha.setText("Senha:");
 
-        buttonEntrar.setText("Entrar");
-        buttonEntrar.addActionListener(new java.awt.event.ActionListener() {
+        confirmarLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        confirmarLogin.setText("Entrar");
+        confirmarLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonEntrarActionPerformed(evt);
+                confirmarLoginActionPerformed(evt);
             }
         });
 
-        buttonSair.setText("Sair");
-        buttonSair.addActionListener(new java.awt.event.ActionListener() {
+        campoLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        campoSenha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        cancelar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSairActionPerformed(evt);
+                cancelarActionPerformed(evt);
             }
         });
 
@@ -69,48 +80,51 @@ public class InterfaceLogin extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(105, Short.MAX_VALUE)
+                .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110)
+                .addComponent(confirmarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105))
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(buttonSair)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonEntrar))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoLogin, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addGap(73, 73, 73)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labLogin)
+                    .addComponent(labSenha)
+                    .addComponent(campoLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                    .addComponent(campoSenha))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(74, 74, 74)
+                .addComponent(labLogin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(50, 50, 50)
+                .addComponent(labSenha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonEntrar)
-                    .addComponent(buttonSair))
-                .addContainerGap(72, Short.MAX_VALUE))
+                    .addComponent(confirmarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(76, 76, 76))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntrarActionPerformed
+    private void confirmarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarLoginActionPerformed
         verificaSenha(campoLogin.getText(), campoSenha.getPassword());
-    }//GEN-LAST:event_buttonEntrarActionPerformed
+    }//GEN-LAST:event_confirmarLoginActionPerformed
 
-    private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_buttonSairActionPerformed
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        this.dispose();
+        InterfaceBiblioteca biblioteca = new InterfaceBiblioteca();
+        biblioteca.setVisible(true);
+    }//GEN-LAST:event_cancelarActionPerformed
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         if(evt.getKeyChar() == '\n') {
@@ -119,21 +133,21 @@ public class InterfaceLogin extends javax.swing.JDialog {
     }//GEN-LAST:event_formKeyPressed
 
     private void verificaSenha(String login, char[] senha) {
-        String ad = "ad";
-        String us = "us";
+        String a = "a";
+        String u = "u";
         char[] s = {};
         
-        if(login.equals(ad) && Arrays.equals(senha, s)){
+        if(login.equals(a) && Arrays.equals(senha, s)){
             this.dispose();
-            JOptionPane.showMessageDialog(null, "Bem Vindo!");
+            //JOptionPane.showMessageDialog(null, "Bem Vindo!");
             InterfaceAdm adm = new InterfaceAdm();
             adm.setVisible(true);
         }
         else {
-            if(login.equals(us) && Arrays.equals(senha, s)) {
+            if(login.equals(u) && Arrays.equals(senha, s)) {
                 this.dispose();
-                InterfaceUsuario usuario = new InterfaceUsuario();
-                usuario.setVisible(true);
+                InterfaceUsuario intUsuario = new InterfaceUsuario(new Usuario(0, "Nome", "00000-000", "Endereço" , "Cidade", "UF", "00.000.000-0", "Nome de Usuário", "Senha", "Email", "(00)00000-0000"));
+                intUsuario.setVisible(true);
             }
             
             else {
@@ -185,11 +199,11 @@ public class InterfaceLogin extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonEntrar;
-    private javax.swing.JButton buttonSair;
     private javax.swing.JTextField campoLogin;
     private javax.swing.JPasswordField campoSenha;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton cancelar;
+    private javax.swing.JButton confirmarLogin;
+    private javax.swing.JLabel labLogin;
+    private javax.swing.JLabel labSenha;
     // End of variables declaration//GEN-END:variables
 }

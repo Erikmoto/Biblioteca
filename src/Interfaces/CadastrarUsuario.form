@@ -78,12 +78,14 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="campoEndereco" alignment="0" max="32767" attributes="0"/>
                               <Component id="campoCidade" alignment="0" max="32767" attributes="0"/>
-                              <Component id="labEndereco" min="-2" max="-2" attributes="0"/>
-                              <Component id="labCidade" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labNome" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="campoNome" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="selecionaAdmin" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labEndereco" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labCidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labNome" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="selecionaAdmin" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -180,7 +182,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labUF">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Estado ou Unidade Federativa"/>
+            <Property name="text" type="java.lang.String" value="Estado ou UF"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labCEP">

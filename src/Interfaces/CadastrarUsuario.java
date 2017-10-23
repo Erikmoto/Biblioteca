@@ -80,7 +80,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         labEndereco.setText("Endereço");
 
-        labUF.setText("Estado ou Unidade Federativa");
+        labUF.setText("Estado ou UF");
 
         labCEP.setText("CEP");
 
@@ -161,12 +161,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                         .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoEndereco)
                             .addComponent(campoCidade)
-                            .addComponent(labEndereco)
-                            .addComponent(labCidade)
-                            .addComponent(labNome)
                             .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                             .addGroup(painelDadosLayout.createSequentialGroup()
-                                .addComponent(selecionaAdmin)
+                                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labEndereco)
+                                    .addComponent(labCidade)
+                                    .addComponent(labNome)
+                                    .addComponent(selecionaAdmin))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
