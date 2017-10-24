@@ -9,6 +9,7 @@ import Interfaces.CadastrarUsuario;
 import Interfaces.ConsultarAcervo;
 import Interfaces.EditarAcervo;
 import Interfaces.EditarUsuario;
+import Interfaces.InterfaceAdm;
 
 /**
  *
@@ -17,17 +18,17 @@ import Interfaces.EditarUsuario;
 public class ADM {
     private int idAdmin;
     private String nome;
-    private int CEP;
+    private String CEP;
     private String endereco;
     private String cidade;
-    private short UF;
-    private int RG;
+    private String UF;
+    private String RG;
     private String nomeUsuario;
     private String senha;
     private String email;
-    private int telefone;
+    private String telefone;
     
-    public ADM(int id, String nome, int CEP, String end, String cid, short UF, int RG, String nomeUs, String senha, String email, int tel) {
+    public ADM(int id, String nome, String CEP, String end, String cid, String UF, String RG, String nomeUs, String senha, String email, String tel) {
         this.idAdmin = id;
         this.nome = nome;
         this.CEP = CEP;
@@ -41,23 +42,116 @@ public class ADM {
         this.telefone = tel;
     }
     
-    private void consultaAcervo() {
-        ConsultarAcervo consAcervo = new ConsultarAcervo();
+    public void mostraInterface() {
+        InterfaceAdm intAdm = new InterfaceAdm(this);
+        intAdm.setVisible(true);
+    }
+    
+    public void consultaAcervo(InterfaceAdm intAdm) {
+        ConsultarAcervo consAcervo = new ConsultarAcervo(intAdm);
         consAcervo.setVisible(true);
     }
     
-    private void editaUsuario() {
-        EditarUsuario editUsuario = new EditarUsuario();
+    public void editaUsuario() {
+        EditarUsuario editUsuario = new EditarUsuario(this);
         editUsuario.setVisible(true);
     }
     
-    private void editaAcervo() {
-        EditarAcervo editAcervo = new EditarAcervo();
+    public void editaAcervo() {
+        EditarAcervo editAcervo = new EditarAcervo(this);
         editAcervo.setVisible(true);
     }
     
-    private void cadastraUsuario() {
-        CadastrarUsuario cadUsuario = new CadastrarUsuario();
+    public void cadastraUsuario() {
+        CadastrarUsuario cadUsuario = new CadastrarUsuario(this);
         cadUsuario.setVisible(true);
+    }
+
+    public int getIdAdmin() {
+        return idAdmin;
+    }
+
+    public void setIdAdmin(int idAdmin) {
+        this.idAdmin = idAdmin;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCEP() {
+        return CEP;
+    }
+
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getUF() {
+        return UF;
+    }
+
+    public void setUF(String UF) {
+        this.UF = UF;
+    }
+
+    public String getRG() {
+        return RG;
+    }
+
+    public void setRG(String RG) {
+        this.RG = RG;
+    }
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 }

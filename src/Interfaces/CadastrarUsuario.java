@@ -9,6 +9,7 @@ import java.awt.Color;
 import javax.swing.JFormattedTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
+import Classes.ADM;
 
 /**
  *
@@ -16,6 +17,7 @@ import javax.swing.text.MaskFormatter;
  */
 public class CadastrarUsuario extends javax.swing.JFrame {
 
+    private ADM adm;
     private boolean[] dadosValidos = new boolean[9];
     private final Color corValido = new Color(10, 200, 150);
     private final Color corInvalido = new Color(125, 30, 150);
@@ -24,8 +26,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     /**
      * Creates new form CadatrarUsuario
      */
-    public CadastrarUsuario() {
+    public CadastrarUsuario(ADM a) {
         initComponents();
+        this.adm = a;
+    }
+    
+    public CadastrarUsuario() {
+        
     }
     
     /**
@@ -65,6 +72,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         campoEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         labCidade.setText("Cidade");
 
@@ -307,7 +319,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cadastro)
-                .addGap(18, 29, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(painelDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(painelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -387,6 +399,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             this.labCEP.setForeground(corInvalido);
         }
     }//GEN-LAST:event_campoCEPFocusLost
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        this.dispose();
+        this.adm.mostraInterface();
+    }//GEN-LAST:event_formWindowClosed
     
     private void verificaDados() {
         

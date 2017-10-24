@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import Classes.ADM;
 import Classes.Usuario;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
@@ -139,15 +140,14 @@ public class InterfaceLogin extends javax.swing.JDialog {
         
         if(login.equals(a) && Arrays.equals(senha, s)){
             this.dispose();
-            //JOptionPane.showMessageDialog(null, "Bem Vindo!");
-            InterfaceAdm adm = new InterfaceAdm();
-            adm.setVisible(true);
+            ADM adm = new ADM(0, "ADM", "00000-000", "Rua", "Cidade", "Estado", "00.000.000-0", "a", "", "Email", "(00)00000-0000");
+            adm.mostraInterface();
         }
         else {
             if(login.equals(u) && Arrays.equals(senha, s)) {
                 this.dispose();
-                InterfaceUsuario intUsuario = new InterfaceUsuario(new Usuario(0, "Nome", "00000-000", "Endereço" , "Cidade", "UF", "00.000.000-0", "Nome de Usuário", "Senha", "Email", "(00)00000-0000"));
-                intUsuario.setVisible(true);
+                Usuario usuario = new Usuario(0, "Nome", "00000-000", "Endereço" , "Cidade", "UF", "00.000.000-0", "u", "", "Email", "(00)00000-0000");
+                usuario.mostraInterface();
             }
             
             else {

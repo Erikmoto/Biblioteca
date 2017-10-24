@@ -5,17 +5,23 @@
  */
 package Interfaces;
 
+import Classes.ADM;
+
 /**
  *
  * @author ryuic
  */
 public class EditarUsuario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form EditarUsuario
-     */
-    public EditarUsuario() {
+    private ADM adm;
+    
+    public EditarUsuario(ADM a) {
         initComponents();
+        this.adm = a;
+    }
+
+    private EditarUsuario() {
+        
     }
 
     /**
@@ -27,21 +33,31 @@ public class EditarUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 507, Short.MAX_VALUE)
+            .addGap(0, 720, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 480, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        this.dispose();
+        this.adm.mostraInterface();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

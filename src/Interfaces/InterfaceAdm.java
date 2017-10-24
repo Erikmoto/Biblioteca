@@ -5,17 +5,25 @@
  */
 package Interfaces;
 
+import Classes.ADM;
+
 /**
  *
  * @author Gabriel
  */
 public class InterfaceAdm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Adm
-     */
+    private ADM adm;
+    private final String msgBoasVindas = "Bem-Vindo, ";
+    
     public InterfaceAdm() {
+        
+    }
+
+    public InterfaceAdm(ADM a) {
         initComponents();
+        this.adm = a;
+        this.labAdm.setText(this.msgBoasVindas + a.getNome());
     }
 
     /**
@@ -35,7 +43,9 @@ public class InterfaceAdm extends javax.swing.JFrame {
         labUsuarios = new javax.swing.JLabel();
         cadastrarUsuario = new javax.swing.JButton();
         alterarUsuario = new javax.swing.JButton();
-        separador = new javax.swing.JSeparator();
+        separadorV = new javax.swing.JSeparator();
+        separadorH = new javax.swing.JSeparator();
+        labAdm = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
@@ -78,9 +88,9 @@ public class InterfaceAdm extends javax.swing.JFrame {
         painelAcervoLayout.setVerticalGroup(
             painelAcervoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAcervoLayout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labAcervo)
-                .addGap(80, 80, 80)
+                .addGap(50, 50, 50)
                 .addComponent(consultarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(editarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -110,51 +120,64 @@ public class InterfaceAdm extends javax.swing.JFrame {
         painelUsuarios.setLayout(painelUsuariosLayout);
         painelUsuariosLayout.setHorizontalGroup(
             painelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelUsuariosLayout.createSequentialGroup()
-                .addGap(78, 78, 78)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelUsuariosLayout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addGroup(painelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(alterarUsuario)
-                    .addComponent(cadastrarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(cadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(painelUsuariosLayout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(labUsuarios)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGap(66, 66, 66))
         );
         painelUsuariosLayout.setVerticalGroup(
             painelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelUsuariosLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addContainerGap()
                 .addComponent(labUsuarios)
-                .addGap(80, 80, 80)
+                .addGap(50, 50, 50)
                 .addComponent(cadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(alterarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        separador.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        separadorV.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        labAdm.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addComponent(separadorH)
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(painelUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labAdm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(painelAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(separadorV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(painelUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(labAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(separadorH, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelAcervo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addComponent(separador)
+                    .addComponent(separadorV, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(painelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(painelAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(22, Short.MAX_VALUE))))
         );
 
         pack();
@@ -162,26 +185,22 @@ public class InterfaceAdm extends javax.swing.JFrame {
 
     private void consultarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAcervoActionPerformed
         this.dispose();
-        ConsultarAcervo consAcervo = new ConsultarAcervo();
-        consAcervo.setVisible(true);
+        this.adm.consultaAcervo(this);
     }//GEN-LAST:event_consultarAcervoActionPerformed
 
     private void editarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarAcervoActionPerformed
         this.dispose();
-        EditarAcervo editAcervo = new EditarAcervo();
-        editAcervo.setVisible(true);
+        this.adm.editaAcervo();
     }//GEN-LAST:event_editarAcervoActionPerformed
 
     private void cadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarUsuarioActionPerformed
         this.dispose();
-        CadastrarUsuario cadUsuario = new CadastrarUsuario();
-        cadUsuario.setVisible(true);
+        this.adm.cadastraUsuario();
     }//GEN-LAST:event_cadastrarUsuarioActionPerformed
 
     private void alterarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarUsuarioActionPerformed
         this.dispose();
-        EditarUsuario editUsuario = new EditarUsuario();
-        editUsuario.setVisible(true);
+        this.adm.editaUsuario();
     }//GEN-LAST:event_alterarUsuarioActionPerformed
 
     /**
@@ -226,9 +245,11 @@ public class InterfaceAdm extends javax.swing.JFrame {
     private javax.swing.JButton consultarAcervo;
     private javax.swing.JButton editarAcervo;
     private javax.swing.JLabel labAcervo;
+    private javax.swing.JLabel labAdm;
     private javax.swing.JLabel labUsuarios;
     private javax.swing.JPanel painelAcervo;
     private javax.swing.JPanel painelUsuarios;
-    private javax.swing.JSeparator separador;
+    private javax.swing.JSeparator separadorH;
+    private javax.swing.JSeparator separadorV;
     // End of variables declaration//GEN-END:variables
 }
