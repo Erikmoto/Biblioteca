@@ -33,6 +33,37 @@ public class EditarAcervo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        painelBusca = new javax.swing.JPanel();
+        buscarLivro = new javax.swing.JButton();
+        campoID = new javax.swing.JFormattedTextField();
+        livroAnterior = new javax.swing.JButton();
+        proximoLivro = new javax.swing.JButton();
+        selecionar = new javax.swing.JButton();
+        separadorV = new javax.swing.JSeparator();
+        separadorH3 = new javax.swing.JSeparator();
+        separadorH2 = new javax.swing.JSeparator();
+        separadorH1 = new javax.swing.JSeparator();
+        painelLivro = new javax.swing.JPanel();
+        labNome = new javax.swing.JLabel();
+        labAutoria = new javax.swing.JLabel();
+        labEditora = new javax.swing.JLabel();
+        labAno = new javax.swing.JLabel();
+        labVolume = new javax.swing.JLabel();
+        labEdicao = new javax.swing.JLabel();
+        nome = new javax.swing.JTextField();
+        autoria = new javax.swing.JTextField();
+        editora = new javax.swing.JTextField();
+        edicao = new javax.swing.JTextField();
+        volume = new javax.swing.JTextField();
+        ano = new javax.swing.JTextField();
+        cancelar = new javax.swing.JButton();
+        confirmar = new javax.swing.JButton();
+        imagem = new javax.swing.JPanel();
+        deletar = new javax.swing.JButton();
+        labAcervo = new javax.swing.JLabel();
+        separadorHInf = new javax.swing.JSeparator();
+        separadorHSup = new javax.swing.JSeparator();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -40,15 +71,239 @@ public class EditarAcervo extends javax.swing.JFrame {
             }
         });
 
+        buscarLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        buscarLivro.setText("<html><center>Buscar<br>Livro</html>");
+
+        campoID.setForeground(new java.awt.Color(204, 204, 204));
+        campoID.setText("ID do Livro");
+        campoID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        livroAnterior.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        livroAnterior.setText("<html><center>Livro<br>Anterior</html>");
+
+        proximoLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        proximoLivro.setText("<html><center>Próximo<br>Livro</html>");
+
+        selecionar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selecionar.setText("Selecionar");
+        selecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionarActionPerformed(evt);
+            }
+        });
+
+        separadorV.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        javax.swing.GroupLayout painelBuscaLayout = new javax.swing.GroupLayout(painelBusca);
+        painelBusca.setLayout(painelBuscaLayout);
+        painelBuscaLayout.setHorizontalGroup(
+            painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelBuscaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(selecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(separadorH3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(separadorH2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(separadorH1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(livroAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(proximoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(separadorV, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buscarLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+        painelBuscaLayout.setVerticalGroup(
+            painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(separadorV, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(painelBuscaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(painelBuscaLayout.createSequentialGroup()
+                        .addComponent(separadorH1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(separadorH2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(separadorH3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(campoID)
+                        .addComponent(proximoLivro, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                        .addComponent(livroAnterior)
+                        .addComponent(selecionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buscarLivro)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        labNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labNome.setText("Nome");
+
+        labAutoria.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labAutoria.setText("Autoria");
+
+        labEditora.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labEditora.setText("Editora");
+
+        labAno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labAno.setText("Ano");
+
+        labVolume.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labVolume.setText("Volume");
+
+        labEdicao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labEdicao.setText("Edição");
+
+        nome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        autoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        editora.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        edicao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        volume.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        ano.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        cancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cancelar.setText("Cancelar");
+
+        confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        confirmar.setText("Confirmar");
+
+        imagem.setBackground(new java.awt.Color(0, 153, 153));
+
+        javax.swing.GroupLayout imagemLayout = new javax.swing.GroupLayout(imagem);
+        imagem.setLayout(imagemLayout);
+        imagemLayout.setHorizontalGroup(
+            imagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 175, Short.MAX_VALUE)
+        );
+        imagemLayout.setVerticalGroup(
+            imagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
+        );
+
+        deletar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        deletar.setText("<html><center>Deletar<br>Livro</html>");
+
+        javax.swing.GroupLayout painelLivroLayout = new javax.swing.GroupLayout(painelLivro);
+        painelLivro.setLayout(painelLivroLayout);
+        painelLivroLayout.setHorizontalGroup(
+            painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelLivroLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labEditora)
+                    .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(painelLivroLayout.createSequentialGroup()
+                            .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(labEdicao)
+                                .addComponent(edicao, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(70, 70, 70)
+                            .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(labVolume)
+                                .addComponent(volume, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(70, 70, 70)
+                            .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(labAno)
+                                .addComponent(ano, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(labAutoria)
+                        .addComponent(labNome)
+                        .addComponent(nome)
+                        .addComponent(autoria)
+                        .addComponent(editora, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLivroLayout.createSequentialGroup()
+                        .addComponent(imagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLivroLayout.createSequentialGroup()
+                        .addComponent(deletar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))))
+        );
+        painelLivroLayout.setVerticalGroup(
+            painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelLivroLayout.createSequentialGroup()
+                .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelLivroLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labAutoria)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(autoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addComponent(labEditora)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labEdicao)
+                            .addComponent(labVolume)
+                            .addComponent(labAno))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(edicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(volume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLivroLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(15, 15, 15)
+                .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deletar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
+        );
+
+        labAcervo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labAcervo.setText("Editar Acervo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(painelLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(painelBusca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(289, 289, 289)
+                        .addComponent(labAcervo)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addComponent(separadorHInf, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(separadorHSup)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labAcervo)
+                .addGap(5, 5, 5)
+                .addComponent(separadorHSup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(painelBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(separadorHInf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(painelLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -58,6 +313,10 @@ public class EditarAcervo extends javax.swing.JFrame {
         this.dispose();
         this.adm.mostraInterface();
     }//GEN-LAST:event_formWindowClosed
+
+    private void selecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selecionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,5 +354,35 @@ public class EditarAcervo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ano;
+    private javax.swing.JTextField autoria;
+    private javax.swing.JButton buscarLivro;
+    private javax.swing.JFormattedTextField campoID;
+    private javax.swing.JButton cancelar;
+    private javax.swing.JButton confirmar;
+    private javax.swing.JButton deletar;
+    private javax.swing.JTextField edicao;
+    private javax.swing.JTextField editora;
+    private javax.swing.JPanel imagem;
+    private javax.swing.JLabel labAcervo;
+    private javax.swing.JLabel labAno;
+    private javax.swing.JLabel labAutoria;
+    private javax.swing.JLabel labEdicao;
+    private javax.swing.JLabel labEditora;
+    private javax.swing.JLabel labNome;
+    private javax.swing.JLabel labVolume;
+    private javax.swing.JButton livroAnterior;
+    private javax.swing.JTextField nome;
+    private javax.swing.JPanel painelBusca;
+    private javax.swing.JPanel painelLivro;
+    private javax.swing.JButton proximoLivro;
+    private javax.swing.JButton selecionar;
+    private javax.swing.JSeparator separadorH1;
+    private javax.swing.JSeparator separadorH2;
+    private javax.swing.JSeparator separadorH3;
+    private javax.swing.JSeparator separadorHInf;
+    private javax.swing.JSeparator separadorHSup;
+    private javax.swing.JSeparator separadorV;
+    private javax.swing.JTextField volume;
     // End of variables declaration//GEN-END:variables
 }
