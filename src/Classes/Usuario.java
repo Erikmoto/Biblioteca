@@ -7,6 +7,7 @@ package Classes;
 
 import Interfaces.ConsultarAcervo;
 import Interfaces.ConsultarDados;
+import Interfaces.InterfaceUsuario;
 
 /**
  *
@@ -38,14 +39,18 @@ public class Usuario {
         this.email = email;
         this.telefone = tel;
     }
+    public void mostraInterface() {
+        InterfaceUsuario intUsuario = new InterfaceUsuario(this);
+        intUsuario.setVisible(true);
+    }
     
-    private void consultaAcervo() {
-        ConsultarAcervo consAcervo = new ConsultarAcervo();
+    public void consultaAcervo(InterfaceUsuario intUsuario) {
+        ConsultarAcervo consAcervo = new ConsultarAcervo(intUsuario);
         consAcervo.setVisible(true);
     }
     
-    private void consultaDados() {
-        ConsultarDados consDados = new ConsultarDados();
+    public void consultaDados() {
+        ConsultarDados consDados = new ConsultarDados(this);
         consDados.setVisible(true);
     }
 

@@ -14,8 +14,11 @@ import Classes.Usuario;
 public class InterfaceUsuario extends javax.swing.JFrame {
     private final String msgBoasVindas = "Bem-Vindo, ";
     
+    private Usuario usuario;
+    
     public InterfaceUsuario(Usuario u) {
         initComponents();
+        this.usuario = u;
         this.labUsuario.setText(msgBoasVindas + u.getNome());
     }
 
@@ -87,13 +90,17 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void consultarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarDadosActionPerformed
-        ConsultarDados consDados = new ConsultarDados();
-        consDados.setVisible(true);
+        this.dispose();
+        this.usuario.consultaDados();
+        //ConsultarDados consDados = new ConsultarDados(this.usuario);
+        //consDados.setVisible(true);
     }//GEN-LAST:event_consultarDadosActionPerformed
 
     private void consultarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAcervoActionPerformed
-        ConsultarAcervo consAcervo = new ConsultarAcervo();
-        consAcervo.setVisible(true);
+        this.dispose();
+        this.usuario.consultaAcervo(this);
+        //ConsultarAcervo consAcervo = new ConsultarAcervo(this);
+        //consAcervo.setVisible(true);
     }//GEN-LAST:event_consultarAcervoActionPerformed
 
     /**

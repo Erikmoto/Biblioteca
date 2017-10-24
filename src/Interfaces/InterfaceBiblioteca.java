@@ -64,7 +64,7 @@ public class InterfaceBiblioteca extends javax.swing.JFrame {
 
     private void consultarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAcervoActionPerformed
         this.dispose();
-        ConsultarAcervo acervo = new ConsultarAcervo();
+        ConsultarAcervo acervo = new ConsultarAcervo(this);
         acervo.setVisible(true);
     }//GEN-LAST:event_consultarAcervoActionPerformed
 

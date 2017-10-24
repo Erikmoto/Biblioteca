@@ -5,19 +5,26 @@
  */
 package Interfaces;
 
+import java.awt.Color;
+import javax.swing.JFrame;
+
 /**
  *
  * @author a1658948
  */
 public class ConsultarAcervo extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Acervo
-     */
+    
+    private JFrame janelaAnterior;
+    
     public ConsultarAcervo() {
-        initComponents();
+        
     }
-
+    
+    public ConsultarAcervo(JFrame janelaAnterior) {
+        initComponents();
+        this.janelaAnterior = janelaAnterior;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,62 +40,103 @@ public class ConsultarAcervo extends javax.swing.JFrame {
         boxLivro = new javax.swing.JCheckBox();
         boxAutoria = new javax.swing.JCheckBox();
         boxEditora = new javax.swing.JCheckBox();
+        labCategorias = new javax.swing.JLabel();
+        painelLivros = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
+        pesquisar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         pesquisar.setText("Pesquisar");
 
-        voltar.setText("Voltar");
+        voltar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        voltar.setText("Fechar");
         voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarActionPerformed(evt);
             }
         });
 
+        campoPesquisa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoPesquisa.setForeground(new java.awt.Color(204, 204, 204));
         campoPesquisa.setText("Digite aqui a sua pesquisa");
-        campoPesquisa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoPesquisaActionPerformed(evt);
+        campoPesquisa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoPesquisaFocusGained(evt);
             }
         });
 
+        boxLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         boxLivro.setText("Livro");
 
+        boxAutoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         boxAutoria.setText("Autor(a)");
 
+        boxEditora.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         boxEditora.setText("Editora");
+
+        labCategorias.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labCategorias.setText("Categorias para pesquisa:");
+
+        javax.swing.GroupLayout painelLivrosLayout = new javax.swing.GroupLayout(painelLivros);
+        painelLivros.setLayout(painelLivrosLayout);
+        painelLivrosLayout.setHorizontalGroup(
+            painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        painelLivrosLayout.setVerticalGroup(
+            painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 350, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(campoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(boxLivro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(boxAutoria)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(boxEditora)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(voltar)
-                    .addComponent(pesquisar))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(painelLivros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(campoPesquisa)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labCategorias)
+                        .addGap(50, 50, 50)
+                        .addComponent(boxLivro)
+                        .addGap(18, 18, 18)
+                        .addComponent(boxAutoria)
+                        .addGap(18, 18, 18)
+                        .addComponent(boxEditora)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addComponent(pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(campoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pesquisar)
-                    .addComponent(campoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boxLivro)
                     .addComponent(boxAutoria)
-                    .addComponent(boxEditora))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 412, Short.MAX_VALUE)
+                    .addComponent(boxEditora)
+                    .addComponent(pesquisar)
+                    .addComponent(labCategorias))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(painelLivros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(voltar)
                 .addContainerGap())
         );
@@ -100,13 +148,17 @@ public class ConsultarAcervo extends javax.swing.JFrame {
 
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
         this.dispose();
-        InterfaceBiblioteca biblioteca = new InterfaceBiblioteca();
-        biblioteca.setVisible(true);
+        janelaAnterior.setVisible(true);
     }//GEN-LAST:event_voltarActionPerformed
 
-    private void campoPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPesquisaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoPesquisaActionPerformed
+    private void campoPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoPesquisaFocusGained
+        this.campoPesquisa.setForeground(Color.yellow);
+    }//GEN-LAST:event_campoPesquisaFocusGained
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        this.dispose();
+        janelaAnterior.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -149,6 +201,8 @@ public class ConsultarAcervo extends javax.swing.JFrame {
     private javax.swing.JCheckBox boxEditora;
     private javax.swing.JCheckBox boxLivro;
     private javax.swing.JTextField campoPesquisa;
+    private javax.swing.JLabel labCategorias;
+    private javax.swing.JPanel painelLivros;
     private javax.swing.JButton pesquisar;
     private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
