@@ -20,7 +20,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     }
 
     private InterfaceUsuario() {
-        initComponents();
+        
     }
 
     /**
@@ -55,7 +55,6 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         });
 
         labUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        labUsuario.setText("Nome");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
