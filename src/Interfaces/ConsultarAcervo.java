@@ -152,7 +152,7 @@ public class ConsultarAcervo extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarActionPerformed
 
     private void campoPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoPesquisaFocusGained
-        this.campoPesquisa.setForeground(Color.yellow);
+        //this.campoPesquisa.setForeground(Color.BLACK);
     }//GEN-LAST:event_campoPesquisaFocusGained
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

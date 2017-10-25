@@ -457,7 +457,10 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
-        verificaDados();
+        if(verificaDados()) {
+            this.dispose();
+            this.adm.mostraInterface();
+        }
     }//GEN-LAST:event_confirmarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -465,8 +468,14 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         this.adm.mostraInterface();
     }//GEN-LAST:event_cancelarActionPerformed
     
-    private void verificaDados() {
+    private boolean verificaDados() {
+        int i;
         
+        for(i = 0; i < this.dadosValidos.length; i++) {
+            this.dadosValidos[i] = true;
+        }
+        
+        return true;
     }
     
     /**
