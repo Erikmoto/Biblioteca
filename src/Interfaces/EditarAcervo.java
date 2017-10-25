@@ -43,6 +43,7 @@ public class EditarAcervo extends javax.swing.JFrame {
         separadorH3 = new javax.swing.JSeparator();
         separadorH2 = new javax.swing.JSeparator();
         separadorH1 = new javax.swing.JSeparator();
+        labID = new javax.swing.JLabel();
         painelLivro = new javax.swing.JPanel();
         labNome = new javax.swing.JLabel();
         labAutoria = new javax.swing.JLabel();
@@ -94,13 +95,18 @@ public class EditarAcervo extends javax.swing.JFrame {
 
         separadorV.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        labID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labID.setText("ID");
+
         javax.swing.GroupLayout painelBuscaLayout = new javax.swing.GroupLayout(painelBusca);
         painelBusca.setLayout(painelBuscaLayout);
         painelBuscaLayout.setHorizontalGroup(
             painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelBuscaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labID))
                 .addGap(18, 18, 18)
                 .addComponent(selecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -132,11 +138,14 @@ public class EditarAcervo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(separadorH3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(campoID)
                         .addComponent(proximoLivro, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                         .addComponent(livroAnterior)
                         .addComponent(selecionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buscarLivro)))
+                        .addComponent(buscarLivro)
+                        .addGroup(painelBuscaLayout.createSequentialGroup()
+                            .addComponent(labID)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(campoID))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -172,6 +181,11 @@ public class EditarAcervo extends javax.swing.JFrame {
 
         cancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
 
         confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         confirmar.setText("Confirmar");
@@ -233,9 +247,9 @@ public class EditarAcervo extends javax.swing.JFrame {
         painelLivroLayout.setVerticalGroup(
             painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelLivroLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelLivroLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(labNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,7 +272,7 @@ public class EditarAcervo extends javax.swing.JFrame {
                             .addComponent(volume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLivroLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(imagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15)
                 .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -318,6 +332,11 @@ public class EditarAcervo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_selecionarActionPerformed
 
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        this.dispose();
+        this.adm.mostraInterface();
+    }//GEN-LAST:event_cancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -369,6 +388,7 @@ public class EditarAcervo extends javax.swing.JFrame {
     private javax.swing.JLabel labAutoria;
     private javax.swing.JLabel labEdicao;
     private javax.swing.JLabel labEditora;
+    private javax.swing.JLabel labID;
     private javax.swing.JLabel labNome;
     private javax.swing.JLabel labVolume;
     private javax.swing.JButton livroAnterior;
