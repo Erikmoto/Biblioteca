@@ -38,6 +38,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         consultarDados = new javax.swing.JButton();
         consultarAcervo = new javax.swing.JButton();
         labUsuario = new javax.swing.JLabel();
+        logout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,27 +60,39 @@ public class InterfaceUsuario extends javax.swing.JFrame {
 
         labUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
+        logout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        logout.setText("Logout");
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(labUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addComponent(consultarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addComponent(consultarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(100, 100, 100))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(labUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(consultarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(consultarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -92,16 +105,18 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     private void consultarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarDadosActionPerformed
         this.dispose();
         this.usuario.consultaDados();
-        //ConsultarDados consDados = new ConsultarDados(this.usuario);
-        //consDados.setVisible(true);
     }//GEN-LAST:event_consultarDadosActionPerformed
 
     private void consultarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAcervoActionPerformed
         this.dispose();
-        this.usuario.consultaAcervo(this);
-        //ConsultarAcervo consAcervo = new ConsultarAcervo(this);
-        //consAcervo.setVisible(true);
+        this.usuario.consultaAcervo();
     }//GEN-LAST:event_consultarAcervoActionPerformed
+
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        this.dispose();
+        InterfaceBiblioteca biblioteca = new InterfaceBiblioteca();
+        biblioteca.setVisible(true);
+    }//GEN-LAST:event_logoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,5 +158,6 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     private javax.swing.JButton consultarAcervo;
     private javax.swing.JButton consultarDados;
     private javax.swing.JLabel labUsuario;
+    private javax.swing.JButton logout;
     // End of variables declaration//GEN-END:variables
 }

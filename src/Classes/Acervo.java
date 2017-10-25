@@ -6,6 +6,7 @@
 package Classes;
 
 import Interfaces.ConsultarAcervo;
+import javax.swing.JFrame;
 
 /**
  *
@@ -16,8 +17,8 @@ public class Acervo {
         
     }
     
-    public void mostraAcervo() {
-        ConsultarAcervo consAcervo = new ConsultarAcervo();
+    public void mostraAcervo(JFrame janelaAnterior) {
+        ConsultarAcervo consAcervo = new ConsultarAcervo(janelaAnterior);
         consAcervo.setVisible(true);
     }
 }

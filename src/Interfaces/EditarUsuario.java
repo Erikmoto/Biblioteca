@@ -39,7 +39,7 @@ public class EditarUsuario extends javax.swing.JFrame {
         campoID = new javax.swing.JFormattedTextField();
         buscarUsuario = new javax.swing.JButton();
         selecionar = new javax.swing.JButton();
-        separadorV = new javax.swing.JSeparator();
+        separadorVSup = new javax.swing.JSeparator();
         campoBusca = new javax.swing.JTextField();
         labBusca = new javax.swing.JLabel();
         separadorHSup = new javax.swing.JSeparator();
@@ -65,10 +65,10 @@ public class EditarUsuario extends javax.swing.JFrame {
         labEmail = new javax.swing.JLabel();
         campoEmail = new javax.swing.JTextField();
         separadorHInf = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jButton3 = new javax.swing.JButton();
+        confirmar = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
+        separadorVInf = new javax.swing.JSeparator();
+        deletar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -93,7 +93,7 @@ public class EditarUsuario extends javax.swing.JFrame {
         selecionar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         selecionar.setText("Selecionar");
 
-        separadorV.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        separadorVSup.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         campoBusca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoBusca.setForeground(new java.awt.Color(204, 204, 204));
@@ -114,7 +114,7 @@ public class EditarUsuario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(selecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(separadorV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separadorVSup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labBusca)
@@ -143,7 +143,7 @@ public class EditarUsuario extends javax.swing.JFrame {
                                 .addComponent(selecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(separadorV, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(separadorVSup, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         labNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -287,16 +287,21 @@ public class EditarUsuario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Confirmar");
+        confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        confirmar.setText("Confirmar");
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Cancelar");
+        cancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
 
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        separadorVInf.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setText("<html><center>Deletar<br>Usuário</html>");
+        deletar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        deletar.setText("<html><center>Deletar<br>Usuário</html>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -319,13 +324,13 @@ public class EditarUsuario extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(painelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(separadorVInf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(deletar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(separadorHInf)
@@ -351,12 +356,12 @@ public class EditarUsuario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jSeparator1)
-                            .addComponent(jButton3))
+                            .addComponent(separadorVInf)
+                            .addComponent(deletar))
                         .addContainerGap())))
         );
 
@@ -367,6 +372,11 @@ public class EditarUsuario extends javax.swing.JFrame {
         this.dispose();
         this.adm.mostraInterface();
     }//GEN-LAST:event_formWindowClosed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        this.dispose();
+        this.adm.mostraInterface();
+    }//GEN-LAST:event_cancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -415,10 +425,9 @@ public class EditarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField campoNome;
     private javax.swing.JFormattedTextField campoRG;
     private javax.swing.JFormattedTextField campoTelefone;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton cancelar;
+    private javax.swing.JButton confirmar;
+    private javax.swing.JButton deletar;
     private javax.swing.JLabel labBusca;
     private javax.swing.JLabel labCEP;
     private javax.swing.JLabel labCidade;
@@ -439,6 +448,7 @@ public class EditarUsuario extends javax.swing.JFrame {
     private javax.swing.JSeparator separadorHInf;
     private javax.swing.JSeparator separadorHInt;
     private javax.swing.JSeparator separadorHSup;
-    private javax.swing.JSeparator separadorV;
+    private javax.swing.JSeparator separadorVInf;
+    private javax.swing.JSeparator separadorVSup;
     // End of variables declaration//GEN-END:variables
 }

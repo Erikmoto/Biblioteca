@@ -5,7 +5,6 @@
  */
 package Classes;
 
-import Interfaces.ConsultarAcervo;
 import Interfaces.ConsultarDados;
 import Interfaces.InterfaceUsuario;
 
@@ -25,6 +24,7 @@ public class Usuario {
     private String senha;
     private String email;
     private String telefone;
+    private InterfaceUsuario intUsuario;
     
     public Usuario(int id, String nome, String CEP, String end, String cid, String UF, String RG, String nomeUs, String senha, String email, String tel) {
         this.idUsuario = id;
@@ -38,15 +38,16 @@ public class Usuario {
         this.senha = senha;
         this.email = email;
         this.telefone = tel;
+        this.intUsuario = new InterfaceUsuario(this);
+        
     }
     public void mostraInterface() {
-        InterfaceUsuario intUsuario = new InterfaceUsuario(this);
-        intUsuario.setVisible(true);
+        this.intUsuario.setVisible(true);
     }
     
-    public void consultaAcervo(InterfaceUsuario intUsuario) {
-        ConsultarAcervo consAcervo = new ConsultarAcervo(intUsuario);
-        consAcervo.setVisible(true);
+    public void consultaAcervo() {
+        Acervo acervo = new Acervo();
+        acervo.mostraAcervo(this.intUsuario);
     }
     
     public void consultaDados() {

@@ -16,7 +16,7 @@ public class InterfaceAdm extends javax.swing.JFrame {
     private ADM adm;
     private final String msgBoasVindas = "Bem-Vindo, ";
     
-    public InterfaceAdm() {
+    private InterfaceAdm() {
         
     }
 
@@ -46,6 +46,7 @@ public class InterfaceAdm extends javax.swing.JFrame {
         separadorV = new javax.swing.JSeparator();
         separadorH = new javax.swing.JSeparator();
         labAdm = new javax.swing.JLabel();
+        logout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
@@ -146,6 +147,14 @@ public class InterfaceAdm extends javax.swing.JFrame {
 
         labAdm.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
+        logout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        logout.setText("Logout");
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,7 +163,10 @@ public class InterfaceAdm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labAdm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labAdm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(painelAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
@@ -167,7 +179,9 @@ public class InterfaceAdm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(labAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labAdm, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separadorH, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -185,7 +199,7 @@ public class InterfaceAdm extends javax.swing.JFrame {
 
     private void consultarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAcervoActionPerformed
         this.dispose();
-        this.adm.consultaAcervo(this);
+        this.adm.consultaAcervo();
     }//GEN-LAST:event_consultarAcervoActionPerformed
 
     private void editarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarAcervoActionPerformed
@@ -202,6 +216,12 @@ public class InterfaceAdm extends javax.swing.JFrame {
         this.dispose();
         this.adm.editaUsuario();
     }//GEN-LAST:event_alterarUsuarioActionPerformed
+
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        this.dispose();
+        InterfaceBiblioteca biblioteca = new InterfaceBiblioteca();
+        biblioteca.setVisible(true);
+    }//GEN-LAST:event_logoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,6 +267,7 @@ public class InterfaceAdm extends javax.swing.JFrame {
     private javax.swing.JLabel labAcervo;
     private javax.swing.JLabel labAdm;
     private javax.swing.JLabel labUsuarios;
+    private javax.swing.JButton logout;
     private javax.swing.JPanel painelAcervo;
     private javax.swing.JPanel painelUsuarios;
     private javax.swing.JSeparator separadorH;

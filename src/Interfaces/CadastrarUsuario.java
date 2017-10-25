@@ -10,6 +10,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import Classes.ADM;
+import java.text.ParseException;
 
 /**
  *
@@ -25,13 +26,14 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private final String textoInvalido = "     Dado Inválido";
     /**
      * Creates new form CadatrarUsuario
+     * @param a
      */
     public CadastrarUsuario(ADM a) {
         initComponents();
         this.adm = a;
     }
     
-    public CadastrarUsuario() {
+    private CadastrarUsuario() {
         
     }
     
@@ -49,7 +51,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         campoCidade = new javax.swing.JTextField();
         labCidade = new javax.swing.JLabel();
         labNome = new javax.swing.JLabel();
-        RG = new javax.swing.JLabel();
+        labRG = new javax.swing.JLabel();
         campoEndereco = new javax.swing.JTextField();
         labEndereco = new javax.swing.JLabel();
         labUF = new javax.swing.JLabel();
@@ -57,12 +59,10 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         selecionaUF = new javax.swing.JComboBox<>();
         campoRG = new javax.swing.JFormattedTextField();
         campoNome = new javax.swing.JFormattedTextField();
-        selecionaAdmin = new javax.swing.JRadioButton();
-        selecionaUser = new javax.swing.JRadioButton();
-        labTipoUsuario = new javax.swing.JLabel();
         campoCEP = new javax.swing.JFormattedTextField();
-        cadastro = new javax.swing.JLabel();
-        confirmaCadastro = new javax.swing.JButton();
+        labTelefone = new javax.swing.JLabel();
+        campoTelefone = new javax.swing.JFormattedTextField();
+        labCadastro = new javax.swing.JLabel();
         painelLogin = new javax.swing.JLayeredPane();
         labLogin = new javax.swing.JLabel();
         labSenha = new javax.swing.JLabel();
@@ -70,6 +70,14 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         campoLogin = new javax.swing.JTextField();
         campoSenha = new javax.swing.JTextField();
         campoEmail = new javax.swing.JTextField();
+        separadorV = new javax.swing.JSeparator();
+        labTipoUsuario = new javax.swing.JLabel();
+        selecionaAdmin = new javax.swing.JRadioButton();
+        selecionaUser = new javax.swing.JRadioButton();
+        confirmar = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
+        separadorHInt = new javax.swing.JSeparator();
+        separadorHSup = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -78,24 +86,34 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
+        campoCidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        labCidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labCidade.setText("Cidade");
 
+        labNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labNome.setText("Nome Completo");
 
-        RG.setText("RG");
+        labRG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labRG.setText("RG");
 
+        campoEndereco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoEndereco.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoEnderecoFocusLost(evt);
             }
         });
 
+        labEndereco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labEndereco.setText("Endereço");
 
+        labUF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labUF.setText("Estado ou UF");
 
+        labCEP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labCEP.setText("CEP");
 
+        selecionaUF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         selecionaUF.setMaximumRowCount(27);
         selecionaUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "ACRE", "ALAGOAS", "AMAPÁ", "AMAZONAS", "BAHIA", "CEARÁ", "DISTRITO FEDERAL", "ESPÍRITO SANTO", "GOIÁS", "MARANHÃO", "MATO GROSSO", "MATO GROSSO DO SUL", "MINAS GERAIS", "PARÁ", "PARAÍBA", "PARANÁ", "PERNAMBUCO", "PIAUÍ", "RIO DE JANEIRO", "RIO GRANDE DO NORTE", "RIO GRANDE DO SUL", "RONDÔNIA", "RORAIMA", "SANTA CATARINA", "SÃO PAULO", "SERGIPE", "TOCANTINS" }));
 
@@ -105,27 +123,15 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         campoRG.setText("00.000.000-0");
+        campoRG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         campoNome.setColumns(200);
+        campoNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoNome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoNomeFocusLost(evt);
             }
         });
-
-        selecionaTipoUsuario.add(selecionaAdmin);
-        selecionaAdmin.setText("Administrador");
-        selecionaAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selecionaAdminActionPerformed(evt);
-            }
-        });
-
-        selecionaTipoUsuario.add(selecionaUser);
-        selecionaUser.setSelected(true);
-        selecionaUser.setText("Usuário Comum");
-
-        labTipoUsuario.setText("Tipo de Usuário");
 
         try{
             formataCEP = new MaskFormatter("*****-***");
@@ -134,6 +140,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         } catch(Exception e){
         }
         campoCEP.setText("_____-___");
+        campoCEP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoCEP.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoCEPFocusGained(evt);
@@ -143,10 +150,15 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
+        labTelefone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labTelefone.setText("Telefone");
+
+        campoTelefone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         painelDados.setLayer(campoCidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelDados.setLayer(labCidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelDados.setLayer(labNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelDados.setLayer(RG, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(labRG, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelDados.setLayer(campoEndereco, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelDados.setLayer(labEndereco, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelDados.setLayer(labUF, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -154,10 +166,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         painelDados.setLayer(selecionaUF, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelDados.setLayer(campoRG, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelDados.setLayer(campoNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelDados.setLayer(selecionaAdmin, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelDados.setLayer(selecionaUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelDados.setLayer(labTipoUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelDados.setLayer(campoCEP, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(labTelefone, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(campoTelefone, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout painelDadosLayout = new javax.swing.GroupLayout(painelDados);
         painelDados.setLayout(painelDadosLayout);
@@ -167,32 +178,24 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelDadosLayout.createSequentialGroup()
-                        .addComponent(selecionaUser)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(painelDadosLayout.createSequentialGroup()
-                        .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoEndereco)
-                            .addComponent(campoCidade)
-                            .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addGroup(painelDadosLayout.createSequentialGroup()
-                                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labEndereco)
-                                    .addComponent(labCidade)
-                                    .addComponent(labNome)
-                                    .addComponent(selecionaAdmin))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(campoEndereco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                            .addComponent(labEndereco, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labCidade, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labNome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(campoCidade))
                         .addGap(18, 18, 18)
                         .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(selecionaUF, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labUF)
                             .addComponent(labCEP)
-                            .addComponent(RG)
+                            .addComponent(labRG)
                             .addComponent(campoRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9))
-                    .addGroup(painelDadosLayout.createSequentialGroup()
-                        .addComponent(labTipoUsuario)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(campoCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(labTelefone)
+                    .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         painelDadosLayout.setVerticalGroup(
             painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +203,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labNome)
-                    .addComponent(RG))
+                    .addComponent(labRG))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,35 +224,58 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(selecionaUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(labTipoUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(selecionaAdmin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(selecionaUser)
+                .addComponent(labTelefone)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        cadastro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cadastro.setText("Cadastro de Usuário");
+        labCadastro.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labCadastro.setText("Cadastro de Usuário");
 
-        confirmaCadastro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        confirmaCadastro.setText("Confirmar");
-        confirmaCadastro.addActionListener(new java.awt.event.ActionListener() {
+        labLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labLogin.setText("Login");
+
+        labSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labSenha.setText("Senha");
+
+        labEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labEmail.setText("Email");
+
+        campoLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        campoSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        campoEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        separadorV.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        labTipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labTipoUsuario.setText("Tipo de Usuário");
+
+        selecionaTipoUsuario.add(selecionaAdmin);
+        selecionaAdmin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selecionaAdmin.setText("Administrador");
+
+        selecionaTipoUsuario.add(selecionaUser);
+        selecionaUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selecionaUser.setSelected(true);
+        selecionaUser.setText("Usuário");
+
+        confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        confirmar.setText("Confirmar");
+        confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmaCadastroActionPerformed(evt);
+                confirmarActionPerformed(evt);
             }
         });
 
-        labLogin.setText("Login");
-
-        labSenha.setText("Senha");
-
-        labEmail.setText("Email");
-
-        campoLogin.addActionListener(new java.awt.event.ActionListener() {
+        cancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoLoginActionPerformed(evt);
+                cancelarActionPerformed(evt);
             }
         });
 
@@ -259,95 +285,120 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         painelLogin.setLayer(campoLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelLogin.setLayer(campoSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelLogin.setLayer(campoEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelLogin.setLayer(separadorV, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelLogin.setLayer(labTipoUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelLogin.setLayer(selecionaAdmin, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelLogin.setLayer(selecionaUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelLogin.setLayer(confirmar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelLogin.setLayer(cancelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout painelLoginLayout = new javax.swing.GroupLayout(painelLogin);
         painelLogin.setLayout(painelLoginLayout);
         painelLoginLayout.setHorizontalGroup(
             painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelLoginLayout.createSequentialGroup()
-                .addComponent(labLogin)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLoginLayout.createSequentialGroup()
-                .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(campoLogin, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelLoginLayout.createSequentialGroup()
-                        .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labEmail)
-                            .addComponent(labSenha))
-                        .addGap(0, 660, Short.MAX_VALUE))
-                    .addComponent(campoEmail, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labLogin)
+                    .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(campoEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(labEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(labSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(campoLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(separadorV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLoginLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labTipoUsuario)
+                        .addGap(67, 67, 67))
+                    .addGroup(painelLoginLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(confirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painelLoginLayout.createSequentialGroup()
+                                .addComponent(selecionaAdmin)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(selecionaUser)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         painelLoginLayout.setVerticalGroup(
             painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLoginLayout.createSequentialGroup()
-                .addComponent(labLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labSenha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labEmail)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(painelLoginLayout.createSequentialGroup()
+                .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelLoginLayout.createSequentialGroup()
+                        .addComponent(labLogin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(labSenha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labEmail)
+                        .addGap(7, 7, 7)
+                        .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(painelLoginLayout.createSequentialGroup()
+                        .addComponent(labTipoUsuario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(selecionaAdmin)
+                            .addComponent(selecionaUser))
+                        .addGap(18, 18, 18)
+                        .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(separadorV)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelDados)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(confirmaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(271, 271, 271))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(painelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cadastro)
-                .addGap(300, 300, 300))
+                .addComponent(labCadastro)
+                .addGap(252, 252, 252))
+            .addComponent(separadorHInt)
+            .addComponent(separadorHSup)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(painelDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(painelLogin))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cadastro)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(labCadastro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(separadorHSup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(painelDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(5, 5, 5)
+                .addComponent(separadorHInt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(painelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(confirmaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void confirmaCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaCadastroActionPerformed
-        verificaDados();
-    }//GEN-LAST:event_confirmaCadastroActionPerformed
-
-    private void campoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoLoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoLoginActionPerformed
-
-    private void selecionaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionaAdminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selecionaAdminActionPerformed
-
     private void campoCEPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCEPFocusGained
         try {
             formataCEP.setMask("#####-###");
             campoCEP.setFormatterFactory(new DefaultFormatterFactory(formataCEP));
-        } catch(Exception e) {
+        } catch(ParseException e) {
 
         }
     }//GEN-LAST:event_campoCEPFocusGained
@@ -404,6 +455,15 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         this.dispose();
         this.adm.mostraInterface();
     }//GEN-LAST:event_formWindowClosed
+
+    private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
+        verificaDados();
+    }//GEN-LAST:event_confirmarActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        this.dispose();
+        this.adm.mostraInterface();
+    }//GEN-LAST:event_cancelarActionPerformed
     
     private void verificaDados() {
         
@@ -453,8 +513,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     
     private javax.swing.text.MaskFormatter formataCEP;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel RG;
-    private javax.swing.JLabel cadastro;
     private javax.swing.JFormattedTextField campoCEP;
     private javax.swing.JTextField campoCidade;
     private javax.swing.JTextField campoEmail;
@@ -463,14 +521,19 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField campoNome;
     private javax.swing.JFormattedTextField campoRG;
     private javax.swing.JTextField campoSenha;
-    private javax.swing.JButton confirmaCadastro;
+    private javax.swing.JFormattedTextField campoTelefone;
+    private javax.swing.JButton cancelar;
+    private javax.swing.JButton confirmar;
     private javax.swing.JLabel labCEP;
+    private javax.swing.JLabel labCadastro;
     private javax.swing.JLabel labCidade;
     private javax.swing.JLabel labEmail;
     private javax.swing.JLabel labEndereco;
     private javax.swing.JLabel labLogin;
     private javax.swing.JLabel labNome;
+    private javax.swing.JLabel labRG;
     private javax.swing.JLabel labSenha;
+    private javax.swing.JLabel labTelefone;
     private javax.swing.JLabel labTipoUsuario;
     private javax.swing.JLabel labUF;
     private javax.swing.JLayeredPane painelDados;
@@ -479,5 +542,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private javax.swing.ButtonGroup selecionaTipoUsuario;
     private javax.swing.JComboBox<String> selecionaUF;
     private javax.swing.JRadioButton selecionaUser;
+    private javax.swing.JSeparator separadorHInt;
+    private javax.swing.JSeparator separadorHSup;
+    private javax.swing.JSeparator separadorV;
     // End of variables declaration//GEN-END:variables
 }

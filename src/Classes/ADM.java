@@ -6,7 +6,6 @@
 package Classes;
 
 import Interfaces.CadastrarUsuario;
-import Interfaces.ConsultarAcervo;
 import Interfaces.EditarAcervo;
 import Interfaces.EditarUsuario;
 import Interfaces.InterfaceAdm;
@@ -27,6 +26,7 @@ public class ADM {
     private String senha;
     private String email;
     private String telefone;
+    private InterfaceAdm intAdm;
     
     public ADM(int id, String nome, String CEP, String end, String cid, String UF, String RG, String nomeUs, String senha, String email, String tel) {
         this.idAdmin = id;
@@ -40,16 +40,16 @@ public class ADM {
         this.senha = senha;
         this.email = email;
         this.telefone = tel;
+        this.intAdm = new InterfaceAdm(this);
     }
     
     public void mostraInterface() {
-        InterfaceAdm intAdm = new InterfaceAdm(this);
-        intAdm.setVisible(true);
+        this.intAdm.setVisible(true);
     }
     
-    public void consultaAcervo(InterfaceAdm intAdm) {
-        ConsultarAcervo consAcervo = new ConsultarAcervo(intAdm);
-        consAcervo.setVisible(true);
+    public void consultaAcervo() {
+        Acervo acervo = new Acervo();
+        acervo.mostraAcervo(this.intAdm);
     }
     
     public void editaUsuario() {

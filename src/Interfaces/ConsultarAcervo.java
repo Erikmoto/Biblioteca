@@ -16,7 +16,7 @@ public class ConsultarAcervo extends javax.swing.JFrame {
     
     private JFrame janelaAnterior;
     
-    public ConsultarAcervo() {
+    private ConsultarAcervo() {
         
     }
     

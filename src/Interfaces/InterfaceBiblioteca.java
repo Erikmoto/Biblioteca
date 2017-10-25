@@ -1,5 +1,7 @@
 package Interfaces;
 
+import Classes.Acervo;
+
 public class InterfaceBiblioteca extends javax.swing.JFrame {
 
     public InterfaceBiblioteca() {
@@ -64,8 +66,8 @@ public class InterfaceBiblioteca extends javax.swing.JFrame {
 
     private void consultarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAcervoActionPerformed
         this.dispose();
-        ConsultarAcervo acervo = new ConsultarAcervo(this);
-        acervo.setVisible(true);
+        Acervo acervo = new Acervo();
+        acervo.mostraAcervo(this);
     }//GEN-LAST:event_consultarAcervoActionPerformed
 
     public static void main(String args[]) {        
