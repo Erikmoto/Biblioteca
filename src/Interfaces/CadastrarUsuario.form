@@ -152,6 +152,9 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoCidadeFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labCidade">
           <Properties>
@@ -159,6 +162,7 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cidade"/>
+            <Property name="name" type="java.lang.String" value="Cidade" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labNome">
@@ -167,6 +171,7 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nome Completo"/>
+            <Property name="name" type="java.lang.String" value="Nome Completo" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labRG">
@@ -175,6 +180,7 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="RG"/>
+            <Property name="name" type="java.lang.String" value="RG" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="campoEndereco">
@@ -193,6 +199,7 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
+            <Property name="name" type="java.lang.String" value="Endere&#xe7;o" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labUF">
@@ -201,6 +208,7 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Estado ou UF"/>
+            <Property name="name" type="java.lang.String" value="Estado ou UF" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labCEP">
@@ -209,6 +217,7 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="CEP"/>
+            <Property name="name" type="java.lang.String" value="CEP" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="selecionaUF">
@@ -250,6 +259,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="selecionaUFFocusLost"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -264,6 +276,9 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoRGFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="campoNome">
           <Properties>
@@ -297,6 +312,7 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Telefone"/>
+            <Property name="name" type="java.lang.String" value="Telefone" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="campoTelefone">
@@ -305,6 +321,9 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoTelefoneFocusLost"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -404,6 +423,7 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Login"/>
+            <Property name="name" type="java.lang.String" value="Login" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labSenha">
@@ -412,6 +432,7 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Senha"/>
+            <Property name="name" type="java.lang.String" value="Senha" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labEmail">
@@ -420,6 +441,7 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Email"/>
+            <Property name="name" type="java.lang.String" value="Email" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="campoLogin">
@@ -428,6 +450,9 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoLoginFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="campoSenha">
           <Properties>
@@ -435,6 +460,9 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoSenhaFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="campoEmail">
           <Properties>
@@ -442,6 +470,9 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoEmailFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="separadorV">
           <Properties>

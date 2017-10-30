@@ -11,6 +11,7 @@ import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import Classes.ADM;
 import java.text.ParseException;
+import javax.swing.JLabel;
 
 /**
  *
@@ -24,6 +25,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private final Color corInvalido = new Color(125, 30, 150);
     private final String textoValido = "     Dado Válido";
     private final String textoInvalido = "     Dado Inválido";
+    private short campoID;
     /**
      * Creates new form CadatrarUsuario
      * @param a
@@ -87,15 +89,23 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         });
 
         campoCidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoCidade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoCidadeFocusLost(evt);
+            }
+        });
 
         labCidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labCidade.setText("Cidade");
+        labCidade.setName("Cidade"); // NOI18N
 
         labNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labNome.setText("Nome Completo");
+        labNome.setName("Nome Completo"); // NOI18N
 
         labRG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labRG.setText("RG");
+        labRG.setName("RG"); // NOI18N
 
         campoEndereco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoEndereco.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -106,16 +116,24 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         labEndereco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labEndereco.setText("Endereço");
+        labEndereco.setName("Endereço"); // NOI18N
 
         labUF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labUF.setText("Estado ou UF");
+        labUF.setName("Estado ou UF"); // NOI18N
 
         labCEP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labCEP.setText("CEP");
+        labCEP.setName("CEP"); // NOI18N
 
         selecionaUF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         selecionaUF.setMaximumRowCount(27);
         selecionaUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "ACRE", "ALAGOAS", "AMAPÁ", "AMAZONAS", "BAHIA", "CEARÁ", "DISTRITO FEDERAL", "ESPÍRITO SANTO", "GOIÁS", "MARANHÃO", "MATO GROSSO", "MATO GROSSO DO SUL", "MINAS GERAIS", "PARÁ", "PARAÍBA", "PARANÁ", "PERNAMBUCO", "PIAUÍ", "RIO DE JANEIRO", "RIO GRANDE DO NORTE", "RIO GRANDE DO SUL", "RONDÔNIA", "RORAIMA", "SANTA CATARINA", "SÃO PAULO", "SERGIPE", "TOCANTINS" }));
+        selecionaUF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                selecionaUFFocusLost(evt);
+            }
+        });
 
         try {
             campoRG.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
@@ -124,6 +142,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         }
         campoRG.setText("00.000.000-0");
         campoRG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoRG.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoRGFocusLost(evt);
+            }
+        });
 
         campoNome.setColumns(200);
         campoNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -152,8 +175,14 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         labTelefone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labTelefone.setText("Telefone");
+        labTelefone.setName("Telefone"); // NOI18N
 
         campoTelefone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoTelefoneFocusLost(evt);
+            }
+        });
 
         painelDados.setLayer(campoCidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelDados.setLayer(labCidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -236,18 +265,36 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         labLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labLogin.setText("Login");
+        labLogin.setName("Login"); // NOI18N
 
         labSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labSenha.setText("Senha");
+        labSenha.setName("Senha"); // NOI18N
 
         labEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labEmail.setText("Email");
+        labEmail.setName("Email"); // NOI18N
 
         campoLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoLogin.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoLoginFocusLost(evt);
+            }
+        });
 
         campoSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoSenhaFocusLost(evt);
+            }
+        });
 
         campoEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoEmailFocusLost(evt);
+            }
+        });
 
         separadorV.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -402,52 +449,57 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_campoCEPFocusGained
-
+    
+    private void modificaRotulo(JLabel rotulo, boolean validade) {
+        if(validade == true) {
+            this.dadosValidos[this.campoID] = true;
+            rotulo.setText(rotulo.getName() + this.textoValido);
+            rotulo.setForeground(this.corValido);
+        }
+        
+        else {
+            this.dadosValidos[this.campoID] = false;
+            rotulo.setText(rotulo.getName() + this.textoInvalido);
+            rotulo.setForeground(this.corInvalido);
+        }
+    }
+    
     private void campoNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNomeFocusLost
         String nome = this.campoNome.getText();
+        this.campoID = 0;
         
         if(nome.trim().length() > 1) {
-            dadosValidos[0] = true;
-            this.labNome.setText("Nome Completo" + textoValido);
-            this.labNome.setForeground(corValido);
+            modificaRotulo(this.labNome, true);
         }
         
         else {
-            dadosValidos[0] = false;
-            this.labNome.setText("Nome Completo" + textoInvalido);
-            this.labNome.setForeground(corInvalido);
+            modificaRotulo(this.labNome, false);
         }
     }//GEN-LAST:event_campoNomeFocusLost
-
+    
     private void campoEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEnderecoFocusLost
         String endereco = this.campoEndereco.getText();
+        this.campoID = 2;
         
         if(!endereco.equals("")) {
-            dadosValidos[1] = true;
-            this.labEndereco.setText("Endereço" + textoValido);
-            this.labEndereco.setForeground(corValido);
+            modificaRotulo(labEndereco, true);
         }
         
         else {
-            dadosValidos[1] = false;
-            this.labEndereco.setText("Endereço" + textoInvalido);
-            this.labEndereco.setForeground(corInvalido);
+            modificaRotulo(labEndereco, false);
         }
     }//GEN-LAST:event_campoEnderecoFocusLost
 
     private void campoCEPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCEPFocusLost
         String CEP = this.campoCEP.getText();
+        this.campoID = 3;
         
         if(CEP.trim().length() == 9) {
-            dadosValidos[2] = true;
-            this.labCEP.setText("CEP" + textoValido);
-            this.labCEP.setForeground(corValido);
+            modificaRotulo(labCEP, true);
         }
         
         else {
-            dadosValidos[2] = false;
-            this.labCEP.setText("CEP" + textoInvalido);
-            this.labCEP.setForeground(corInvalido);
+            modificaRotulo(labCEP, false);
         }
     }//GEN-LAST:event_campoCEPFocusLost
 
@@ -467,12 +519,105 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         this.dispose();
         this.adm.mostraInterface();
     }//GEN-LAST:event_cancelarActionPerformed
+
+    private void campoRGFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoRGFocusLost
+        String RG = this.campoRG.getText();
+        this.campoID = 1;
+        
+        if(!RG.equals("")) {
+            modificaRotulo(labRG, true);
+        }
+        
+        else {
+            modificaRotulo(labRG, false);
+        }
+    }//GEN-LAST:event_campoRGFocusLost
+
+    private void campoCidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCidadeFocusLost
+        String cidade = this.campoCidade.getText();
+        this.campoID = 4;
+        
+        if(!cidade.equals("")) {
+            modificaRotulo(labCidade, true);
+        }
+        
+        else {
+            modificaRotulo(labCidade, false);
+        }
+    }//GEN-LAST:event_campoCidadeFocusLost
+
+    private void selecionaUFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selecionaUFFocusLost
+        String UF = this.selecionaUF.getSelectedItem().toString();
+        this.campoID = 5;
+        
+        if(!UF.equals("-")) {
+            modificaRotulo(labUF, true);
+        }
+        
+        else {
+            modificaRotulo(labUF, false);
+        }
+    }//GEN-LAST:event_selecionaUFFocusLost
+
+    private void campoTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefoneFocusLost
+        String telefone = this.campoTelefone.getText();
+        this.campoID = 6;
+        
+        if(!telefone.equals("")) {
+            modificaRotulo(labTelefone, true);
+        }
+        
+        else {
+            modificaRotulo(labTelefone, false);
+        }
+    }//GEN-LAST:event_campoTelefoneFocusLost
+
+    private void campoLoginFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoLoginFocusLost
+        String login = this.campoLogin.getText();
+        this.campoID = 7;
+        
+        if(!login.equals("")) {
+            modificaRotulo(labLogin, true);
+        }
+        
+        else {
+            modificaRotulo(labLogin, false);
+        }
+    }//GEN-LAST:event_campoLoginFocusLost
+
+    private void campoSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoSenhaFocusLost
+        String senha = this.campoSenha.getText();
+        this.campoID = 8;
+        
+        if(!senha.equals("")) {
+            modificaRotulo(labSenha, true);
+        }
+        
+        else {
+            modificaRotulo(labSenha, false);
+        }
+    }//GEN-LAST:event_campoSenhaFocusLost
+
+    private void campoEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEmailFocusLost
+        String email = this.campoEmail.getText();
+        this.campoID = 2;
+        
+        if(!email.equals("")) {
+            modificaRotulo(labEmail, true);
+        }
+        
+        else {
+            modificaRotulo(labEmail, false);
+        }
+    }//GEN-LAST:event_campoEmailFocusLost
     
     private boolean verificaDados() {
         int i;
         
         for(i = 0; i < this.dadosValidos.length; i++) {
-            this.dadosValidos[i] = true;
+            if(this.dadosValidos[i] == false) {
+                return false;
+            }
         }
         
         return true;

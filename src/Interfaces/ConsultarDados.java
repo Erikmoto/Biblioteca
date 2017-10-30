@@ -77,6 +77,7 @@ public class ConsultarDados extends javax.swing.JFrame {
 
         labNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         labNome.setText("Nome Completo");
+        labNome.setName(""); // NOI18N
 
         labCEP.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         labCEP.setText("CEP");
