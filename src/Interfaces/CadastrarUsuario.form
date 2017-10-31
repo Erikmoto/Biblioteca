@@ -4,6 +4,8 @@
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="selecionaTipoUsuario">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="selecionaTipoTelefone">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
@@ -40,9 +42,10 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                       <Component id="painelDados" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace pref="10" max="32767" attributes="0"/>
                   </Group>
                   <Component id="painelLogin" max="32767" attributes="0"/>
               </Group>
@@ -63,7 +66,7 @@
               <Component id="separadorHInt" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="painelLogin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,43 +78,67 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="campoEndereco" alignment="0" pref="450" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="labEndereco" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="labCidade" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="labNome" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="334" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="campoEndereco" alignment="0" max="32767" attributes="0"/>
                               <Component id="campoNome" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="campoCidade" max="32767" attributes="0"/>
+                              <Component id="campoCidade" alignment="1" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="selecionaCelular" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="selecionaFixo" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                                          <Component id="labTipoTelefone" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labTelefone" min="-2" max="-2" attributes="0"/>
+                                      <Component id="campoTelefone" min="-2" pref="146" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="selecionaUF" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
-                              <Component id="labUF" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labCEP" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labRG" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoRG" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoCEP" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
-                      <Component id="labTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoTelefone" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="selecionaUF" alignment="0" min="-2" pref="189" max="-2" attributes="0"/>
+                      <Component id="labUF" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="labCEP" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="labRG" min="-2" max="-2" attributes="0"/>
+                      <Component id="labDataNasc" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoCEP" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoRG" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoDataNasc" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="labNome" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="labRG" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="campoRG" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="campoNome" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -137,10 +164,19 @@
                       <Component id="selecionaUF" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="labTelefone" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labTipoTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labDataNasc" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="campoTelefone" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="campoTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="selecionaCelular" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="selecionaFixo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoDataNasc" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -153,6 +189,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoFocoGanho"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoCidadeFocusLost"/>
           </Events>
         </Component>
@@ -190,6 +227,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoFocoGanho"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoEnderecoFocusLost"/>
           </Events>
         </Component>
@@ -268,17 +306,18 @@
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="campoRG">
           <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="##.###.###-#" subtype="-1" type="5"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="00.000.000-0"/>
+            <Property name="text" type="java.lang.String" value="__.___.___-_"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoFocoGanho"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoRGFocusLost"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try{&#xa;    formataRG = new MaskFormatter(&quot;**.***.***-*&quot;);&#xa;    formataRG.setValidCharacters(&quot;_0123456789&quot;);&#xa;    campoRG = new JFormattedTextField(formataRG);&#xa;} catch(Exception e){&#xa;}"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="campoNome">
           <Properties>
@@ -288,6 +327,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoFocoGanho"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoNomeFocusLost"/>
           </Events>
         </Component>
@@ -299,8 +339,9 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoCEPFocusGained"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoFocoGanho"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoCEPFocusLost"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoCEPKeyTyped"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try{&#xa;    formataCEP = new MaskFormatter(&quot;*****-***&quot;);&#xa;    formataCEP.setValidCharacters(&quot;_0123456789&quot;);&#xa;    campoCEP = new JFormattedTextField(formataCEP);&#xa;} catch(Exception e){&#xa;}"/>
@@ -317,13 +358,77 @@
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="campoTelefone">
           <Properties>
+            <Property name="text" type="java.lang.String" value="(__)_____-____"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoFocoGanho"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoTelefoneFocusLost"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoTelefoneKeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="try{&#xa;    formataTelefone = new MaskFormatter(&quot;(**)*****-****&quot;);&#xa;    formataTelefone.setValidCharacters(&quot;_0123456789&quot;);&#xa;    campoTelefone = new JFormattedTextField(formataTelefone);&#xa;} catch(Exception e){&#xa;}"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labTipoTelefone">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Tipo de Telefone"/>
+            <Property name="name" type="java.lang.String" value="Telefone" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="selecionaFixo">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="selecionaTipoTelefone"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="text" type="java.lang.String" value="Fixo"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="selecionaCelular">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="selecionaTipoTelefone"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Celular"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labDataNasc">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Data de Nascimento"/>
+            <Property name="name" type="java.lang.String" value="Data de Nascimento" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="campoDataNasc">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="__/__/____"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoFocoGanho"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoDataNascFocusLost"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoDataNascKeyTyped"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try{&#xa;    formataDataNasc = new MaskFormatter(&quot;**/**/****&quot;);&#xa;    formataDataNasc.setValidCharacters(&quot;_0123456789&quot;);&#xa;    campoDataNasc = new JFormattedTextField(formataDataNasc);&#xa;} catch(Exception e){&#xa;}"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -342,15 +447,13 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="labLogin" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="campoEmail" alignment="0" max="32767" attributes="0"/>
-                          <Component id="campoSenha" alignment="0" max="32767" attributes="0"/>
-                          <Component id="labEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="labSenha" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="campoLogin" alignment="0" min="-2" pref="450" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="campoEmail" alignment="0" max="32767" attributes="0"/>
+                      <Component id="labEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="labSenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoLogin" alignment="0" pref="450" max="32767" attributes="0"/>
+                      <Component id="campoSenha" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="separadorV" min="-2" max="-2" attributes="0"/>
@@ -370,7 +473,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="selecionaAdmin" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="selecionaUser" min="-2" max="-2" attributes="0"/>
+                                  <Component id="selecionaUsuario" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -391,7 +494,7 @@
                           <Component id="labSenha" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="campoSenha" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                           <Component id="labEmail" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                           <Component id="campoEmail" min="-2" max="-2" attributes="0"/>
@@ -402,7 +505,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="selecionaAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="selecionaUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="selecionaUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="confirmar" min="-2" pref="35" max="-2" attributes="0"/>
@@ -451,17 +554,8 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoFocoGanho"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoLoginFocusLost"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="campoSenha">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="14" style="0"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoSenhaFocusLost"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="campoEmail">
@@ -471,6 +565,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoFocoGanho"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoEmailFocusLost"/>
           </Events>
         </Component>
@@ -498,7 +593,7 @@
             <Property name="text" type="java.lang.String" value="Administrador"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="selecionaUser">
+        <Component class="javax.swing.JRadioButton" name="selecionaUsuario">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="selecionaTipoUsuario"/>
@@ -506,7 +601,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
-            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
           </Properties>
         </Component>
@@ -530,6 +624,17 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="campoSenha">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoFocoGanho"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoSenhaFocusLost"/>
           </Events>
         </Component>
       </SubComponents>

@@ -7,11 +7,12 @@ package Interfaces;
 
 import java.awt.Color;
 import javax.swing.JFormattedTextField;
-import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import Classes.ADM;
-import java.text.ParseException;
+import Classes.Usuario;
+import java.util.Arrays;
 import javax.swing.JLabel;
+import javax.swing.text.JTextComponent;
 
 /**
  *
@@ -20,9 +21,10 @@ import javax.swing.JLabel;
 public class CadastrarUsuario extends javax.swing.JFrame {
 
     private ADM adm;
-    private boolean[] dadosValidos = new boolean[9];
+    private boolean[] dadosValidos = new boolean[11];
     private final Color corValido = new Color(10, 200, 150);
     private final Color corInvalido = new Color(125, 30, 150);
+    private final Color corFundo = new Color(150, 200, 255);
     private final String textoValido = "     Dado Válido";
     private final String textoInvalido = "     Dado Inválido";
     private short campoID;
@@ -49,6 +51,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         selecionaTipoUsuario = new javax.swing.ButtonGroup();
+        selecionaTipoTelefone = new javax.swing.ButtonGroup();
         painelDados = new javax.swing.JLayeredPane();
         campoCidade = new javax.swing.JTextField();
         labCidade = new javax.swing.JLabel();
@@ -63,21 +66,32 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         campoNome = new javax.swing.JFormattedTextField();
         campoCEP = new javax.swing.JFormattedTextField();
         labTelefone = new javax.swing.JLabel();
+        try{
+            formataTelefone = new MaskFormatter("(**)*****-****");
+            formataTelefone.setValidCharacters("_0123456789");
+            campoTelefone = new JFormattedTextField(formataTelefone);
+        } catch(Exception e){
+        }
         campoTelefone = new javax.swing.JFormattedTextField();
+        labTipoTelefone = new javax.swing.JLabel();
+        selecionaFixo = new javax.swing.JRadioButton();
+        selecionaCelular = new javax.swing.JRadioButton();
+        labDataNasc = new javax.swing.JLabel();
+        campoDataNasc = new javax.swing.JFormattedTextField();
         labCadastro = new javax.swing.JLabel();
         painelLogin = new javax.swing.JLayeredPane();
         labLogin = new javax.swing.JLabel();
         labSenha = new javax.swing.JLabel();
         labEmail = new javax.swing.JLabel();
         campoLogin = new javax.swing.JTextField();
-        campoSenha = new javax.swing.JTextField();
         campoEmail = new javax.swing.JTextField();
         separadorV = new javax.swing.JSeparator();
         labTipoUsuario = new javax.swing.JLabel();
         selecionaAdmin = new javax.swing.JRadioButton();
-        selecionaUser = new javax.swing.JRadioButton();
+        selecionaUsuario = new javax.swing.JRadioButton();
         confirmar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
+        campoSenha = new javax.swing.JPasswordField();
         separadorHInt = new javax.swing.JSeparator();
         separadorHSup = new javax.swing.JSeparator();
 
@@ -90,6 +104,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         campoCidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoCidade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoFocoGanho(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoCidadeFocusLost(evt);
             }
@@ -109,6 +126,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         campoEndereco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoEndereco.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoFocoGanho(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoEnderecoFocusLost(evt);
             }
@@ -135,14 +155,18 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
-        try {
-            campoRG.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
+        try{
+            formataRG = new MaskFormatter("**.***.***-*");
+            formataRG.setValidCharacters("_0123456789");
+            campoRG = new JFormattedTextField(formataRG);
+        } catch(Exception e){
         }
-        campoRG.setText("00.000.000-0");
+        campoRG.setText("__.___.___-_");
         campoRG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoRG.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoFocoGanho(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoRGFocusLost(evt);
             }
@@ -151,6 +175,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         campoNome.setColumns(200);
         campoNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoNome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoFocoGanho(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoNomeFocusLost(evt);
             }
@@ -166,10 +193,15 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         campoCEP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoCEP.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                campoCEPFocusGained(evt);
+                campoFocoGanho(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoCEPFocusLost(evt);
+            }
+        });
+        campoCEP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoCEPKeyTyped(evt);
             }
         });
 
@@ -177,10 +209,59 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         labTelefone.setText("Telefone");
         labTelefone.setName("Telefone"); // NOI18N
 
+        campoTelefone.setText("(__)_____-____");
         campoTelefone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoFocoGanho(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoTelefoneFocusLost(evt);
+            }
+        });
+        campoTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoTelefoneKeyTyped(evt);
+            }
+        });
+
+        labTipoTelefone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labTipoTelefone.setText("Tipo de Telefone");
+        labTipoTelefone.setName("Telefone"); // NOI18N
+
+        selecionaTipoTelefone.add(selecionaFixo);
+        selecionaFixo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selecionaFixo.setSelected(true);
+        selecionaFixo.setText("Fixo");
+
+        selecionaTipoTelefone.add(selecionaCelular);
+        selecionaCelular.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selecionaCelular.setText("Celular");
+
+        labDataNasc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labDataNasc.setText("Data de Nascimento");
+        labDataNasc.setName("Data de Nascimento"); // NOI18N
+
+        try{
+            formataDataNasc = new MaskFormatter("**/**/****");
+            formataDataNasc.setValidCharacters("_0123456789");
+            campoDataNasc = new JFormattedTextField(formataDataNasc);
+        } catch(Exception e){
+        }
+        campoDataNasc.setText("__/__/____");
+        campoDataNasc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoDataNasc.setVerifyInputWhenFocusTarget(false);
+        campoDataNasc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoFocoGanho(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoDataNascFocusLost(evt);
+            }
+        });
+        campoDataNasc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoDataNascKeyTyped(evt);
             }
         });
 
@@ -198,6 +279,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         painelDados.setLayer(campoCEP, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelDados.setLayer(labTelefone, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelDados.setLayer(campoTelefone, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(labTipoTelefone, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(selecionaFixo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(selecionaCelular, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(labDataNasc, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelDados.setLayer(campoDataNasc, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout painelDadosLayout = new javax.swing.GroupLayout(painelDados);
         painelDados.setLayout(painelDadosLayout);
@@ -207,33 +293,50 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelDadosLayout.createSequentialGroup()
-                        .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(campoEndereco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
-                            .addComponent(labEndereco, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labCidade, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labNome, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(campoCidade))
-                        .addGap(18, 18, 18)
                         .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(selecionaUF, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labUF)
-                            .addComponent(labCEP)
-                            .addComponent(labRG)
-                            .addComponent(campoRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(labTelefone)
-                    .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                            .addComponent(labEndereco)
+                            .addComponent(labCidade)
+                            .addComponent(labNome))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(painelDadosLayout.createSequentialGroup()
+                        .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoEndereco)
+                            .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(campoCidade, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDadosLayout.createSequentialGroup()
+                                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(painelDadosLayout.createSequentialGroup()
+                                        .addComponent(selecionaCelular)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(selecionaFixo))
+                                    .addGroup(painelDadosLayout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(labTipoTelefone)))
+                                .addGap(76, 76, 76)
+                                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labTelefone)
+                                    .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(94, 94, 94)))
+                        .addGap(18, 18, 18)))
+                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(selecionaUF, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labUF)
+                    .addComponent(labCEP)
+                    .addComponent(labRG)
+                    .addComponent(labDataNasc)
+                    .addComponent(campoCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
         );
         painelDadosLayout.setVerticalGroup(
             painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDadosLayout.createSequentialGroup()
+            .addGroup(painelDadosLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labNome)
                     .addComponent(labRG))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -254,10 +357,17 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                     .addComponent(campoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(selecionaUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labTelefone)
+                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labTelefone)
+                    .addComponent(labTipoTelefone)
+                    .addComponent(labDataNasc))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selecionaCelular)
+                    .addComponent(selecionaFixo)
+                    .addComponent(campoDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         labCadastro.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -277,20 +387,19 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         campoLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoLogin.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoFocoGanho(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoLoginFocusLost(evt);
             }
         });
 
-        campoSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        campoSenha.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campoSenhaFocusLost(evt);
-            }
-        });
-
         campoEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoFocoGanho(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoEmailFocusLost(evt);
             }
@@ -305,10 +414,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         selecionaAdmin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         selecionaAdmin.setText("Administrador");
 
-        selecionaTipoUsuario.add(selecionaUser);
-        selecionaUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        selecionaUser.setSelected(true);
-        selecionaUser.setText("Usuário");
+        selecionaTipoUsuario.add(selecionaUsuario);
+        selecionaUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selecionaUsuario.setText("Usuário");
 
         confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         confirmar.setText("Confirmar");
@@ -326,18 +434,28 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
+        campoSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoFocoGanho(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoSenhaFocusLost(evt);
+            }
+        });
+
         painelLogin.setLayer(labLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelLogin.setLayer(labSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelLogin.setLayer(labEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelLogin.setLayer(campoLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelLogin.setLayer(campoSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelLogin.setLayer(campoEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelLogin.setLayer(separadorV, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelLogin.setLayer(labTipoUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelLogin.setLayer(selecionaAdmin, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painelLogin.setLayer(selecionaUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelLogin.setLayer(selecionaUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelLogin.setLayer(confirmar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         painelLogin.setLayer(cancelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        painelLogin.setLayer(campoSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout painelLoginLayout = new javax.swing.GroupLayout(painelLogin);
         painelLogin.setLayout(painelLoginLayout);
@@ -345,14 +463,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelLoginLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labLogin)
-                    .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(campoEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(campoSenha, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(labEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(labSenha, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(campoLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(campoEmail)
+                    .addComponent(labEmail)
+                    .addComponent(labSenha)
+                    .addComponent(campoLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                    .addComponent(campoSenha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(separadorV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +486,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                             .addGroup(painelLoginLayout.createSequentialGroup()
                                 .addComponent(selecionaAdmin)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(selecionaUser)))
+                                .addComponent(selecionaUsuario)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         painelLoginLayout.setVerticalGroup(
@@ -384,7 +501,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                         .addComponent(labSenha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(9, 9, 9)
                         .addComponent(labEmail)
                         .addGap(7, 7, 7)
                         .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -394,7 +511,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(selecionaAdmin)
-                            .addComponent(selecionaUser))
+                            .addComponent(selecionaUsuario))
                         .addGap(18, 18, 18)
                         .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -417,8 +534,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, 0)
                         .addComponent(painelDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE))
                     .addComponent(painelLogin))
                 .addContainerGap())
         );
@@ -435,20 +553,22 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 .addComponent(separadorHInt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(painelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void campoCEPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCEPFocusGained
-        try {
-            formataCEP.setMask("#####-###");
-            campoCEP.setFormatterFactory(new DefaultFormatterFactory(formataCEP));
-        } catch(ParseException e) {
-
-        }
-    }//GEN-LAST:event_campoCEPFocusGained
+    private String nome;
+    private String RG;
+    private String endereco;
+    private String CEP;
+    private String cidade;
+    private String UF;
+    private String telefone;
+    private String dataNasc;
+    private String nomeUsuario;
+    private String senha;
+    private String email;
     
     private void modificaRotulo(JLabel rotulo, boolean validade) {
         if(validade == true) {
@@ -465,10 +585,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }
     
     private void campoNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNomeFocusLost
-        String nome = this.campoNome.getText();
+        this.nome = this.campoNome.getText();
         this.campoID = 0;
+        this.campoNome.setBackground(Color.WHITE);
         
-        if(nome.trim().length() > 1) {
+        if(this.nome.trim().length() > 1) {
             modificaRotulo(this.labNome, true);
         }
         
@@ -478,10 +599,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_campoNomeFocusLost
     
     private void campoEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEnderecoFocusLost
-        String endereco = this.campoEndereco.getText();
+        this.endereco = this.campoEndereco.getText();
         this.campoID = 2;
+        this.campoEndereco.setBackground(Color.WHITE);
         
-        if(!endereco.equals("")) {
+        if(!this.endereco.equals("")) {
             modificaRotulo(labEndereco, true);
         }
         
@@ -491,10 +613,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_campoEnderecoFocusLost
 
     private void campoCEPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCEPFocusLost
-        String CEP = this.campoCEP.getText();
+        this.CEP = this.campoCEP.getText();
         this.campoID = 3;
+        this.campoCEP.setBackground(Color.WHITE);
         
-        if(CEP.trim().length() == 9) {
+        if(this.CEP.trim().length() == 9) {
             modificaRotulo(labCEP, true);
         }
         
@@ -510,6 +633,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         if(verificaDados()) {
+            Usuario u = new Usuario(0, this.nome, this.RG, this.endereco, this.CEP, this.cidade, this.UF, this.telefone, this.dataNasc, this.nomeUsuario, this.senha, this.email);
             this.dispose();
             this.adm.mostraInterface();
         }
@@ -521,10 +645,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void campoRGFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoRGFocusLost
-        String RG = this.campoRG.getText();
+        this.RG = this.campoRG.getText();
         this.campoID = 1;
+        this.campoRG.setBackground(Color.WHITE);
         
-        if(!RG.equals("")) {
+        if(!this.RG.equals("")) {
             modificaRotulo(labRG, true);
         }
         
@@ -534,10 +659,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_campoRGFocusLost
 
     private void campoCidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCidadeFocusLost
-        String cidade = this.campoCidade.getText();
+        this.cidade = this.campoCidade.getText();
         this.campoID = 4;
+        this.campoCidade.setBackground(Color.WHITE);
         
-        if(!cidade.equals("")) {
+        if(!this.cidade.equals("")) {
             modificaRotulo(labCidade, true);
         }
         
@@ -547,10 +673,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_campoCidadeFocusLost
 
     private void selecionaUFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selecionaUFFocusLost
-        String UF = this.selecionaUF.getSelectedItem().toString();
+        this.UF = this.selecionaUF.getSelectedItem().toString();
         this.campoID = 5;
+        this.selecionaUF.setBackground(Color.WHITE);
         
-        if(!UF.equals("-")) {
+        if(!this.UF.equals("-")) {
             modificaRotulo(labUF, true);
         }
         
@@ -560,10 +687,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_selecionaUFFocusLost
 
     private void campoTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefoneFocusLost
-        String telefone = this.campoTelefone.getText();
+        this.telefone = this.campoTelefone.getText();
         this.campoID = 6;
+        this.campoTelefone.setBackground(Color.WHITE);
         
-        if(!telefone.equals("")) {
+        if(!this.telefone.equals("")) {
             modificaRotulo(labTelefone, true);
         }
         
@@ -573,10 +701,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_campoTelefoneFocusLost
 
     private void campoLoginFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoLoginFocusLost
-        String login = this.campoLogin.getText();
-        this.campoID = 7;
+        this.nomeUsuario = this.campoLogin.getText();
+        this.campoID = 8;
+        this.campoLogin.setBackground(Color.WHITE);
         
-        if(!login.equals("")) {
+        if(!this.nomeUsuario.equals("")) {
             modificaRotulo(labLogin, true);
         }
         
@@ -585,24 +714,12 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_campoLoginFocusLost
 
-    private void campoSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoSenhaFocusLost
-        String senha = this.campoSenha.getText();
-        this.campoID = 8;
-        
-        if(!senha.equals("")) {
-            modificaRotulo(labSenha, true);
-        }
-        
-        else {
-            modificaRotulo(labSenha, false);
-        }
-    }//GEN-LAST:event_campoSenhaFocusLost
-
     private void campoEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEmailFocusLost
-        String email = this.campoEmail.getText();
-        this.campoID = 2;
+        this.email = this.campoEmail.getText();
+        this.campoID = 10;
+        this.campoEmail.setBackground(Color.WHITE);
         
-        if(!email.equals("")) {
+        if(!this.email.equals("")) {
             modificaRotulo(labEmail, true);
         }
         
@@ -610,6 +727,54 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             modificaRotulo(labEmail, false);
         }
     }//GEN-LAST:event_campoEmailFocusLost
+
+    private void campoTelefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoTelefoneKeyTyped
+        
+    }//GEN-LAST:event_campoTelefoneKeyTyped
+
+    private void campoCEPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCEPKeyTyped
+        if(evt.getKeyChar() == '-') {
+            campoCEP.setCaretPosition(campoCEP.getCaretPosition());
+        }
+    }//GEN-LAST:event_campoCEPKeyTyped
+
+    private void campoFocoGanho(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoFocoGanho
+        JTextComponent comp = (JTextComponent)evt.getComponent();
+        comp.setBackground(corFundo);
+        comp.setCaretPosition(0);
+    }//GEN-LAST:event_campoFocoGanho
+
+    private void campoDataNascFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoDataNascFocusLost
+        this.dataNasc = this.campoDataNasc.getText();
+        this.campoID = 7;
+        this.campoDataNasc.setBackground(Color.WHITE);
+        
+        if(!this.dataNasc.equals("")) {
+            modificaRotulo(labDataNasc, true);
+        }
+        
+        else {
+            modificaRotulo(labDataNasc, false);
+        }
+    }//GEN-LAST:event_campoDataNascFocusLost
+
+    private void campoDataNascKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoDataNascKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoDataNascKeyTyped
+
+    private void campoSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoSenhaFocusLost
+        this.senha = Arrays.toString(this.campoSenha.getPassword());
+        this.campoID = 9;
+        this.campoSenha.setBackground(Color.WHITE);
+        
+        if(!this.senha.equals("")) {
+            modificaRotulo(labSenha, true);
+        }
+        
+        else {
+            modificaRotulo(labSenha, false);
+        }
+    }//GEN-LAST:event_campoSenhaFocusLost
     
     private boolean verificaDados() {
         int i;
@@ -666,21 +831,26 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     }
     
     private javax.swing.text.MaskFormatter formataCEP;
+    private javax.swing.text.MaskFormatter formataRG;
+    private javax.swing.text.MaskFormatter formataDataNasc;
+    private javax.swing.text.MaskFormatter formataTelefone;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField campoCEP;
     private javax.swing.JTextField campoCidade;
+    private javax.swing.JFormattedTextField campoDataNasc;
     private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoEndereco;
     private javax.swing.JTextField campoLogin;
     private javax.swing.JFormattedTextField campoNome;
     private javax.swing.JFormattedTextField campoRG;
-    private javax.swing.JTextField campoSenha;
+    private javax.swing.JPasswordField campoSenha;
     private javax.swing.JFormattedTextField campoTelefone;
     private javax.swing.JButton cancelar;
     private javax.swing.JButton confirmar;
     private javax.swing.JLabel labCEP;
     private javax.swing.JLabel labCadastro;
     private javax.swing.JLabel labCidade;
+    private javax.swing.JLabel labDataNasc;
     private javax.swing.JLabel labEmail;
     private javax.swing.JLabel labEndereco;
     private javax.swing.JLabel labLogin;
@@ -688,14 +858,18 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel labRG;
     private javax.swing.JLabel labSenha;
     private javax.swing.JLabel labTelefone;
+    private javax.swing.JLabel labTipoTelefone;
     private javax.swing.JLabel labTipoUsuario;
     private javax.swing.JLabel labUF;
     private javax.swing.JLayeredPane painelDados;
     private javax.swing.JLayeredPane painelLogin;
     private javax.swing.JRadioButton selecionaAdmin;
+    private javax.swing.JRadioButton selecionaCelular;
+    private javax.swing.JRadioButton selecionaFixo;
+    private javax.swing.ButtonGroup selecionaTipoTelefone;
     private javax.swing.ButtonGroup selecionaTipoUsuario;
     private javax.swing.JComboBox<String> selecionaUF;
-    private javax.swing.JRadioButton selecionaUser;
+    private javax.swing.JRadioButton selecionaUsuario;
     private javax.swing.JSeparator separadorHInt;
     private javax.swing.JSeparator separadorHSup;
     private javax.swing.JSeparator separadorV;

@@ -8,6 +8,7 @@ package Interfaces;
 import Classes.ADM;
 import Classes.Usuario;
 import java.util.Arrays;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -146,7 +147,7 @@ public class InterfaceLogin extends javax.swing.JDialog {
         else {
             if(login.equals(u) && Arrays.equals(senha, s)) {
                 this.dispose();
-                Usuario usuario = new Usuario(0, "Nome", "00000-000", "Endereço" , "Cidade", "UF", "00.000.000-0", "u", "", "Email", "(00)00000-0000");
+                Usuario usuario = new Usuario(0, "Nome", "00.000.000-0", "Endereço", "00000-000", "Cidade", "UF", "(00)00000-0000", "01/01/2000", "u", "", "Email");
                 usuario.mostraInterface();
             }
             

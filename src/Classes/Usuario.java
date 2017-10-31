@@ -7,6 +7,7 @@ package Classes;
 
 import Interfaces.ConsultarDados;
 import Interfaces.InterfaceUsuario;
+import java.util.Date;
 
 /**
  *
@@ -15,32 +16,37 @@ import Interfaces.InterfaceUsuario;
 public class Usuario {
     private int idUsuario;
     private String nome;
-    private String CEP;
+    private String RG;
     private String endereco;
+    private String CEP;
     private String cidade;
     private String UF;
-    private String RG;
+    private String telefone;
+    private String dataNascimento;
     private String nomeUsuario;
     private String senha;
     private String email;
-    private String telefone;
+    
     private InterfaceUsuario intUsuario;
     
-    public Usuario(int id, String nome, String CEP, String end, String cid, String UF, String RG, String nomeUs, String senha, String email, String tel) {
+    public Usuario(int id, String nome, String RG, String end, String CEP, String cid, String UF, String tel, String dataNasc, String nomeUs, String senha, String email) {
         this.idUsuario = id;
         this.nome = nome;
-        this.CEP = CEP;
+        this.RG = RG;
         this.endereco = end;
+        this.CEP = CEP;
         this.cidade = cid;
         this.UF = UF;
-        this.RG = RG;
+        this.telefone = tel;
+        this.dataNascimento = dataNasc;
         this.nomeUsuario = nomeUs;
         this.senha = senha;
         this.email = email;
-        this.telefone = tel;
+        
         this.intUsuario = new InterfaceUsuario(this);
         
     }
+    
     public void mostraInterface() {
         this.intUsuario.setVisible(true);
     }
@@ -141,6 +147,22 @@ public class Usuario {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public InterfaceUsuario getIntUsuario() {
+        return intUsuario;
+    }
+
+    public void setIntUsuario(InterfaceUsuario intUsuario) {
+        this.intUsuario = intUsuario;
     }
     
     
