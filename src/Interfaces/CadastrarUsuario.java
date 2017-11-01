@@ -10,6 +10,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.text.MaskFormatter;
 import Classes.ADM;
 import Classes.Usuario;
+import java.text.ParseException;
 import java.util.Arrays;
 import javax.swing.JLabel;
 import javax.swing.text.JTextComponent;
@@ -21,7 +22,7 @@ import javax.swing.text.JTextComponent;
 public class CadastrarUsuario extends javax.swing.JFrame {
 
     private ADM adm;
-    private boolean[] dadosValidos = new boolean[11];
+    private final boolean[] dadosValidos = new boolean[11];
     private final Color corValido = new Color(10, 200, 150);
     private final Color corInvalido = new Color(125, 30, 150);
     private final Color corFundo = new Color(150, 200, 255);
@@ -66,12 +67,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         campoNome = new javax.swing.JFormattedTextField();
         campoCEP = new javax.swing.JFormattedTextField();
         labTelefone = new javax.swing.JLabel();
-        try{
-            formataTelefone = new MaskFormatter("(**)*****-****");
-            formataTelefone.setValidCharacters("_0123456789");
-            campoTelefone = new JFormattedTextField(formataTelefone);
-        } catch(Exception e){
-        }
         campoTelefone = new javax.swing.JFormattedTextField();
         labTipoTelefone = new javax.swing.JLabel();
         selecionaFixo = new javax.swing.JRadioButton();
@@ -171,6 +166,14 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 campoRGFocusLost(evt);
             }
         });
+        campoRG.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                verificaTeclas(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                verificaCaractere(evt);
+            }
+        });
 
         campoNome.setColumns(200);
         campoNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -200,28 +203,36 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
         campoCEP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                verificaTeclas(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                campoCEPKeyTyped(evt);
+                verificaCaractere(evt);
             }
         });
 
         labTelefone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labTelefone.setText("Telefone");
+        labTelefone.setEnabled(false);
         labTelefone.setName("Telefone"); // NOI18N
 
         campoTelefone.setText("(__)_____-____");
+        campoTelefone.setEnabled(false);
         campoTelefone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                campoFocoGanho(evt);
+                campoTelefoneFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoTelefoneFocusLost(evt);
             }
         });
         campoTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                verificaTeclas(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                campoTelefoneKeyTyped(evt);
+                verificaCaractere(evt);
             }
         });
 
@@ -231,12 +242,21 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         selecionaTipoTelefone.add(selecionaFixo);
         selecionaFixo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        selecionaFixo.setSelected(true);
         selecionaFixo.setText("Fixo");
+        selecionaFixo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionaFixoActionPerformed(evt);
+            }
+        });
 
         selecionaTipoTelefone.add(selecionaCelular);
         selecionaCelular.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         selecionaCelular.setText("Celular");
+        selecionaCelular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecionaCelularActionPerformed(evt);
+            }
+        });
 
         labDataNasc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labDataNasc.setText("Data de Nascimento");
@@ -260,8 +280,11 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             }
         });
         campoDataNasc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                verificaTeclas(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                campoDataNascKeyTyped(evt);
+                verificaCaractere(evt);
             }
         });
 
@@ -416,6 +439,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         selecionaTipoUsuario.add(selecionaUsuario);
         selecionaUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selecionaUsuario.setSelected(true);
         selecionaUsuario.setText("Usuário");
 
         confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -534,7 +558,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addComponent(painelDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE))
                     .addComponent(painelLogin))
@@ -728,16 +751,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_campoEmailFocusLost
 
-    private void campoTelefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoTelefoneKeyTyped
-        
-    }//GEN-LAST:event_campoTelefoneKeyTyped
-
-    private void campoCEPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCEPKeyTyped
-        if(evt.getKeyChar() == '-') {
-            campoCEP.setCaretPosition(campoCEP.getCaretPosition());
-        }
-    }//GEN-LAST:event_campoCEPKeyTyped
-
     private void campoFocoGanho(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoFocoGanho
         JTextComponent comp = (JTextComponent)evt.getComponent();
         comp.setBackground(corFundo);
@@ -758,10 +771,6 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_campoDataNascFocusLost
 
-    private void campoDataNascKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoDataNascKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoDataNascKeyTyped
-
     private void campoSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoSenhaFocusLost
         this.senha = Arrays.toString(this.campoSenha.getPassword());
         this.campoID = 9;
@@ -775,7 +784,95 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             modificaRotulo(labSenha, false);
         }
     }//GEN-LAST:event_campoSenhaFocusLost
+
+    private void selecionaCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionaCelularActionPerformed
+        try{
+            this.formataTelefone.setMask("(**)*****-****");
+            configuraCampoTelefone();
+        } catch(ParseException e){
+            
+        }
+    }//GEN-LAST:event_selecionaCelularActionPerformed
+
+    private void selecionaFixoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionaFixoActionPerformed
+        try{
+            this.formataTelefone.setMask("(**)****-****");
+            configuraCampoTelefone();
+        } catch(ParseException e){
+            
+        }
+    }//GEN-LAST:event_selecionaFixoActionPerformed
+
+    private void configuraCampoTelefone() {
+        int tamanhoMascara = this.formataTelefone.getMask().length();
+        int tamanhoCampo = this.campoTelefone.getText().length();
+        String texto = this.campoTelefone.getText();
+        
+        this.formataTelefone.setValidCharacters("_0123456789");
+        this.formataTelefone.install(this.campoTelefone);
+        
+        if(tamanhoCampo == tamanhoMascara) {
+            this.campoTelefone.setText(texto);
+        }
+
+        else {
+            if(tamanhoCampo == 13) {
+                this.campoTelefone.setText("(__)_____-____");
+            }
+            
+            else {
+                this.campoTelefone.setText("(__)____-____");
+            }
+        }
+        
+        this.labTelefone.setEnabled(true);
+        this.campoTelefone.setEnabled(true);
+    }
     
+    private void campoTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefoneFocusGained
+        this.campoTelefone.setBackground(this.corFundo);
+        this.campoTelefone.setCaretPosition(1);
+    }//GEN-LAST:event_campoTelefoneFocusGained
+
+    private void verificaTeclas(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verificaTeclas
+        JTextComponent campo = (JTextComponent)evt.getComponent();
+        int codigoTecla = evt.getKeyCode();
+        int posicaoTecla = campo.getCaretPosition();
+        
+        if(codigoTecla == 8) {
+            if(posicaoTecla != 0) {
+                evt.consume();
+                
+                campo.select(posicaoTecla-1, posicaoTecla-1);
+                campo.replaceSelection("_");
+                campo.setCaretPosition(posicaoTecla-1);
+            }
+        }
+        
+        else {
+            if(codigoTecla == 127) {
+                if(posicaoTecla != (campo.getText().length())) {
+                    evt.consume();
+
+                    campo.select(posicaoTecla, posicaoTecla);
+                    campo.replaceSelection("_");
+                    campo.setCaretPosition(posicaoTecla+1);
+                }
+            }
+        }
+    }//GEN-LAST:event_verificaTeclas
+
+    private void verificaCaractere(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_verificaCaractere
+        JTextComponent campo = (JTextComponent)evt.getComponent();
+        char tecla = evt.getKeyChar();
+        int posicaoTecla = campo.getCaretPosition();
+        
+        if(tecla == '_') {
+            evt.consume();
+            campo.setCaretPosition(posicaoTecla);
+        }
+    }//GEN-LAST:event_verificaCaractere
+
     private boolean verificaDados() {
         int i;
         
@@ -823,17 +920,15 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastrarUsuario().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new CadastrarUsuario().setVisible(true);
         });
     }
     
     private javax.swing.text.MaskFormatter formataCEP;
     private javax.swing.text.MaskFormatter formataRG;
     private javax.swing.text.MaskFormatter formataDataNasc;
-    private javax.swing.text.MaskFormatter formataTelefone;
+    private final javax.swing.text.MaskFormatter formataTelefone = new MaskFormatter();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField campoCEP;
     private javax.swing.JTextField campoCidade;
