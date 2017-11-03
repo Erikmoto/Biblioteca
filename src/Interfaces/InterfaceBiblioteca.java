@@ -17,20 +17,44 @@ public class InterfaceBiblioteca extends javax.swing.JFrame {
         realizarLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                teclaPressionda(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                teclaDigitada(evt);
+            }
+        });
 
         consultarAcervo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        consultarAcervo.setText("Acervo");
+        consultarAcervo.setText("<html><u>A</u>cervo</html>");
         consultarAcervo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarAcervoActionPerformed(evt);
             }
         });
+        consultarAcervo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                teclaPressionda(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                teclaDigitada(evt);
+            }
+        });
 
         realizarLogin.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        realizarLogin.setText("Login");
+        realizarLogin.setText("<html><u>L</u>ogin</html>");
         realizarLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 realizarLoginActionPerformed(evt);
+            }
+        });
+        realizarLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                teclaPressionda(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                teclaDigitada(evt);
             }
         });
 
@@ -57,24 +81,56 @@ public class InterfaceBiblioteca extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void realizarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarLoginActionPerformed
+    private void criarInterfaceLogin() {
         this.dispose();
         InterfaceLogin login = new InterfaceLogin(this, true);
         login.setVisible(true);
+    }
+    
+    private void realizarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarLoginActionPerformed
+        criarInterfaceLogin();
     }//GEN-LAST:event_realizarLoginActionPerformed
-
-    private void consultarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAcervoActionPerformed
+    
+    private void criarInterfaceConsultarAcervo() {
         this.dispose();
         Acervo acervo = new Acervo();
         acervo.mostraAcervo(this);
+    }
+    
+    private void consultarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAcervoActionPerformed
+        criarInterfaceConsultarAcervo();
     }//GEN-LAST:event_consultarAcervoActionPerformed
 
-    public static void main(String args[]) {        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InterfaceBiblioteca().setVisible(true);
+    private void teclaDigitada(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_teclaDigitada
+        char tecla = evt.getKeyChar();
+        
+        evt.consume();
+        
+        if(tecla == 'l' || tecla == 'L' || (tecla == '\n' && this.getFocusOwner() == this.realizarLogin)) {
+            criarInterfaceLogin();
+        }
+        
+        else {
+            if(tecla == 'a' || tecla == 'A' || (tecla == '\n' && this.getFocusOwner() == this.consultarAcervo)) {
+                criarInterfaceConsultarAcervo();
             }
+        }
+    }//GEN-LAST:event_teclaDigitada
+
+    private void teclaPressionda(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_teclaPressionda
+        int codigoTecla = evt.getKeyCode();
+        
+        evt.consume();
+        
+        if(codigoTecla == 27) {
+            this.dispose();
+            System.exit(0);
+        }
+    }//GEN-LAST:event_teclaPressionda
+
+    public static void main(String args[]) {        
+        java.awt.EventQueue.invokeLater(() -> {
+            new InterfaceBiblioteca().setVisible(true);
         });
     }
 

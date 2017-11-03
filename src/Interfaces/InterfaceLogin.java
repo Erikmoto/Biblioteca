@@ -7,8 +7,8 @@ package Interfaces;
 
 import Classes.ADM;
 import Classes.Usuario;
+import java.awt.Color;
 import java.util.Arrays;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,11 +17,14 @@ import javax.swing.JOptionPane;
  */
 public class InterfaceLogin extends javax.swing.JDialog {
 
-    /**
-     * Creates new form Login
-     * @param parent
-     * @param modal
-     */
+    private boolean verificaLogin;
+    private final String rotuloLogin = "Nome de Usuário ou Email:";
+    private final Color corValido = new Color(0, 255, 0);
+    private final Color corInvalido = new Color(255, 0, 0);
+    private final String textoValido = "     Nome/Email Confirmado";
+    private final String textoInvalido = "     Nome/Email Inexistente";
+    
+    
     public InterfaceLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -48,7 +51,10 @@ public class InterfaceLogin extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                formKeyPressed(evt);
+                teclaPressionada(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                teclaDigitada(evt);
             }
         });
 
@@ -59,22 +65,59 @@ public class InterfaceLogin extends javax.swing.JDialog {
         labSenha.setText("Senha:");
 
         confirmarLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        confirmarLogin.setText("Entrar");
+        confirmarLogin.setText("<html><center>Entrar<br>[Enter]</center></html>");
         confirmarLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmarLoginActionPerformed(evt);
             }
         });
+        confirmarLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                teclaPressionada(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                teclaDigitada(evt);
+            }
+        });
 
         campoLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        campoLogin.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoLoginFocusLost(evt);
+            }
+        });
+        campoLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                teclaPressionada(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                teclaDigitada(evt);
+            }
+        });
 
         campoSenha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        campoSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                teclaPressionada(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                teclaDigitada(evt);
+            }
+        });
 
         cancelar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cancelar.setText("Cancelar");
+        cancelar.setText("<html><center>Cancelar<br>[Esc]</center></html>");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
+            }
+        });
+        cancelar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                teclaPressionada(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                teclaDigitada(evt);
             }
         });
 
@@ -83,24 +126,24 @@ public class InterfaceLogin extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
-                .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110)
-                .addComponent(confirmarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labLogin)
-                    .addComponent(labSenha)
-                    .addComponent(campoLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
-                    .addComponent(campoSenha))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(65, 65, 65)
+                            .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(110, 110, 110)
+                            .addComponent(confirmarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(labLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+                        .addComponent(campoLogin)
+                        .addComponent(campoSenha)))
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addContainerGap(78, Short.MAX_VALUE)
                 .addComponent(labLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -108,7 +151,7 @@ public class InterfaceLogin extends javax.swing.JDialog {
                 .addComponent(labSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -119,41 +162,103 @@ public class InterfaceLogin extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarLoginActionPerformed
-        verificaSenha(campoLogin.getText(), campoSenha.getPassword());
+        verificaSenha(this.campoLogin.getText(), this.campoSenha.getPassword());
     }//GEN-LAST:event_confirmarLoginActionPerformed
-
-    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+    
+    private void cancelarLogin() {
         this.dispose();
         InterfaceBiblioteca biblioteca = new InterfaceBiblioteca();
         biblioteca.setVisible(true);
+    }
+    
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        cancelarLogin();
     }//GEN-LAST:event_cancelarActionPerformed
 
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        if(evt.getKeyChar() == '\n') {
-            verificaSenha(campoLogin.getText(), campoSenha.getPassword());
+    private void teclaPressionada(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_teclaPressionada
+        int codigoTecla = evt.getKeyCode();
+        
+        if(codigoTecla == 27) {
+            evt.consume();
+            
+            cancelarLogin();
         }
-    }//GEN-LAST:event_formKeyPressed
+    }//GEN-LAST:event_teclaPressionada
 
+    private void teclaDigitada(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_teclaDigitada
+        char tecla = evt.getKeyChar();
+        
+        if(tecla == '\n') {
+            evt.consume();
+            
+            verificaUsuario(this.campoLogin.getText());
+            verificaSenha(this.campoLogin.getText(), this.campoSenha.getPassword());
+        }
+    }//GEN-LAST:event_teclaDigitada
+
+    private void campoLoginFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoLoginFocusLost
+        verificaUsuario(this.campoLogin.getText());
+    }//GEN-LAST:event_campoLoginFocusLost
+    
+    private void verificaUsuario(String login) {
+        //Procurar login no banco de dados
+        
+        if(login.equals("a") || login.equals("u")) {
+            this.verificaLogin = true;
+            this.labLogin.setForeground(corValido);
+            this.labLogin.setText(rotuloLogin + textoValido);
+        }
+        
+        else {
+            this.verificaLogin = false;
+            this.labLogin.setForeground(corInvalido);
+            this.labLogin.setText(rotuloLogin + textoInvalido);
+        }
+    }
+    
     private void verificaSenha(String login, char[] senha) {
         String a = "a";
         String u = "u";
+        int ID = 0;
+        String nome, RG, endereco, CEP, cidade, UF, telefone, dataNascimento, email;
+        
         char[] s = {};
         
-        if(login.equals(a) && Arrays.equals(senha, s)){
+        if(this.verificaLogin == true && Arrays.equals(senha, s)){
             this.dispose();
-            ADM adm = new ADM(0, "ADM", "00000-000", "Rua", "Cidade", "Estado", "00.000.000-0", "a", "", "Email", "(00)00000-0000");
-            adm.mostraInterface();
-        }
-        else {
-            if(login.equals(u) && Arrays.equals(senha, s)) {
-                this.dispose();
-                Usuario usuario = new Usuario(0, "Nome", "00.000.000-0", "Endereço", "00000-000", "Cidade", "UF", "(00)00000-0000", "01/01/2000", "u", "", "Email");
-                usuario.mostraInterface();
+            
+            if(login.equals(a)) {
+                nome = "ADM";
+                RG = "00.000.000-0";
+                endereco = "Endereco";
+                CEP = "00000-000";
+                cidade = "Cidade";
+                UF = "UF";
+                telefone = "(00)00000-0000";
+                dataNascimento = "00/00/0000";
+                email = "Email";
+                
+                ADM adm = new ADM(ID, nome, RG, endereco, CEP, cidade, UF, telefone, dataNascimento, a, Arrays.toString(senha), email);
+                adm.mostraInterface();
             }
             
             else {
-                JOptionPane.showMessageDialog(null, "Dados Incorretos!");
+                nome = "Usuário";
+                RG = "00.000.000-0";
+                endereco = "Endereco";
+                CEP = "00000-000";
+                cidade = "Cidade";
+                UF = "UF";
+                telefone = "(00)00000-0000";
+                dataNascimento = "00/00/0000";
+                email = "Email";
+                
+                Usuario usuario = new Usuario(ID, nome, RG, endereco, CEP, cidade, UF, telefone, dataNascimento, u, Arrays.toString(senha), email);
+                usuario.mostraInterface();
             }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Dados Incorretos!");
         }
     }
     /**

@@ -47,6 +47,7 @@ public class InterfaceAdm extends javax.swing.JFrame {
         separadorH = new javax.swing.JSeparator();
         labAdm = new javax.swing.JLabel();
         logout = new javax.swing.JButton();
+        consultarDados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
@@ -93,9 +94,9 @@ public class InterfaceAdm extends javax.swing.JFrame {
                 .addComponent(labAcervo)
                 .addGap(50, 50, 50)
                 .addComponent(consultarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addGap(50, 50, 50)
                 .addComponent(editarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         labUsuarios.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
@@ -138,7 +139,7 @@ public class InterfaceAdm extends javax.swing.JFrame {
                 .addComponent(labUsuarios)
                 .addGap(50, 50, 50)
                 .addComponent(cadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addGap(50, 50, 50)
                 .addComponent(alterarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
@@ -155,6 +156,14 @@ public class InterfaceAdm extends javax.swing.JFrame {
             }
         });
 
+        consultarDados.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        consultarDados.setText("<html><center>Dados<br>Pessoais</center></html>");
+        consultarDados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarDadosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,8 +173,10 @@ public class InterfaceAdm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labAdm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(consultarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(painelAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,50 +189,77 @@ public class InterfaceAdm extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(8, 8, 8)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labAdm, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(labAdm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(consultarDados)
                     .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separadorH, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(separadorV, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(painelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(painelAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(22, Short.MAX_VALUE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(painelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(painelAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(separadorV)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void consultarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAcervoActionPerformed
+    
+    private void criarInterfaceConsultarAcervo() {
         this.dispose();
         this.adm.consultaAcervo();
+    }
+    
+    private void consultarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAcervoActionPerformed
+        criarInterfaceConsultarAcervo();
     }//GEN-LAST:event_consultarAcervoActionPerformed
-
-    private void editarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarAcervoActionPerformed
+    
+    private void criarInterfaceEditarAcervo() {
         this.dispose();
         this.adm.editaAcervo();
+    }
+    
+    private void editarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarAcervoActionPerformed
+        criarInterfaceEditarAcervo();
     }//GEN-LAST:event_editarAcervoActionPerformed
-
-    private void cadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarUsuarioActionPerformed
+    
+    private void criarInterfaceCadastrarUsuario() {
         this.dispose();
         this.adm.cadastraUsuario();
+    }
+    
+    private void cadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarUsuarioActionPerformed
+        criarInterfaceCadastrarUsuario();
     }//GEN-LAST:event_cadastrarUsuarioActionPerformed
-
-    private void alterarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarUsuarioActionPerformed
+    
+    private void criarInterfaceAlterarUsuario() {
         this.dispose();
         this.adm.editaUsuario();
+    }
+    
+    private void alterarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarUsuarioActionPerformed
+        criarInterfaceAlterarUsuario();
     }//GEN-LAST:event_alterarUsuarioActionPerformed
-
-    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+    
+    private void realizarLogout() {
         this.dispose();
         InterfaceBiblioteca biblioteca = new InterfaceBiblioteca();
         biblioteca.setVisible(true);
+    }
+    
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        realizarLogout();
     }//GEN-LAST:event_logoutActionPerformed
+    
+    private void criarInterfaceConsultarDados() {
+        this.dispose();
+        this.adm.consultaDados();
+    }
+    
+    private void consultarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarDadosActionPerformed
+        criarInterfaceConsultarDados();
+    }//GEN-LAST:event_consultarDadosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,6 +301,7 @@ public class InterfaceAdm extends javax.swing.JFrame {
     private javax.swing.JButton alterarUsuario;
     private javax.swing.JButton cadastrarUsuario;
     private javax.swing.JButton consultarAcervo;
+    private javax.swing.JButton consultarDados;
     private javax.swing.JButton editarAcervo;
     private javax.swing.JLabel labAcervo;
     private javax.swing.JLabel labAdm;

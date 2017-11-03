@@ -5,7 +5,6 @@
  */
 package Interfaces;
 
-import java.awt.Color;
 import javax.swing.JFrame;
 
 /**

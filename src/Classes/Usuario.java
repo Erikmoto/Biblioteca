@@ -7,7 +7,6 @@ package Classes;
 
 import Interfaces.ConsultarDados;
 import Interfaces.InterfaceUsuario;
-import java.util.Date;
 
 /**
  *
@@ -45,6 +44,10 @@ public class Usuario {
         
         this.intUsuario = new InterfaceUsuario(this);
         
+    }
+
+    public Usuario() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void mostraInterface() {

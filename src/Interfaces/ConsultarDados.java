@@ -5,18 +5,20 @@
  */
 package Interfaces;
 
+import Classes.ADM;
 import Classes.Usuario;
+import javax.swing.JFrame;
 
 /**
  *
  * @author a1658948
  */
 public class ConsultarDados extends javax.swing.JFrame {
-    private Usuario usuario;
+    private JFrame janelaAnterior;
     
     public ConsultarDados(Usuario u) {
         initComponents();
-        this.usuario = u;
+        this.janelaAnterior = u.getIntUsuario();
         this.nome.setText(u.getNome());
         this.RG.setText(u.getRG());
         this.endereco.setText(u.getRG());
@@ -24,8 +26,24 @@ public class ConsultarDados extends javax.swing.JFrame {
         this.cidade.setText(u.getCidade());
         this.UF.setText(u.getUF());
         this.telefone.setText(u.getTelefone());
+        this.dataNascimento.setText(u.getDataNascimento());
         this.login.setText(u.getNomeUsuario());
         this.email.setText(u.getEmail());
+    }
+    
+    public ConsultarDados(ADM a) {
+        initComponents();
+        this.janelaAnterior = a.getIntAdm();
+        this.nome.setText(a.getNome());
+        this.RG.setText(a.getRG());
+        this.endereco.setText(a.getRG());
+        this.CEP.setText(a.getCEP());
+        this.cidade.setText(a.getCidade());
+        this.UF.setText(a.getUF());
+        this.telefone.setText(a.getTelefone());
+        this.dataNascimento.setText(a.getDataNascimento());
+        this.login.setText(a.getNomeUsuario());
+        this.email.setText(a.getEmail());
     }
 
     private ConsultarDados() {
@@ -61,6 +79,8 @@ public class ConsultarDados extends javax.swing.JFrame {
         separador = new javax.swing.JSeparator();
         telefone = new javax.swing.JLabel();
         labTelefone = new javax.swing.JLabel();
+        labDataNasc = new javax.swing.JLabel();
+        dataNascimento = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -126,6 +146,11 @@ public class ConsultarDados extends javax.swing.JFrame {
         labTelefone.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         labTelefone.setText("Telefone");
 
+        labDataNasc.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labDataNasc.setText("Data de Nascimento");
+
+        dataNascimento.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,18 +170,6 @@ public class ConsultarDados extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labCidade))
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labUF)
-                                .addGap(0, 54, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(UF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(login, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
@@ -165,24 +178,49 @@ public class ConsultarDados extends javax.swing.JFrame {
                                     .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(labNome))
-                                .addGap(50, 50, 50)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(RG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labCEP)
-                                            .addComponent(labRG))
+                                        .addGap(42, 42, 42)
+                                        .addComponent(labDataNasc)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(CEP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(39, 39, 39)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(labRG)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addComponent(RG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(labEndereco)
                                     .addComponent(endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(39, 39, 39)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(CEP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(11, 11, 11))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(labCEP)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(dataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labLogin)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labCidade))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labUF)
+                                .addGap(65, 65, 65))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(UF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,17 +244,21 @@ public class ConsultarDados extends javax.swing.JFrame {
                     .addComponent(endereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(CEP, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labCidade)
-                    .addComponent(labUF))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labUF)
+                    .addComponent(labCidade))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(UF, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(labTelefone)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labTelefone)
+                    .addComponent(labDataNasc))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(telefone, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -235,7 +277,7 @@ public class ConsultarDados extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         this.dispose();
-        this.usuario.mostraInterface();
+        this.janelaAnterior.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
     /**
@@ -279,11 +321,13 @@ public class ConsultarDados extends javax.swing.JFrame {
     private javax.swing.JLabel RG;
     private javax.swing.JLabel UF;
     private javax.swing.JLabel cidade;
+    private javax.swing.JLabel dataNascimento;
     private javax.swing.JLabel email;
     private javax.swing.JLabel endereco;
     private javax.swing.JLabel labCEP;
     private javax.swing.JLabel labCidade;
     private javax.swing.JLabel labCons;
+    private javax.swing.JLabel labDataNasc;
     private javax.swing.JLabel labEmail;
     private javax.swing.JLabel labEndereco;
     private javax.swing.JLabel labLogin;

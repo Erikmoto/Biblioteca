@@ -41,30 +41,71 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         logout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                teclaPressionada(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                teclaDigitada(evt);
+            }
+        });
 
         consultarDados.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        consultarDados.setText("<html> <center>Consultar<br>Dados");
+        consultarDados.setText("<html> <center>Consultar<br><u>D</u>ados</center></html>");
         consultarDados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarDadosActionPerformed(evt);
             }
         });
+        consultarDados.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                teclaPressionada(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                teclaDigitada(evt);
+            }
+        });
 
         consultarAcervo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        consultarAcervo.setText("<html>\n<center>Consultar<br>Acervo");
+        consultarAcervo.setText("<html> <center>Consultar<br><u>A</u>cervo");
         consultarAcervo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarAcervoActionPerformed(evt);
             }
         });
+        consultarAcervo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                teclaPressionada(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                teclaDigitada(evt);
+            }
+        });
 
+        labUsuario.setBackground(new java.awt.Color(0, 153, 153));
         labUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                teclaPressionada(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                teclaDigitada(evt);
+            }
+        });
 
         logout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        logout.setText("Logout");
+        logout.setText("<html><u>L</u>ogout</html>");
         logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutActionPerformed(evt);
+            }
+        });
+        logout.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                teclaPressionada(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                teclaDigitada(evt);
             }
         });
 
@@ -101,22 +142,66 @@ public class InterfaceUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void consultarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarDadosActionPerformed
+    
+    private void criarInterfaceConsultarDados() {
         this.dispose();
         this.usuario.consultaDados();
+    }
+    
+    private void consultarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarDadosActionPerformed
+        criarInterfaceConsultarDados();
     }//GEN-LAST:event_consultarDadosActionPerformed
-
-    private void consultarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAcervoActionPerformed
+    
+    private void criarInterfaceConsultarAcervo() {
         this.dispose();
         this.usuario.consultaAcervo();
+    }
+    
+    private void consultarAcervoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAcervoActionPerformed
+        criarInterfaceConsultarAcervo();
     }//GEN-LAST:event_consultarAcervoActionPerformed
-
-    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+    
+    private void realizarLogout() {
         this.dispose();
         InterfaceBiblioteca biblioteca = new InterfaceBiblioteca();
         biblioteca.setVisible(true);
+    }
+    
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        realizarLogout();
     }//GEN-LAST:event_logoutActionPerformed
+
+    private void teclaPressionada(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_teclaPressionada
+        int codigoTecla = evt.getKeyCode();
+        
+        evt.consume();
+        
+        if(codigoTecla == 27) {
+            realizarLogout();
+        }
+    }//GEN-LAST:event_teclaPressionada
+
+    private void teclaDigitada(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_teclaDigitada
+        char tecla = evt.getKeyChar();
+        
+        evt.consume();
+        
+        if(tecla == 'd' || tecla == 'D' || (tecla == '\n' && this.getFocusOwner() == this.consultarDados)) {
+            criarInterfaceConsultarDados();
+        }
+        
+        else {
+            if(tecla == 'a' || tecla == 'A' || (tecla == '\n' && this.getFocusOwner() == this.consultarAcervo)) {
+                criarInterfaceConsultarAcervo();
+            }
+            
+            else {
+                if(tecla == 'l' || tecla == 'L' || (tecla == '\n' && this.getFocusOwner() == this.logout)) {
+                    realizarLogout();
+                }
+            }
+        }
+    }//GEN-LAST:event_teclaDigitada
 
     /**
      * @param args the command line arguments
