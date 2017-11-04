@@ -28,6 +28,7 @@ public class InterfaceLogin extends javax.swing.JDialog {
     public InterfaceLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocation(parent.getX(), parent.getY());
         this.setDefaultCloseOperation(0);
         
     }
@@ -125,21 +126,32 @@ public class InterfaceLogin extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(65, 65, 65)
-                            .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(110, 110, 110)
-                            .addComponent(confirmarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(labLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
-                        .addComponent(campoLogin)
-                        .addComponent(campoSenha)))
-                .addGap(30, 30, 30))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(labSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(110, 110, 110)
+                        .addComponent(confirmarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {campoLogin, campoSenha});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {labLogin, labSenha});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cancelar, confirmarLogin});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -158,7 +170,13 @@ public class InterfaceLogin extends javax.swing.JDialog {
                 .addGap(76, 76, 76))
         );
 
-        pack();
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {campoLogin, campoSenha});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {labLogin, labSenha});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cancelar, confirmarLogin});
+
+        setBounds(0, 0, 736, 519);
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarLoginActionPerformed
@@ -219,7 +237,7 @@ public class InterfaceLogin extends javax.swing.JDialog {
     private void verificaSenha(String login, char[] senha) {
         String a = "a";
         String u = "u";
-        int ID = 0;
+        int id = 0;
         String nome, RG, endereco, CEP, cidade, UF, telefone, dataNascimento, email;
         
         char[] s = {};
@@ -238,7 +256,7 @@ public class InterfaceLogin extends javax.swing.JDialog {
                 dataNascimento = "00/00/0000";
                 email = "Email";
                 
-                ADM adm = new ADM(ID, nome, RG, endereco, CEP, cidade, UF, telefone, dataNascimento, a, Arrays.toString(senha), email);
+                ADM adm = new ADM(id, nome, RG, endereco, CEP, cidade, UF, telefone, dataNascimento, a, Arrays.toString(senha), email);
                 adm.mostraInterface();
             }
             
@@ -253,7 +271,7 @@ public class InterfaceLogin extends javax.swing.JDialog {
                 dataNascimento = "00/00/0000";
                 email = "Email";
                 
-                Usuario usuario = new Usuario(ID, nome, RG, endereco, CEP, cidade, UF, telefone, dataNascimento, u, Arrays.toString(senha), email);
+                Usuario usuario = new Usuario(id, nome, RG, endereco, CEP, cidade, UF, telefone, dataNascimento, u, Arrays.toString(senha), email);
                 usuario.mostraInterface();
             }
         }

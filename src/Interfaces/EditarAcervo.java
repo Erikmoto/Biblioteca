@@ -125,6 +125,11 @@ public class EditarAcervo extends javax.swing.JFrame {
                 .addComponent(buscarLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
+
+        painelBuscaLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {buscarLivro, livroAnterior, proximoLivro, selecionar});
+
+        painelBuscaLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {campoID, labID});
+
         painelBuscaLayout.setVerticalGroup(
             painelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(separadorV, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -148,6 +153,10 @@ public class EditarAcervo extends javax.swing.JFrame {
                             .addComponent(campoID))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        painelBuscaLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {buscarLivro, livroAnterior, proximoLivro, selecionar});
+
+        painelBuscaLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {campoID, labID});
 
         labNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         labNome.setText("Nome");
@@ -244,6 +253,9 @@ public class EditarAcervo extends javax.swing.JFrame {
                         .addComponent(deletar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49))))
         );
+
+        painelLivroLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cancelar, confirmar});
+
         painelLivroLayout.setVerticalGroup(
             painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelLivroLayout.createSequentialGroup()
@@ -257,7 +269,7 @@ public class EditarAcervo extends javax.swing.JFrame {
                         .addComponent(labAutoria)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(autoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labEditora)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,6 +293,10 @@ public class EditarAcervo extends javax.swing.JFrame {
                     .addComponent(deletar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
+
+        painelLivroLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ano, autoria, edicao, editora, labAno, labAutoria, labEdicao, labEditora, labNome, labVolume, nome, volume});
+
+        painelLivroLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cancelar, confirmar});
 
         labAcervo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         labAcervo.setText("Editar Acervo");
@@ -316,8 +332,7 @@ public class EditarAcervo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separadorHInf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(painelLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(painelLivro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

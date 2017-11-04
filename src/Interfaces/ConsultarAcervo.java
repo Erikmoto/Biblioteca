@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 
 /**
@@ -14,6 +15,8 @@ import javax.swing.JFrame;
 public class ConsultarAcervo extends javax.swing.JFrame {
     
     private JFrame janelaAnterior;
+    private final Color corFoco = new Color(0, 0, 0);
+    private final Color corVazio = new Color(104, 104, 104);
     
     private ConsultarAcervo() {
         
@@ -21,6 +24,7 @@ public class ConsultarAcervo extends javax.swing.JFrame {
     
     public ConsultarAcervo(JFrame janelaAnterior) {
         initComponents();
+        this.setLocation(janelaAnterior.getX(), janelaAnterior.getY());
         this.janelaAnterior = janelaAnterior;
     }
     
@@ -41,6 +45,44 @@ public class ConsultarAcervo extends javax.swing.JFrame {
         boxEditora = new javax.swing.JCheckBox();
         labCategorias = new javax.swing.JLabel();
         painelLivros = new javax.swing.JPanel();
+        livro0 = new javax.swing.JPanel();
+        livro1 = new javax.swing.JPanel();
+        livro2 = new javax.swing.JPanel();
+        livro3 = new javax.swing.JPanel();
+        livro4 = new javax.swing.JPanel();
+        livro5 = new javax.swing.JPanel();
+        livro6 = new javax.swing.JPanel();
+        livro7 = new javax.swing.JPanel();
+        livro8 = new javax.swing.JPanel();
+        livro9 = new javax.swing.JPanel();
+        livro10 = new javax.swing.JPanel();
+        livro11 = new javax.swing.JPanel();
+        nome0 = new javax.swing.JLabel();
+        autoria0 = new javax.swing.JLabel();
+        nome1 = new javax.swing.JLabel();
+        autoria1 = new javax.swing.JLabel();
+        nome2 = new javax.swing.JLabel();
+        autoria2 = new javax.swing.JLabel();
+        nome3 = new javax.swing.JLabel();
+        autoria3 = new javax.swing.JLabel();
+        nome4 = new javax.swing.JLabel();
+        autoria4 = new javax.swing.JLabel();
+        nome5 = new javax.swing.JLabel();
+        autoria5 = new javax.swing.JLabel();
+        nome6 = new javax.swing.JLabel();
+        autoria6 = new javax.swing.JLabel();
+        autoria7 = new javax.swing.JLabel();
+        nome7 = new javax.swing.JLabel();
+        autoria13 = new javax.swing.JLabel();
+        nome13 = new javax.swing.JLabel();
+        autoria14 = new javax.swing.JLabel();
+        nome14 = new javax.swing.JLabel();
+        nome15 = new javax.swing.JLabel();
+        autoria15 = new javax.swing.JLabel();
+        nome11 = new javax.swing.JLabel();
+        autoria16 = new javax.swing.JLabel();
+        livrosAnteriores = new javax.swing.JButton();
+        livrosPosteriores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -51,6 +93,11 @@ public class ConsultarAcervo extends javax.swing.JFrame {
 
         pesquisar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         pesquisar.setText("Pesquisar");
+        pesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesquisarActionPerformed(evt);
+            }
+        });
 
         voltar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         voltar.setText("Fechar");
@@ -67,6 +114,9 @@ public class ConsultarAcervo extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoPesquisaFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoPesquisaFocusLost(evt);
+            }
         });
 
         boxLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -81,16 +131,435 @@ public class ConsultarAcervo extends javax.swing.JFrame {
         labCategorias.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labCategorias.setText("Categorias para pesquisa:");
 
+        livro0.setBackground(new java.awt.Color(0, 102, 0));
+
+        javax.swing.GroupLayout livro0Layout = new javax.swing.GroupLayout(livro0);
+        livro0.setLayout(livro0Layout);
+        livro0Layout.setHorizontalGroup(
+            livro0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        livro0Layout.setVerticalGroup(
+            livro0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        livro1.setBackground(new java.awt.Color(0, 102, 0));
+
+        javax.swing.GroupLayout livro1Layout = new javax.swing.GroupLayout(livro1);
+        livro1.setLayout(livro1Layout);
+        livro1Layout.setHorizontalGroup(
+            livro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        livro1Layout.setVerticalGroup(
+            livro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        livro2.setBackground(new java.awt.Color(0, 102, 0));
+
+        javax.swing.GroupLayout livro2Layout = new javax.swing.GroupLayout(livro2);
+        livro2.setLayout(livro2Layout);
+        livro2Layout.setHorizontalGroup(
+            livro2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        livro2Layout.setVerticalGroup(
+            livro2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        livro3.setBackground(new java.awt.Color(0, 102, 0));
+
+        javax.swing.GroupLayout livro3Layout = new javax.swing.GroupLayout(livro3);
+        livro3.setLayout(livro3Layout);
+        livro3Layout.setHorizontalGroup(
+            livro3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        livro3Layout.setVerticalGroup(
+            livro3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        livro4.setBackground(new java.awt.Color(0, 102, 0));
+
+        javax.swing.GroupLayout livro4Layout = new javax.swing.GroupLayout(livro4);
+        livro4.setLayout(livro4Layout);
+        livro4Layout.setHorizontalGroup(
+            livro4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        livro4Layout.setVerticalGroup(
+            livro4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        livro5.setBackground(new java.awt.Color(0, 102, 0));
+
+        javax.swing.GroupLayout livro5Layout = new javax.swing.GroupLayout(livro5);
+        livro5.setLayout(livro5Layout);
+        livro5Layout.setHorizontalGroup(
+            livro5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        livro5Layout.setVerticalGroup(
+            livro5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        livro6.setBackground(new java.awt.Color(0, 102, 51));
+
+        javax.swing.GroupLayout livro6Layout = new javax.swing.GroupLayout(livro6);
+        livro6.setLayout(livro6Layout);
+        livro6Layout.setHorizontalGroup(
+            livro6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        livro6Layout.setVerticalGroup(
+            livro6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        livro7.setBackground(new java.awt.Color(0, 102, 51));
+
+        javax.swing.GroupLayout livro7Layout = new javax.swing.GroupLayout(livro7);
+        livro7.setLayout(livro7Layout);
+        livro7Layout.setHorizontalGroup(
+            livro7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        livro7Layout.setVerticalGroup(
+            livro7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        livro8.setBackground(new java.awt.Color(0, 102, 51));
+
+        javax.swing.GroupLayout livro8Layout = new javax.swing.GroupLayout(livro8);
+        livro8.setLayout(livro8Layout);
+        livro8Layout.setHorizontalGroup(
+            livro8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        livro8Layout.setVerticalGroup(
+            livro8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        livro9.setBackground(new java.awt.Color(0, 102, 51));
+
+        javax.swing.GroupLayout livro9Layout = new javax.swing.GroupLayout(livro9);
+        livro9.setLayout(livro9Layout);
+        livro9Layout.setHorizontalGroup(
+            livro9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        livro9Layout.setVerticalGroup(
+            livro9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        livro10.setBackground(new java.awt.Color(0, 102, 51));
+
+        javax.swing.GroupLayout livro10Layout = new javax.swing.GroupLayout(livro10);
+        livro10.setLayout(livro10Layout);
+        livro10Layout.setHorizontalGroup(
+            livro10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        livro10Layout.setVerticalGroup(
+            livro10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        livro11.setBackground(new java.awt.Color(0, 102, 51));
+
+        javax.swing.GroupLayout livro11Layout = new javax.swing.GroupLayout(livro11);
+        livro11.setLayout(livro11Layout);
+        livro11Layout.setHorizontalGroup(
+            livro11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        livro11Layout.setVerticalGroup(
+            livro11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        nome0.setBackground(new java.awt.Color(204, 153, 0));
+        nome0.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        nome0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nome0.setOpaque(true);
+
+        autoria0.setBackground(new java.awt.Color(0, 102, 102));
+        autoria0.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        autoria0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        autoria0.setOpaque(true);
+
+        nome1.setBackground(new java.awt.Color(204, 153, 0));
+        nome1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        nome1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nome1.setOpaque(true);
+
+        autoria1.setBackground(new java.awt.Color(0, 102, 102));
+        autoria1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        autoria1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        autoria1.setOpaque(true);
+
+        nome2.setBackground(new java.awt.Color(204, 153, 0));
+        nome2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        nome2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nome2.setOpaque(true);
+
+        autoria2.setBackground(new java.awt.Color(0, 102, 102));
+        autoria2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        autoria2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        autoria2.setOpaque(true);
+
+        nome3.setBackground(new java.awt.Color(204, 153, 0));
+        nome3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        nome3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nome3.setOpaque(true);
+
+        autoria3.setBackground(new java.awt.Color(0, 102, 102));
+        autoria3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        autoria3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        autoria3.setOpaque(true);
+
+        nome4.setBackground(new java.awt.Color(204, 153, 0));
+        nome4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        nome4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nome4.setOpaque(true);
+
+        autoria4.setBackground(new java.awt.Color(0, 102, 102));
+        autoria4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        autoria4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        autoria4.setOpaque(true);
+
+        nome5.setBackground(new java.awt.Color(204, 153, 0));
+        nome5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        nome5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nome5.setOpaque(true);
+
+        autoria5.setBackground(new java.awt.Color(0, 102, 102));
+        autoria5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        autoria5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        autoria5.setOpaque(true);
+
+        nome6.setBackground(new java.awt.Color(204, 153, 0));
+        nome6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        nome6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nome6.setOpaque(true);
+
+        autoria6.setBackground(new java.awt.Color(0, 102, 102));
+        autoria6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        autoria6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        autoria6.setOpaque(true);
+
+        autoria7.setBackground(new java.awt.Color(0, 102, 102));
+        autoria7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        autoria7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        autoria7.setOpaque(true);
+
+        nome7.setBackground(new java.awt.Color(204, 153, 0));
+        nome7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        nome7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nome7.setOpaque(true);
+
+        autoria13.setBackground(new java.awt.Color(0, 102, 102));
+        autoria13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        autoria13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        autoria13.setOpaque(true);
+
+        nome13.setBackground(new java.awt.Color(204, 153, 0));
+        nome13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        nome13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nome13.setOpaque(true);
+
+        autoria14.setBackground(new java.awt.Color(0, 102, 102));
+        autoria14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        autoria14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        autoria14.setOpaque(true);
+
+        nome14.setBackground(new java.awt.Color(204, 153, 0));
+        nome14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        nome14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nome14.setOpaque(true);
+
+        nome15.setBackground(new java.awt.Color(204, 153, 0));
+        nome15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        nome15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nome15.setOpaque(true);
+
+        autoria15.setBackground(new java.awt.Color(0, 102, 102));
+        autoria15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        autoria15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        autoria15.setOpaque(true);
+
+        nome11.setBackground(new java.awt.Color(204, 153, 0));
+        nome11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        nome11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nome11.setOpaque(true);
+
+        autoria16.setBackground(new java.awt.Color(0, 102, 102));
+        autoria16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        autoria16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        autoria16.setOpaque(true);
+
         javax.swing.GroupLayout painelLivrosLayout = new javax.swing.GroupLayout(painelLivros);
         painelLivros.setLayout(painelLivrosLayout);
         painelLivrosLayout.setHorizontalGroup(
             painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(painelLivrosLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(livro0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nome0, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(autoria0, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(livro6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nome7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(autoria7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(livro1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nome1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(autoria1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nome6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(autoria6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(livro2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nome2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(autoria2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nome14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(autoria14, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(livro3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nome3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(autoria3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nome15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(autoria15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(livro4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nome4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(autoria4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nome13, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(autoria16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(livro11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nome5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(autoria5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(autoria13, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nome11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        painelLivrosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {autoria0, autoria1, autoria13, autoria14, autoria15, autoria16, autoria2, autoria3, autoria4, autoria5, autoria6, autoria7, livro0, livro1, livro10, livro11, livro2, livro3, livro4, livro5, livro6, livro7, livro8, livro9, nome0, nome1, nome11, nome13, nome14, nome15, nome2, nome3, nome4, nome5, nome6, nome7});
+
         painelLivrosLayout.setVerticalGroup(
             painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
+            .addGroup(painelLivrosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(livro5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro0, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addComponent(nome5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(autoria5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addComponent(nome4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(autoria4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addComponent(nome3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(autoria3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addComponent(nome2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(autoria2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addComponent(nome1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(autoria1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addComponent(nome0, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(autoria0, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(livro6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(livro11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addComponent(nome7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(autoria7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addComponent(nome6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(autoria6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addComponent(nome14, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(autoria14, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addComponent(nome15, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(autoria15, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addComponent(nome13, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(autoria16, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelLivrosLayout.createSequentialGroup()
+                        .addComponent(nome11, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(autoria13, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        painelLivrosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {autoria13, autoria14, autoria15, autoria16, autoria6, autoria7, nome11, nome13, nome14, nome15, nome6, nome7});
+
+        painelLivrosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {autoria0, autoria1, autoria2, autoria3, autoria4, autoria5, nome0, nome1, nome2, nome3, nome4, nome5});
+
+        painelLivrosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {livro0, livro1, livro10, livro11, livro2, livro3, livro4, livro5, livro6, livro7, livro8, livro9});
+
+        livrosAnteriores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        livrosAnteriores.setText("◄◄");
+        livrosAnteriores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                livrosAnterioresActionPerformed(evt);
+            }
+        });
+
+        livrosPosteriores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        livrosPosteriores.setText("►►");
+        livrosPosteriores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                livrosPosterioresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,12 +568,6 @@ public class ConsultarAcervo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(painelLivros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(campoPesquisa)
-                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labCategorias)
                         .addGap(50, 50, 50)
@@ -115,12 +578,24 @@ public class ConsultarAcervo extends javax.swing.JFrame {
                         .addComponent(boxEditora)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                         .addComponent(pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))))
+                        .addGap(48, 48, 48))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(painelLivros, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(campoPesquisa))
+                        .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(102, 102, 102)
+                .addComponent(livrosAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(livrosPosteriores, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {livrosAnteriores, livrosPosteriores, pesquisar, voltar});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -134,11 +609,18 @@ public class ConsultarAcervo extends javax.swing.JFrame {
                     .addComponent(pesquisar)
                     .addComponent(labCategorias))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(painelLivros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(voltar)
+                .addComponent(painelLivros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(voltar)
+                    .addComponent(livrosAnteriores)
+                    .addComponent(livrosPosteriores))
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {boxAutoria, boxEditora, boxLivro, labCategorias});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {livrosAnteriores, livrosPosteriores, pesquisar, voltar});
 
         pesquisar.getAccessibleContext().setAccessibleDescription("");
 
@@ -150,14 +632,53 @@ public class ConsultarAcervo extends javax.swing.JFrame {
         janelaAnterior.setVisible(true);
     }//GEN-LAST:event_voltarActionPerformed
 
+    private void formataCampoPesquisa(boolean campoFocado) {
+        String texto = campoPesquisa.getText();
+        
+        if(campoFocado == true) {
+            if(texto.equals("Digite aqui a sua pesquisa")) {
+                this.campoPesquisa.setText("");
+            }
+            
+            this.campoPesquisa.setForeground(corFoco);
+        }
+        
+        else {
+            if(texto.equals("")) {
+                this.campoPesquisa.setForeground(corVazio);
+                this.campoPesquisa.setText("Digite aqui a sua pesquisa");
+            }
+        }
+    }
+    
     private void campoPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoPesquisaFocusGained
-        //this.campoPesquisa.setForeground(Color.BLACK);
+        formataCampoPesquisa(true);
     }//GEN-LAST:event_campoPesquisaFocusGained
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         this.dispose();
         janelaAnterior.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
+
+    private void campoPesquisaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoPesquisaFocusLost
+        formataCampoPesquisa(false);
+    }//GEN-LAST:event_campoPesquisaFocusLost
+    
+    private void realizarPesquisa() {
+        //Algoritmo para pesquisa
+    }
+    
+    private void pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarActionPerformed
+        realizarPesquisa();
+    }//GEN-LAST:event_pesquisarActionPerformed
+
+    private void livrosAnterioresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_livrosAnterioresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_livrosAnterioresActionPerformed
+
+    private void livrosPosterioresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_livrosPosterioresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_livrosPosterioresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,11 +717,49 @@ public class ConsultarAcervo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel autoria0;
+    private javax.swing.JLabel autoria1;
+    private javax.swing.JLabel autoria13;
+    private javax.swing.JLabel autoria14;
+    private javax.swing.JLabel autoria15;
+    private javax.swing.JLabel autoria16;
+    private javax.swing.JLabel autoria2;
+    private javax.swing.JLabel autoria3;
+    private javax.swing.JLabel autoria4;
+    private javax.swing.JLabel autoria5;
+    private javax.swing.JLabel autoria6;
+    private javax.swing.JLabel autoria7;
     private javax.swing.JCheckBox boxAutoria;
     private javax.swing.JCheckBox boxEditora;
     private javax.swing.JCheckBox boxLivro;
     private javax.swing.JTextField campoPesquisa;
     private javax.swing.JLabel labCategorias;
+    private javax.swing.JPanel livro0;
+    private javax.swing.JPanel livro1;
+    private javax.swing.JPanel livro10;
+    private javax.swing.JPanel livro11;
+    private javax.swing.JPanel livro2;
+    private javax.swing.JPanel livro3;
+    private javax.swing.JPanel livro4;
+    private javax.swing.JPanel livro5;
+    private javax.swing.JPanel livro6;
+    private javax.swing.JPanel livro7;
+    private javax.swing.JPanel livro8;
+    private javax.swing.JPanel livro9;
+    private javax.swing.JButton livrosAnteriores;
+    private javax.swing.JButton livrosPosteriores;
+    private javax.swing.JLabel nome0;
+    private javax.swing.JLabel nome1;
+    private javax.swing.JLabel nome11;
+    private javax.swing.JLabel nome13;
+    private javax.swing.JLabel nome14;
+    private javax.swing.JLabel nome15;
+    private javax.swing.JLabel nome2;
+    private javax.swing.JLabel nome3;
+    private javax.swing.JLabel nome4;
+    private javax.swing.JLabel nome5;
+    private javax.swing.JLabel nome6;
+    private javax.swing.JLabel nome7;
     private javax.swing.JPanel painelLivros;
     private javax.swing.JButton pesquisar;
     private javax.swing.JButton voltar;

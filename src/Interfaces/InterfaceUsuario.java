@@ -126,6 +126,9 @@ public class InterfaceUsuario extends javax.swing.JFrame {
                 .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {consultarAcervo, consultarDados});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -139,6 +142,8 @@ public class InterfaceUsuario extends javax.swing.JFrame {
                     .addComponent(consultarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(140, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {consultarAcervo, consultarDados});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

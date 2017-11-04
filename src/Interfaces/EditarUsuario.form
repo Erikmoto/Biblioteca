@@ -38,22 +38,25 @@
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="286" max="-2" attributes="0"/>
-                      <Component id="labEditar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="painelLogin" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="separadorVInf" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cancelar" min="-2" pref="120" max="-2" attributes="0"/>
-                          <Component id="confirmar" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="286" max="-2" attributes="0"/>
+                              <Component id="labEditar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="painelLogin" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="separadorVInf" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cancelar" linkSize="6" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <Component id="confirmar" linkSize="6" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="deletar" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="deletar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -74,25 +77,23 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="separadorHInt" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="painelDados" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="painelDados" min="-2" pref="244" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="separadorHInf" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="painelLogin" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="confirmar" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cancelar" min="-2" pref="30" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="separadorVInf" max="32767" attributes="0"/>
-                          <Component id="deletar" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="confirmar" linkSize="7" min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cancelar" linkSize="7" min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="separadorVInf" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="deletar" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
+                  <Component id="painelLogin" alignment="0" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -119,7 +120,7 @@
                       <Component id="labID" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="selecionar" min="-2" pref="150" max="-2" attributes="0"/>
+                  <Component id="selecionar" linkSize="2" min="-2" pref="150" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="separadorVSup" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -127,8 +128,8 @@
                       <Component id="labBusca" min="-2" max="-2" attributes="0"/>
                       <Component id="campoBusca" min="-2" pref="200" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" pref="29" max="32767" attributes="0"/>
-                  <Component id="buscarUsuario" min="-2" pref="150" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" pref="19" max="32767" attributes="0"/>
+                  <Component id="buscarUsuario" linkSize="2" min="-2" pref="150" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -139,20 +140,20 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="labID" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="campoID" max="32767" attributes="0"/>
+                          <Component id="labID" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="campoID" linkSize="1" min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="labBusca" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labBusca" linkSize="1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="campoBusca" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="campoBusca" linkSize="1" min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="buscarUsuario" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
-                                  <Component id="selecionar" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="buscarUsuario" linkSize="3" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="selecionar" linkSize="3" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -276,38 +277,38 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labNome" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoNome" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labRG" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoRG" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labRG" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoRG" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labEndereco" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoEndereco" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labCEP" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoCEP" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labCEP" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoCEP" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labCidade" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoCidade" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="labUF" min="-2" max="-2" attributes="0"/>
-                      <Component id="selecionaUF" min="-2" max="-2" attributes="0"/>
+                      <Component id="labUF" linkSize="4" min="-2" max="-2" attributes="0"/>
+                      <Component id="selecionaUF" linkSize="4" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labTelefone" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoTelefone" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -484,13 +485,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labLogin" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labLogin" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoLogin" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="campoEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labEmail" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="campoEmail" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -563,6 +564,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Deletar&lt;br&gt;Usu&#xe1;rio&lt;/html&gt;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

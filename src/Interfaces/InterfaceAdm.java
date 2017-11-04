@@ -49,9 +49,12 @@ public class InterfaceAdm extends javax.swing.JFrame {
         logout = new javax.swing.JButton();
         consultarDados = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 153, 255));
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setSize(new java.awt.Dimension(720, 540));
+        setSize(new java.awt.Dimension(720, 480));
+
+        painelAcervo.setBackground(new java.awt.Color(204, 255, 204));
 
         labAcervo.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         labAcervo.setText("Acervo");
@@ -79,25 +82,32 @@ public class InterfaceAdm extends javax.swing.JFrame {
             .addGroup(painelAcervoLayout.createSequentialGroup()
                 .addGap(97, 97, 97)
                 .addComponent(labAcervo)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
             .addGroup(painelAcervoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(painelAcervoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(editarAcervo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(consultarAcervo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                .addGroup(painelAcervoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(consultarAcervo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(editarAcervo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(68, 68, 68))
         );
+
+        painelAcervoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {consultarAcervo, editarAcervo});
+
         painelAcervoLayout.setVerticalGroup(
             painelAcervoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAcervoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(labAcervo)
-                .addGap(50, 50, 50)
+                .addGap(20, 20, 20)
                 .addComponent(consultarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(editarAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(62, 62, 62))
         );
+
+        painelAcervoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {consultarAcervo, editarAcervo});
+
+        painelUsuarios.setBackground(new java.awt.Color(255, 255, 204));
 
         labUsuarios.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         labUsuarios.setText("Usuários");
@@ -124,29 +134,37 @@ public class InterfaceAdm extends javax.swing.JFrame {
             painelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelUsuariosLayout.createSequentialGroup()
                 .addContainerGap(77, Short.MAX_VALUE)
-                .addGroup(painelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(alterarUsuario)
+                .addGroup(painelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(cadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(painelUsuariosLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(labUsuarios)))
+                    .addComponent(alterarUsuario))
                 .addGap(66, 66, 66))
+            .addGroup(painelUsuariosLayout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(labUsuarios)
+                .addContainerGap(76, Short.MAX_VALUE))
         );
+
+        painelUsuariosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {alterarUsuario, cadastrarUsuario});
+
         painelUsuariosLayout.setVerticalGroup(
             painelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelUsuariosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labUsuarios)
-                .addGap(50, 50, 50)
+                .addGap(20, 20, 20)
                 .addComponent(cadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(alterarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(61, 61, 61))
         );
+
+        painelUsuariosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {alterarUsuario, cadastrarUsuario});
 
         separadorV.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        labAdm.setBackground(new java.awt.Color(204, 204, 255));
         labAdm.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labAdm.setOpaque(true);
 
         logout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         logout.setText("Logout");
@@ -182,10 +200,15 @@ public class InterfaceAdm extends javax.swing.JFrame {
                         .addComponent(painelAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
                         .addComponent(separadorV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(painelUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(painelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {consultarDados, logout});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {painelAcervo, painelUsuarios});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -198,12 +221,20 @@ public class InterfaceAdm extends javax.swing.JFrame {
                 .addComponent(separadorH, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(painelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(painelAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(separadorV)))
+                    .addComponent(separadorV)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(painelAcervo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(painelUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
 
-        pack();
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {consultarDados, logout});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {painelAcervo, painelUsuarios});
+
+        setSize(new java.awt.Dimension(736, 519));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
     private void criarInterfaceConsultarAcervo() {
