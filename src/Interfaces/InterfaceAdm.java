@@ -53,6 +53,11 @@ public class InterfaceAdm extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 153, 255));
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setSize(new java.awt.Dimension(720, 480));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         painelAcervo.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -233,8 +238,7 @@ public class InterfaceAdm extends javax.swing.JFrame {
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {painelAcervo, painelUsuarios});
 
-        setSize(new java.awt.Dimension(736, 519));
-        setLocationRelativeTo(null);
+        setBounds(0, 0, 736, 519);
     }// </editor-fold>//GEN-END:initComponents
     
     private void criarInterfaceConsultarAcervo() {
@@ -273,14 +277,16 @@ public class InterfaceAdm extends javax.swing.JFrame {
         criarInterfaceAlterarUsuario();
     }//GEN-LAST:event_alterarUsuarioActionPerformed
     
-    private void realizarLogout() {
+    private void retornarJanelaAnterior() {
         this.dispose();
+        
         InterfaceBiblioteca biblioteca = new InterfaceBiblioteca();
+        biblioteca.setLocation(this.getLocation());
         biblioteca.setVisible(true);
     }
     
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        realizarLogout();
+        retornarJanelaAnterior();
     }//GEN-LAST:event_logoutActionPerformed
     
     private void criarInterfaceConsultarDados() {
@@ -291,6 +297,10 @@ public class InterfaceAdm extends javax.swing.JFrame {
     private void consultarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarDadosActionPerformed
         criarInterfaceConsultarDados();
     }//GEN-LAST:event_consultarDadosActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        retornarJanelaAnterior();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -343,4 +353,12 @@ public class InterfaceAdm extends javax.swing.JFrame {
     private javax.swing.JSeparator separadorH;
     private javax.swing.JSeparator separadorV;
     // End of variables declaration//GEN-END:variables
+
+    /*public JFrame getJanelaRetorno() {
+        return janelaRetorno;
+    }
+
+    public void setJanelaRetorno(JFrame janelaRetorno) {
+        this.janelaRetorno = janelaRetorno;
+    }*/
 }

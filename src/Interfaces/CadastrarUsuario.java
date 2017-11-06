@@ -13,6 +13,7 @@ import Classes.Usuario;
 import java.text.ParseException;
 import java.util.Arrays;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.text.JTextComponent;
 
 /**
@@ -92,8 +93,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -242,19 +243,22 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         selecionaTipoTelefone.add(selecionaFixo);
         selecionaFixo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selecionaFixo.setMnemonic('f');
         selecionaFixo.setText("Fixo");
+        selecionaFixo.setName(""); // NOI18N
         selecionaFixo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selecionaFixoActionPerformed(evt);
+                tipoTelefoneSelecionado(evt);
             }
         });
 
         selecionaTipoTelefone.add(selecionaCelular);
         selecionaCelular.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selecionaCelular.setMnemonic('c');
         selecionaCelular.setText("Celular");
         selecionaCelular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selecionaCelularActionPerformed(evt);
+                tipoTelefoneSelecionado(evt);
             }
         });
 
@@ -522,30 +526,32 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(separadorV)
             .addGroup(painelLoginLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(labLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labSenha)
-                .addGap(1, 1, 1)
-                .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(labEmail)
-                .addGap(0, 0, 0)
-                .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(painelLoginLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labTipoUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(selecionaAdmin)
-                    .addComponent(selecionaUsuario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelLoginLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(labLogin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labSenha)
+                        .addGap(1, 1, 1)
+                        .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(labEmail)
+                        .addGap(0, 0, 0)
+                        .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelLoginLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labTipoUsuario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(selecionaAdmin)
+                            .addComponent(selecionaUsuario))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 5, Short.MAX_VALUE))
         );
 
         painelLoginLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {campoEmail, campoLogin, campoSenha, labEmail, labLogin, labSenha});
@@ -616,7 +622,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         }
     }
     
-    private void campoNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNomeFocusLost
+    private void verificaNome() {
         this.nome = this.campoNome.getText();
         this.campoID = 0;
         this.campoNome.setBackground(Color.WHITE);
@@ -628,9 +634,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         else {
             modificaRotulo(this.labNome, false);
         }
+    }
+    
+    private void campoNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNomeFocusLost
+        verificaNome();
     }//GEN-LAST:event_campoNomeFocusLost
     
-    private void campoEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEnderecoFocusLost
+    private void verificaEndereco() {
         this.endereco = this.campoEndereco.getText();
         this.campoID = 2;
         this.campoEndereco.setBackground(Color.WHITE);
@@ -642,9 +652,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         else {
             modificaRotulo(labEndereco, false);
         }
+    }
+    
+    private void campoEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEnderecoFocusLost
+        verificaEndereco();
     }//GEN-LAST:event_campoEnderecoFocusLost
-
-    private void campoCEPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCEPFocusLost
+    
+    private void verificaCEP() {
         this.CEP = this.campoCEP.getText();
         this.campoID = 3;
         this.campoCEP.setBackground(Color.WHITE);
@@ -656,27 +670,34 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         else {
             modificaRotulo(labCEP, false);
         }
+    }
+    
+    private void campoCEPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCEPFocusLost
+        verificaCEP();
     }//GEN-LAST:event_campoCEPFocusLost
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        this.dispose();
-        this.adm.mostraInterface();
-    }//GEN-LAST:event_formWindowClosed
-
-    private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
+    
+    private void confirmaDados() {
         if(verificaDados()) {
             Usuario u = new Usuario(0, this.nome, this.RG, this.endereco, this.CEP, this.cidade, this.UF, this.telefone, this.dataNasc, this.nomeUsuario, this.senha, this.email);
             this.dispose();
-            this.adm.mostraInterface();
+            this.adm.mostraInterface(this.getX(), this.getY());
         }
+    }
+    
+    private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
+        confirmaDados();
     }//GEN-LAST:event_confirmarActionPerformed
-
-    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+    
+    private void retornarJanelaAnterior() {
         this.dispose();
-        this.adm.mostraInterface();
+        this.adm.mostraInterface(this.getX(), this.getY());
+    }
+    
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        retornarJanelaAnterior();
     }//GEN-LAST:event_cancelarActionPerformed
-
-    private void campoRGFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoRGFocusLost
+    
+    private void verificaRG() {
         this.RG = this.campoRG.getText();
         this.campoID = 1;
         this.campoRG.setBackground(Color.WHITE);
@@ -688,9 +709,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         else {
             modificaRotulo(labRG, false);
         }
+    }
+    
+    private void campoRGFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoRGFocusLost
+        verificaRG();
     }//GEN-LAST:event_campoRGFocusLost
-
-    private void campoCidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCidadeFocusLost
+    
+    private void verificaCidade() {
         this.cidade = this.campoCidade.getText();
         this.campoID = 4;
         this.campoCidade.setBackground(Color.WHITE);
@@ -702,9 +727,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         else {
             modificaRotulo(labCidade, false);
         }
+    }
+    
+    private void campoCidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCidadeFocusLost
+        verificaCidade();
     }//GEN-LAST:event_campoCidadeFocusLost
-
-    private void selecionaUFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selecionaUFFocusLost
+    
+    private void verificaUF() {
         this.UF = this.selecionaUF.getSelectedItem().toString();
         this.campoID = 5;
         this.selecionaUF.setBackground(Color.WHITE);
@@ -716,9 +745,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         else {
             modificaRotulo(labUF, false);
         }
+    }
+    
+    private void selecionaUFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_selecionaUFFocusLost
+        verificaUF();
     }//GEN-LAST:event_selecionaUFFocusLost
-
-    private void campoTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefoneFocusLost
+    
+    private void verificaTelefone() {
         this.telefone = this.campoTelefone.getText();
         this.campoID = 6;
         this.campoTelefone.setBackground(Color.WHITE);
@@ -730,9 +763,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         else {
             modificaRotulo(labTelefone, false);
         }
+    }
+    
+    private void campoTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefoneFocusLost
+        verificaTelefone();
     }//GEN-LAST:event_campoTelefoneFocusLost
-
-    private void campoLoginFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoLoginFocusLost
+    
+    private void verificaNomeUsuario() {
         this.nomeUsuario = this.campoLogin.getText();
         this.campoID = 8;
         this.campoLogin.setBackground(Color.WHITE);
@@ -744,9 +781,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         else {
             modificaRotulo(labLogin, false);
         }
+    }
+    
+    private void campoLoginFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoLoginFocusLost
+        verificaNomeUsuario();
     }//GEN-LAST:event_campoLoginFocusLost
-
-    private void campoEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEmailFocusLost
+    
+    private void verificaEmail() {
         this.email = this.campoEmail.getText();
         this.campoID = 10;
         this.campoEmail.setBackground(Color.WHITE);
@@ -758,15 +799,23 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         else {
             modificaRotulo(labEmail, false);
         }
+    }
+    
+    private void campoEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEmailFocusLost
+        verificaEmail();
     }//GEN-LAST:event_campoEmailFocusLost
-
+    
+    private void destacaCampo(JTextComponent campo) {
+        campo.setBackground(corFundo);
+        campo.setCaretPosition(0);
+    }
+    
     private void campoFocoGanho(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoFocoGanho
-        JTextComponent comp = (JTextComponent)evt.getComponent();
-        comp.setBackground(corFundo);
-        comp.setCaretPosition(0);
+        JTextComponent campo = (JTextComponent)evt.getComponent();
+        destacaCampo(campo);
     }//GEN-LAST:event_campoFocoGanho
-
-    private void campoDataNascFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoDataNascFocusLost
+    
+    private void verificaDataNascimento() {
         this.dataNasc = this.campoDataNasc.getText();
         this.campoID = 7;
         this.campoDataNasc.setBackground(Color.WHITE);
@@ -778,9 +827,13 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         else {
             modificaRotulo(labDataNasc, false);
         }
+    }
+    
+    private void campoDataNascFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoDataNascFocusLost
+        verificaDataNascimento();
     }//GEN-LAST:event_campoDataNascFocusLost
-
-    private void campoSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoSenhaFocusLost
+    
+    private void verificaSenha() {
         this.senha = Arrays.toString(this.campoSenha.getPassword());
         this.campoID = 9;
         this.campoSenha.setBackground(Color.WHITE);
@@ -792,25 +845,32 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         else {
             modificaRotulo(labSenha, false);
         }
+    }
+    
+    private void campoSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoSenhaFocusLost
+        verificaSenha();
     }//GEN-LAST:event_campoSenhaFocusLost
-
-    private void selecionaCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionaCelularActionPerformed
+    
+    private void formataCampoTelefone(JRadioButton botaoSelecionado) {
         try{
-            this.formataTelefone.setMask("(**)*****-****");
-            configuraCampoTelefone();
-        } catch(ParseException e){
+            if(botaoSelecionado.getText().equals("Celular")) {
+                this.formataTelefone.setMask("(**)*****-****");
+                configuraCampoTelefone();
+            }
+
+            else {
+                this.formataTelefone.setMask("(**)****-****");
+                configuraCampoTelefone();
+            }
+        } catch(ParseException e) {
             
         }
-    }//GEN-LAST:event_selecionaCelularActionPerformed
-
-    private void selecionaFixoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionaFixoActionPerformed
-        try{
-            this.formataTelefone.setMask("(**)****-****");
-            configuraCampoTelefone();
-        } catch(ParseException e){
-            
-        }
-    }//GEN-LAST:event_selecionaFixoActionPerformed
+    }
+    
+    private void tipoTelefoneSelecionado(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoTelefoneSelecionado
+        JRadioButton botaoSelecionado = (JRadioButton)evt.getSource();
+        formataCampoTelefone(botaoSelecionado);
+    }//GEN-LAST:event_tipoTelefoneSelecionado
 
     private void configuraCampoTelefone() {
         int tamanhoMascara = this.formataTelefone.getMask().length();
@@ -881,6 +941,10 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             campo.setCaretPosition(posicaoTecla);
         }
     }//GEN-LAST:event_verificaCaractere
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        retornarJanelaAnterior();
+    }//GEN-LAST:event_formWindowClosing
 
     private boolean verificaDados() {
         int i;

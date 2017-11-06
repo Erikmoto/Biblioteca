@@ -25,7 +25,6 @@ public class Usuario {
     private String nomeUsuario;
     private String senha;
     private String email;
-    
     private InterfaceUsuario intUsuario;
     
     public Usuario(int id, String nome, String RG, String end, String CEP, String cid, String UF, String tel, String dataNasc, String nomeUs, String senha, String email) {
@@ -41,16 +40,15 @@ public class Usuario {
         this.nomeUsuario = nomeUs;
         this.senha = senha;
         this.email = email;
-        
-        this.intUsuario = new InterfaceUsuario(this);
-        
     }
 
-    public Usuario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private Usuario() {
+        
     }
     
-    public void mostraInterface() {
+    public void mostraInterface(int posicaoX, int posicaoY) {
+        this.intUsuario = new InterfaceUsuario(this);
+        this.intUsuario.setLocation(posicaoX, posicaoY);
         this.intUsuario.setVisible(true);
     }
     
@@ -60,7 +58,8 @@ public class Usuario {
     }
     
     public void consultaDados() {
-        ConsultarDados consDados = new ConsultarDados(this);
+        ConsultarDados consDados = new ConsultarDados(this, this.intUsuario);
+        consDados.setLocation(this.intUsuario.getLocation());
         consDados.setVisible(true);
     }
 
@@ -159,14 +158,4 @@ public class Usuario {
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-
-    public InterfaceUsuario getIntUsuario() {
-        return intUsuario;
-    }
-
-    public void setIntUsuario(InterfaceUsuario intUsuario) {
-        this.intUsuario = intUsuario;
-    }
-    
-    
 }

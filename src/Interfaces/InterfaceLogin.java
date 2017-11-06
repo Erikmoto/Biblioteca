@@ -23,14 +23,14 @@ public class InterfaceLogin extends javax.swing.JDialog {
     private final Color corInvalido = new Color(255, 0, 0);
     private final String textoValido = "     Nome/Email Confirmado";
     private final String textoInvalido = "     Nome/Email Inexistente";
+    private final InterfaceBiblioteca biblioteca;
     
     
     public InterfaceLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.biblioteca = (InterfaceBiblioteca)parent;
         this.setLocation(parent.getX(), parent.getY());
-        this.setDefaultCloseOperation(0);
-        
     }
 
     /**
@@ -50,6 +50,11 @@ public class InterfaceLogin extends javax.swing.JDialog {
         cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 teclaPressionada(evt);
@@ -183,14 +188,14 @@ public class InterfaceLogin extends javax.swing.JDialog {
         verificaSenha(this.campoLogin.getText(), this.campoSenha.getPassword());
     }//GEN-LAST:event_confirmarLoginActionPerformed
     
-    private void cancelarLogin() {
+    private void retornarJanelaAnterior() {
         this.dispose();
-        InterfaceBiblioteca biblioteca = new InterfaceBiblioteca();
-        biblioteca.setVisible(true);
+        this.biblioteca.setLocation(this.getLocation());
+        this.biblioteca.setVisible(true);
     }
     
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        cancelarLogin();
+        retornarJanelaAnterior();
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void teclaPressionada(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_teclaPressionada
@@ -199,7 +204,7 @@ public class InterfaceLogin extends javax.swing.JDialog {
         if(codigoTecla == 27) {
             evt.consume();
             
-            cancelarLogin();
+            retornarJanelaAnterior();
         }
     }//GEN-LAST:event_teclaPressionada
 
@@ -217,6 +222,10 @@ public class InterfaceLogin extends javax.swing.JDialog {
     private void campoLoginFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoLoginFocusLost
         verificaUsuario(this.campoLogin.getText());
     }//GEN-LAST:event_campoLoginFocusLost
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        retornarJanelaAnterior();
+    }//GEN-LAST:event_formWindowClosing
     
     private void verificaUsuario(String login) {
         //Procurar login no banco de dados
@@ -257,7 +266,7 @@ public class InterfaceLogin extends javax.swing.JDialog {
                 email = "Email";
                 
                 ADM adm = new ADM(id, nome, RG, endereco, CEP, cidade, UF, telefone, dataNascimento, a, Arrays.toString(senha), email);
-                adm.mostraInterface();
+                adm.mostraInterface(this.getX(), this.getY());
             }
             
             else {
@@ -272,9 +281,10 @@ public class InterfaceLogin extends javax.swing.JDialog {
                 email = "Email";
                 
                 Usuario usuario = new Usuario(id, nome, RG, endereco, CEP, cidade, UF, telefone, dataNascimento, u, Arrays.toString(senha), email);
-                usuario.mostraInterface();
+                usuario.mostraInterface(this.getX(), this.getY());
             }
         }
+        
         else {
             JOptionPane.showMessageDialog(null, "Dados Incorretos!");
         }

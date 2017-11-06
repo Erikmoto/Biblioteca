@@ -5,11 +5,15 @@
     <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,1,0,0,2,-32"/>
+    <SyntheticProperty name="formPosition" type="java.awt.Point" value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,97,119,116,46,80,111,105,110,116,-74,-60,-118,114,52,126,-56,38,2,0,2,73,0,1,120,73,0,1,121,120,112,0,0,0,0,0,0,0,0"/>
+    <SyntheticProperty name="formSizePolicy" type="int" value="0"/>
+    <SyntheticProperty name="generatePosition" type="boolean" value="true"/>
+    <SyntheticProperty name="generateSize" type="boolean" value="true"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <Events>
-    <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosed"/>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
   </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -71,60 +75,62 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="campoID" linkSize="7" min="-2" pref="100" max="-2" attributes="0"/>
-                      <Component id="labID" linkSize="7" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="selecionar" linkSize="4" min="-2" pref="100" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="separadorH3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="separadorH2" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="livroAnterior" linkSize="8" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="proximoLivro" linkSize="8" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="separadorH1" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="labID" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="campoID" min="-2" pref="100" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="livroAnterior" linkSize="4" min="-2" pref="100" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="proximoLivro" linkSize="4" min="-2" pref="100" max="-2" attributes="0"/>
-                  <EmptySpace pref="32" max="32767" attributes="0"/>
-                  <Component id="separadorV" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="selecionar" linkSize="14" min="-2" pref="100" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="buscarLivro" linkSize="4" min="-2" pref="100" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="buscarLivro" linkSize="14" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="separadorV" min="-2" pref="11" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="adicionarLivro" min="-2" pref="100" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="removerLivro" linkSize="14" min="-2" pref="100" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="separadorV" alignment="1" max="32767" attributes="0"/>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="separadorH1" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="separadorH2" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="separadorH3" min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="2" attributes="0">
+                              <Component id="selecionar" linkSize="15" alignment="2" max="32767" attributes="0"/>
+                              <Component id="buscarLivro" linkSize="15" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="removerLivro" linkSize="15" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="adicionarLivro" alignment="2" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="proximoLivro" linkSize="5" alignment="0" pref="50" max="32767" attributes="0"/>
-                          <Component id="livroAnterior" linkSize="5" alignment="0" max="32767" attributes="0"/>
-                          <Component id="selecionar" linkSize="5" alignment="0" max="32767" attributes="0"/>
-                          <Component id="buscarLivro" linkSize="5" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="labID" linkSize="6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="campoID" linkSize="6" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labID" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="campoID" linkSize="6" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="livroAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="proximoLivro" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
+              <Component id="separadorV" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -134,7 +140,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Buscar&lt;br&gt;Livro&lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Buscar&lt;br&gt;Livro&lt;/center&gt;&lt;/html&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="campoID">
@@ -147,13 +153,18 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoIDFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoIDFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="livroAnterior">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Livro&lt;br&gt;Anterior&lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;&#x25c4;&#x25c4;&lt;/center&gt;&lt;/html&gt;"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="proximoLivro">
@@ -161,7 +172,8 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Pr&#xf3;ximo&lt;br&gt;Livro&lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;&#x25ba;&#x25ba;&lt;/center&gt;&lt;/html&gt;"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="selecionar">
@@ -169,7 +181,8 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Selecionar"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Editar&lt;br&gt;Livro&lt;/center&gt;&lt;/html&gt;"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selecionarActionPerformed"/>
@@ -180,18 +193,29 @@
             <Property name="orientation" type="int" value="1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSeparator" name="separadorH3">
-        </Component>
-        <Component class="javax.swing.JSeparator" name="separadorH2">
-        </Component>
-        <Component class="javax.swing.JSeparator" name="separadorH1">
-        </Component>
         <Component class="javax.swing.JLabel" name="labID">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="ID"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="removerLivro">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Remover&lt;br&gt;Livro&lt;/center&gt;&lt;/html&gt;"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="adicionarLivro">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Adicionar&lt;br&gt;Livro&lt;/center&gt;&lt;/html&gt;"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -233,17 +257,9 @@
                           <Component id="editora" pref="450" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="imagem" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="deletar" min="-2" pref="100" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <Component id="imagem" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -282,11 +298,10 @@
                           <Component id="imagem" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="cancelar" linkSize="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="confirmar" linkSize="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="deletar" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               </Group>
@@ -300,6 +315,7 @@
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nome"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labAutoria">
@@ -308,6 +324,7 @@
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Autoria"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labEditora">
@@ -316,6 +333,7 @@
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Editora"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labAno">
@@ -324,6 +342,7 @@
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ano"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labVolume">
@@ -332,6 +351,7 @@
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Volume"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labEdicao">
@@ -340,6 +360,7 @@
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Edi&#xe7;&#xe3;o"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="nome">
@@ -347,6 +368,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="autoria">
@@ -354,6 +376,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="editora">
@@ -361,6 +384,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="edicao">
@@ -368,6 +392,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="volume">
@@ -375,6 +400,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="ano">
@@ -382,6 +408,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="cancelar">
@@ -401,6 +428,7 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Confirmar"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="imagem">
@@ -423,14 +451,6 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Component class="javax.swing.JButton" name="deletar">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Deletar&lt;br&gt;Livro&lt;/html&gt;"/>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="labAcervo">

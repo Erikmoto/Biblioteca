@@ -12,9 +12,10 @@ import Classes.Usuario;
  * @author ryuic
  */
 public class InterfaceUsuario extends javax.swing.JFrame {
-    private final String msgBoasVindas = "Bem-Vindo, ";
     
+    private final String msgBoasVindas = "Bem-Vindo, ";
     private Usuario usuario;
+    //private JFrame janelaRetorno;
     
     public InterfaceUsuario(Usuario u) {
         initComponents();
@@ -40,7 +41,12 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         labUsuario = new javax.swing.JLabel();
         logout = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 teclaPressionada(evt);
@@ -166,14 +172,16 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         criarInterfaceConsultarAcervo();
     }//GEN-LAST:event_consultarAcervoActionPerformed
     
-    private void realizarLogout() {
+    private void retornarJanelaAnterior() {
         this.dispose();
+        
         InterfaceBiblioteca biblioteca = new InterfaceBiblioteca();
+        biblioteca.setLocation(this.getLocation());
         biblioteca.setVisible(true);
     }
     
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        realizarLogout();
+        retornarJanelaAnterior();
     }//GEN-LAST:event_logoutActionPerformed
 
     private void teclaPressionada(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_teclaPressionada
@@ -182,7 +190,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         evt.consume();
         
         if(codigoTecla == 27) {
-            realizarLogout();
+            retornarJanelaAnterior();
         }
     }//GEN-LAST:event_teclaPressionada
 
@@ -202,11 +210,15 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             
             else {
                 if(tecla == 'l' || tecla == 'L' || (tecla == '\n' && this.getFocusOwner() == this.logout)) {
-                    realizarLogout();
+                    retornarJanelaAnterior();
                 }
             }
         }
     }//GEN-LAST:event_teclaDigitada
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        retornarJanelaAnterior();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

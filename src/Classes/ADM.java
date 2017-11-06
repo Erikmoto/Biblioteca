@@ -43,16 +43,17 @@ public class ADM {
         this.nomeUsuario = nomeUs;
         this.senha = senha;
         this.email = email;
-        
-        this.intAdm = new InterfaceAdm(this);
     }
     
-    public void mostraInterface() {
+    public void mostraInterface(int posicaoX, int posicaoY) {
+        this.intAdm = new InterfaceAdm(this);
+        this.intAdm.setLocation(posicaoX, posicaoY);
         this.intAdm.setVisible(true);
     }
     
     public void consultaDados() {
-        ConsultarDados consDados = new ConsultarDados(this);
+        ConsultarDados consDados = new ConsultarDados(this, this.intAdm);
+        consDados.setLocation(this.intAdm.getLocation());
         consDados.setVisible(true);
     }
     
@@ -63,16 +64,19 @@ public class ADM {
     
     public void editaUsuario() {
         EditarUsuario editUsuario = new EditarUsuario(this);
+        editUsuario.setLocation(this.intAdm.getLocation());
         editUsuario.setVisible(true);
     }
     
     public void editaAcervo() {
         EditarAcervo editAcervo = new EditarAcervo(this);
+        editAcervo.setLocation(this.intAdm.getLocation());
         editAcervo.setVisible(true);
     }
     
     public void cadastraUsuario() {
         CadastrarUsuario cadUsuario = new CadastrarUsuario(this);
+        cadUsuario.setLocation(this.intAdm.getLocation());
         cadUsuario.setVisible(true);
     }
 
@@ -170,13 +174,5 @@ public class ADM {
 
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
-    }
-
-    public InterfaceAdm getIntAdm() {
-        return intAdm;
-    }
-
-    public void setIntAdm(InterfaceAdm intAdm) {
-        this.intAdm = intAdm;
     }
 }

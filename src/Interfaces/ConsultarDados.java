@@ -14,11 +14,10 @@ import javax.swing.JFrame;
  * @author a1658948
  */
 public class ConsultarDados extends javax.swing.JFrame {
-    private JFrame janelaAnterior;
+    private JFrame janelaRetorno;
     
-    public ConsultarDados(Usuario u) {
+    public ConsultarDados(Usuario u, JFrame janelaRetorno) {
         initComponents();
-        this.janelaAnterior = u.getIntUsuario();
         this.nome.setText(u.getNome());
         this.RG.setText(u.getRG());
         this.endereco.setText(u.getRG());
@@ -29,11 +28,11 @@ public class ConsultarDados extends javax.swing.JFrame {
         this.dataNascimento.setText(u.getDataNascimento());
         this.login.setText(u.getNomeUsuario());
         this.email.setText(u.getEmail());
+        this.janelaRetorno = janelaRetorno;
     }
     
-    public ConsultarDados(ADM a) {
+    public ConsultarDados(ADM a, JFrame janelaRetorno) {
         initComponents();
-        this.janelaAnterior = a.getIntAdm();
         this.nome.setText(a.getNome());
         this.RG.setText(a.getRG());
         this.endereco.setText(a.getRG());
@@ -44,6 +43,7 @@ public class ConsultarDados extends javax.swing.JFrame {
         this.dataNascimento.setText(a.getDataNascimento());
         this.login.setText(a.getNomeUsuario());
         this.email.setText(a.getEmail());
+        this.janelaRetorno = janelaRetorno;
     }
 
     private ConsultarDados() {
@@ -88,8 +88,8 @@ public class ConsultarDados extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -162,6 +162,11 @@ public class ConsultarDados extends javax.swing.JFrame {
 
         fecharConsulta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         fecharConsulta.setText("Fechar");
+        fecharConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fecharConsultaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -313,12 +318,17 @@ public class ConsultarDados extends javax.swing.JFrame {
     
     private void retornarJanelaAnterior() {
         this.dispose();
-        this.janelaAnterior.setVisible(true);
+        this.janelaRetorno.setLocation(this.getLocation());
+        this.janelaRetorno.setVisible(true);
     }
     
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+    private void fecharConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharConsultaActionPerformed
         retornarJanelaAnterior();
-    }//GEN-LAST:event_formWindowClosed
+    }//GEN-LAST:event_fecharConsultaActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        retornarJanelaAnterior();
+    }//GEN-LAST:event_formWindowClosing
 
     private void criarInterfaceEmprestimosMultas() {
         //this.dispose();

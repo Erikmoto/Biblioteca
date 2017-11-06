@@ -5,7 +5,6 @@ import Classes.Acervo;
 public class InterfaceBiblioteca extends javax.swing.JFrame {
 
     public InterfaceBiblioteca() {
-       
         initComponents();
     }
 

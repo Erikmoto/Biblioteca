@@ -86,8 +86,8 @@ public class ConsultarAcervo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -626,10 +626,15 @@ public class ConsultarAcervo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+    
+    private void retornarJanelaAnterior() {
         this.dispose();
-        janelaAnterior.setVisible(true);
+        this.janelaAnterior.setLocation(this.getLocation());
+        this.janelaAnterior.setVisible(true);
+    }
+    
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        retornarJanelaAnterior();
     }//GEN-LAST:event_voltarActionPerformed
 
     private void formataCampoPesquisa(boolean campoFocado) {
@@ -655,11 +660,6 @@ public class ConsultarAcervo extends javax.swing.JFrame {
         formataCampoPesquisa(true);
     }//GEN-LAST:event_campoPesquisaFocusGained
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        this.dispose();
-        janelaAnterior.setVisible(true);
-    }//GEN-LAST:event_formWindowClosed
-
     private void campoPesquisaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoPesquisaFocusLost
         formataCampoPesquisa(false);
     }//GEN-LAST:event_campoPesquisaFocusLost
@@ -679,6 +679,10 @@ public class ConsultarAcervo extends javax.swing.JFrame {
     private void livrosPosterioresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_livrosPosterioresActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_livrosPosterioresActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        retornarJanelaAnterior();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
