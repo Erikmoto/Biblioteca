@@ -547,6 +547,7 @@ public class ConsultarAcervo extends javax.swing.JFrame {
 
         livrosAnteriores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         livrosAnteriores.setText("◄◄");
+        livrosAnteriores.setEnabled(false);
         livrosAnteriores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 livrosAnterioresActionPerformed(evt);
@@ -555,6 +556,7 @@ public class ConsultarAcervo extends javax.swing.JFrame {
 
         livrosPosteriores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         livrosPosteriores.setText("►►");
+        livrosPosteriores.setEnabled(false);
         livrosPosteriores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 livrosPosterioresActionPerformed(evt);

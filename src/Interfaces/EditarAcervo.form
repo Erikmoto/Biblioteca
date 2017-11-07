@@ -227,37 +227,45 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cancelar" linkSize="2" min="-2" pref="200" max="-2" attributes="0"/>
-                      <Component id="labEditora" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Component id="confirmar" linkSize="2" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labEdicao" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="edicao" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labVolume" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="volume" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labAno" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ano" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cancelar" linkSize="2" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="labEditora" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="confirmar" linkSize="2" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="labAutoria" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labNome" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nome" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="autoria" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="editora" pref="450" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="labAutoria" min="-2" max="-2" attributes="0"/>
-                          <Component id="labNome" min="-2" max="-2" attributes="0"/>
-                          <Component id="nome" alignment="0" max="32767" attributes="0"/>
-                          <Component id="autoria" alignment="0" max="32767" attributes="0"/>
-                          <Component id="editora" pref="450" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labEdicao" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="edicao" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labVolume" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="volume" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labAno" min="-2" max="-2" attributes="0"/>
+                              <Component id="ano" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labQuantidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="quantidade" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
                   <Component id="imagem" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -277,20 +285,29 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="autoria" linkSize="1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="labEditora" linkSize="1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="editora" linkSize="1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="labEdicao" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="labVolume" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="labAno" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="edicao" linkSize="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="volume" linkSize="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="ano" linkSize="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="labEditora" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="editora" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="labEdicao" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labVolume" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labAno" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="edicao" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="volume" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ano" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="labQuantidade" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="quantidade" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -451,6 +468,23 @@
             </DimensionLayout>
           </Layout>
         </Container>
+        <Component class="javax.swing.JLabel" name="labQuantidade">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Quantidade"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="quantidade">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="labAcervo">

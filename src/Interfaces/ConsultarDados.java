@@ -159,6 +159,11 @@ public class ConsultarDados extends javax.swing.JFrame {
 
         consultarEmprestimosMultas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         consultarEmprestimosMultas.setText("<html><center>Empréstimos<br>e<br>Multas</center></html>");
+        consultarEmprestimosMultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarEmprestimosMultasActionPerformed(evt);
+            }
+        });
 
         fecharConsulta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         fecharConsulta.setText("Fechar");
@@ -313,7 +318,7 @@ public class ConsultarDados extends javax.swing.JFrame {
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {CEP, RG, UF, cidade, dataNascimento, email, endereco, labCEP, labCidade, labDataNasc, labEmail, labEndereco, labLogin, labNome, labRG, labTelefone, labUF, login, nome, telefone});
 
-        pack();
+        setBounds(0, 0, 736, 507);
     }// </editor-fold>//GEN-END:initComponents
     
     private void retornarJanelaAnterior() {
@@ -329,12 +334,16 @@ public class ConsultarDados extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         retornarJanelaAnterior();
     }//GEN-LAST:event_formWindowClosing
-
+    
     private void criarInterfaceEmprestimosMultas() {
         //this.dispose();
         //this.interfaceEmprestimosMultas.setVisible(true);
     }
     
+    private void consultarEmprestimosMultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEmprestimosMultasActionPerformed
+        criarInterfaceEmprestimosMultas();
+    }//GEN-LAST:event_consultarEmprestimosMultasActionPerformed
+
     /**
      * @param args the command line arguments
      */
