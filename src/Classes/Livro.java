@@ -21,8 +21,8 @@ public class Livro {
     private short ano;
     private short quantidade;
     private int[] idsUsuariosLivro;
-    private Date datasEmprestimos[];
-    private short diasEntrega[];
+    private Date[] datasEmprestimos;
+    private short[] diasEntrega;
     
     public Livro(int id, String nome, short vol, short ed, String aut, String edit, short ano, short quantidade) {
         this.idLivro = id;
@@ -38,18 +38,6 @@ public class Livro {
         this.diasEntrega = new short[quantidade];
     }
     
-    private void adicionaComentario() {
-        
-    }
-    
-    private void removeComentario() {
-        
-    }
-    
-    private void verificaComentario() {
-        
-    }
-
     public int getIdLivro() {
         return idLivro;
     }
@@ -112,29 +100,5 @@ public class Livro {
 
     public void setQuantidade(short quantidade) {
         this.quantidade = quantidade;
-    }
-
-    public int[] getIdsUsuariosLivro() {
-        return idsUsuariosLivro;
-    }
-
-    public void setIdsUsuariosLivro(int[] idsUsuariosLivro) {
-        this.idsUsuariosLivro = idsUsuariosLivro;
-    }
-
-    public Date[] getDatasEmprestimos() {
-        return datasEmprestimos;
-    }
-
-    public void setDatasEmprestimos(Date[] datasEmprestimos) {
-        this.datasEmprestimos = datasEmprestimos;
-    }
-
-    public short[] getDiasEntrega() {
-        return diasEntrega;
-    }
-
-    public void setDiasEntrega(short[] diasEntrega) {
-        this.diasEntrega = diasEntrega;
     }
 }

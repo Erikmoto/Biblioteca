@@ -18,6 +18,14 @@ public class Comentario {
         this.autoriaComentario = aut;
     }
     
+    public void adicionaComentario(int IDLivro) {
+        
+    }
+    
+    public void removeComentario(int IDLivro) {
+        
+    }
+    
     public void mostraComentarios() {
         
     }

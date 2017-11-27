@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import Classes.Livro;
 import java.awt.Color;
 import javax.swing.JFrame;
 
@@ -37,12 +38,10 @@ public class ConsultarAcervo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        categoriaPesquisa = new javax.swing.ButtonGroup();
         pesquisar = new javax.swing.JButton();
         voltar = new javax.swing.JButton();
         campoPesquisa = new javax.swing.JTextField();
-        boxLivro = new javax.swing.JCheckBox();
-        boxAutoria = new javax.swing.JCheckBox();
-        boxEditora = new javax.swing.JCheckBox();
         labCategorias = new javax.swing.JLabel();
         painelLivros = new javax.swing.JPanel();
         livro0 = new javax.swing.JPanel();
@@ -83,6 +82,9 @@ public class ConsultarAcervo extends javax.swing.JFrame {
         autoria16 = new javax.swing.JLabel();
         livrosAnteriores = new javax.swing.JButton();
         livrosPosteriores = new javax.swing.JButton();
+        selecionaLivro = new javax.swing.JRadioButton();
+        selecionaAutoria = new javax.swing.JRadioButton();
+        selecionaEditora = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -119,17 +121,8 @@ public class ConsultarAcervo extends javax.swing.JFrame {
             }
         });
 
-        boxLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        boxLivro.setText("Livro");
-
-        boxAutoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        boxAutoria.setText("Autor(a)");
-
-        boxEditora.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        boxEditora.setText("Editora");
-
         labCategorias.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labCategorias.setText("Categorias para pesquisa:");
+        labCategorias.setText("Categoria para pesquisa:");
 
         livro0.setBackground(new java.awt.Color(0, 102, 0));
 
@@ -460,7 +453,7 @@ public class ConsultarAcervo extends javax.swing.JFrame {
                     .addComponent(autoria5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(autoria13, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nome11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         painelLivrosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {autoria0, autoria1, autoria13, autoria14, autoria15, autoria16, autoria2, autoria3, autoria4, autoria5, autoria6, autoria7, livro0, livro1, livro10, livro11, livro2, livro3, livro4, livro5, livro6, livro7, livro8, livro9, nome0, nome1, nome11, nome13, nome14, nome15, nome2, nome3, nome4, nome5, nome6, nome7});
@@ -563,6 +556,18 @@ public class ConsultarAcervo extends javax.swing.JFrame {
             }
         });
 
+        categoriaPesquisa.add(selecionaLivro);
+        selecionaLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selecionaLivro.setText("Livro");
+
+        categoriaPesquisa.add(selecionaAutoria);
+        selecionaAutoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selecionaAutoria.setText("Autor(a)");
+
+        categoriaPesquisa.add(selecionaEditora);
+        selecionaEditora.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selecionaEditora.setText("Editora");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -572,13 +577,13 @@ public class ConsultarAcervo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labCategorias)
-                        .addGap(50, 50, 50)
-                        .addComponent(boxLivro)
+                        .addGap(12, 12, 12)
+                        .addComponent(selecionaLivro)
                         .addGap(18, 18, 18)
-                        .addComponent(boxAutoria)
+                        .addComponent(selecionaAutoria)
                         .addGap(18, 18, 18)
-                        .addComponent(boxEditora)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addComponent(selecionaEditora)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -605,11 +610,11 @@ public class ConsultarAcervo extends javax.swing.JFrame {
                 .addComponent(campoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boxLivro)
-                    .addComponent(boxAutoria)
-                    .addComponent(boxEditora)
                     .addComponent(pesquisar)
-                    .addComponent(labCategorias))
+                    .addComponent(labCategorias)
+                    .addComponent(selecionaLivro)
+                    .addComponent(selecionaAutoria)
+                    .addComponent(selecionaEditora))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(painelLivros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -620,9 +625,9 @@ public class ConsultarAcervo extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {boxAutoria, boxEditora, boxLivro, labCategorias});
-
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {livrosAnteriores, livrosPosteriores, pesquisar, voltar});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {selecionaAutoria, selecionaEditora, selecionaLivro});
 
         pesquisar.getAccessibleContext().setAccessibleDescription("");
 
@@ -667,8 +672,25 @@ public class ConsultarAcervo extends javax.swing.JFrame {
     }//GEN-LAST:event_campoPesquisaFocusLost
     
     private void realizarPesquisa() {
-        //Algoritmo para pesquisa
+        if(selecionaLivro.isSelected()) {
+            
+        }
+        
+        else {
+            if(selecionaAutoria.isSelected()) {
+                
+            }
+            
+            else {
+                
+            }
+        }
     }
+    
+    /*private Livro pesquisarLivro() {
+        Livro livro = new Livro();
+        return livro;
+    }*/
     
     private void pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarActionPerformed
         realizarPesquisa();
@@ -735,10 +757,8 @@ public class ConsultarAcervo extends javax.swing.JFrame {
     private javax.swing.JLabel autoria5;
     private javax.swing.JLabel autoria6;
     private javax.swing.JLabel autoria7;
-    private javax.swing.JCheckBox boxAutoria;
-    private javax.swing.JCheckBox boxEditora;
-    private javax.swing.JCheckBox boxLivro;
     private javax.swing.JTextField campoPesquisa;
+    private javax.swing.ButtonGroup categoriaPesquisa;
     private javax.swing.JLabel labCategorias;
     private javax.swing.JPanel livro0;
     private javax.swing.JPanel livro1;
@@ -768,6 +788,9 @@ public class ConsultarAcervo extends javax.swing.JFrame {
     private javax.swing.JLabel nome7;
     private javax.swing.JPanel painelLivros;
     private javax.swing.JButton pesquisar;
+    private javax.swing.JRadioButton selecionaAutoria;
+    private javax.swing.JRadioButton selecionaEditora;
+    private javax.swing.JRadioButton selecionaLivro;
     private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }

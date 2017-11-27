@@ -41,10 +41,6 @@ public class Usuario {
         this.senha = senha;
         this.email = email;
     }
-
-    private Usuario() {
-        
-    }
     
     public void mostraInterface(int posicaoX, int posicaoY) {
         this.intUsuario = new InterfaceUsuario(this);
