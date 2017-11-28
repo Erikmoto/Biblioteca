@@ -10,9 +10,12 @@ import javax.swing.JFormattedTextField;
 import javax.swing.text.MaskFormatter;
 import Classes.ADM;
 import Classes.Usuario;
+import DAO.ADMDAO;
+import DAO.UsuarioDAO;
 import java.text.ParseException;
 import java.util.Arrays;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.text.JTextComponent;
 
@@ -678,9 +681,44 @@ public class CadastrarUsuario extends javax.swing.JFrame {
     
     private void confirmaDados() {
         if(verificaDados()) {
-            Usuario u = new Usuario(0, this.nome, this.RG, this.endereco, this.CEP, this.cidade, this.UF, this.telefone, this.dataNasc, this.nomeUsuario, this.senha, this.email);
+            if(selecionaUsuario.isSelected()) {
+                cadastraUsuario();
+            }
+            
+            else {
+                cadastraAdministrador();
+            }
+            
             this.dispose();
             this.adm.mostraInterface(this.getX(), this.getY());
+        }
+    }
+    
+    private void cadastraUsuario() {
+        Usuario usuario = new Usuario(0, this.nome, this.RG, this.endereco, this.CEP, this.cidade, this.UF, this.telefone, this.dataNasc, this.nomeUsuario, this.senha, this.email);
+        
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        
+        if(usuarioDAO.salvar(usuario)) {
+            JOptionPane.showMessageDialog(this, "Usuário cadastrado com sucesso!");
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(this, "Dados Incorretos!");
+        }
+    }
+    
+    private void cadastraAdministrador() {
+        ADM admin = new ADM(0, this.nome, this.RG, this.endereco, this.CEP, this.cidade, this.UF, this.telefone, this.dataNasc, this.nomeUsuario, this.senha, this.email);
+        
+        ADMDAO admDAO = new ADMDAO();
+        
+        if(admDAO.salvar(admin)) {
+            JOptionPane.showMessageDialog(this, "Administrador cadastrado com sucesso!");
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(this, "Dados Incorretos!");
         }
     }
     

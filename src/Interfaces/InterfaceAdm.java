@@ -353,12 +353,4 @@ public class InterfaceAdm extends javax.swing.JFrame {
     private javax.swing.JSeparator separadorH;
     private javax.swing.JSeparator separadorV;
     // End of variables declaration//GEN-END:variables
-
-    /*public JFrame getJanelaRetorno() {
-        return janelaRetorno;
-    }
-
-    public void setJanelaRetorno(JFrame janelaRetorno) {
-        this.janelaRetorno = janelaRetorno;
-    }*/
 }

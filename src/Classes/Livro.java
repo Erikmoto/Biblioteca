@@ -5,8 +5,6 @@
  */
 package Classes;
 
-import java.util.Date;
-
 /**
  *
  * @author ryuic
@@ -20,9 +18,9 @@ public class Livro {
     private String editora;
     private short ano;
     private short quantidade;
-    private int[] idsUsuariosLivro;
+    /*private int[] idsUsuariosLivro;
     private Date[] datasEmprestimos;
-    private short[] diasEntrega;
+    private short[] diasEntrega;*/
     
     public Livro(int id, String nome, short vol, short ed, String aut, String edit, short ano, short quantidade) {
         this.idLivro = id;
@@ -33,9 +31,9 @@ public class Livro {
         this.editora = edit;
         this.ano = ano;
         this.quantidade = quantidade;
-        this.idsUsuariosLivro = new int[quantidade];
+        /*this.idsUsuariosLivro = new int[quantidade];
         this.datasEmprestimos = new Date[quantidade];
-        this.diasEntrega = new short[quantidade];
+        this.diasEntrega = new short[quantidade];*/
     }
     
     public int getIdLivro() {

@@ -65,6 +65,7 @@ public class ADMDAOTest {
         }
     }
     
+    @Ignore
     @Test
     public void deletar() {
         ADM admin = new ADM(0, "Administrador", "00.000.000-0", "Rua A", "00000-000", "Cidade A", "ACRE", "(00)00000-0000", "00/00/0000", "ADM", " ", "admin@laudebiblio.com");

@@ -5,9 +5,12 @@
  */
 package Interfaces;
 
+import Classes.Acervo;
 import Classes.Livro;
 import java.awt.Color;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -23,10 +26,34 @@ public class ConsultarAcervo extends javax.swing.JFrame {
         
     }
     
-    public ConsultarAcervo(JFrame janelaAnterior) {
+    public ConsultarAcervo(JFrame janelaAnterior, Acervo acervo) {
         initComponents();
         this.setLocation(janelaAnterior.getX(), janelaAnterior.getY());
         this.janelaAnterior = janelaAnterior;
+        
+        List<Livro> livros = acervo.getAcervo();
+        List<JLabel> componentes = null;
+        
+        for(int i = 0; i < this.getComponentCount(); i++) {
+            String classeComponente = this.getComponent(i).getClass().getName();
+            
+            if(classeComponente.equals("JLabel")) {
+                String nomeJLabel = ((JLabel)this.getComponent(i)).getAccessibleContext().getAccessibleName();
+                
+                if(nomeJLabel.contains("livro")) {
+                    componentes.add((JLabel) this.getComponent(i));
+                    System.out.println(nomeJLabel);
+                    
+                    if(livros.size() > i) {
+                        componentes.get(i).setText(livros.get(i).getNome());
+                    }
+                    
+                    else {
+                        System.out.println("Não há livro");
+                    }
+                }
+            }
+        }
     }
     
     /**
