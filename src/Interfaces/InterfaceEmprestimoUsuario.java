@@ -13,10 +13,15 @@ public class InterfaceEmprestimoUsuario extends javax.swing.JDialog {
 
     /**
      * Creates new form InterfaceEmprestimo
+     * @param parent
+     * @param modal
+     * @param idUsuario
      */
-    public InterfaceEmprestimoUsuario(java.awt.Frame parent, boolean modal) {
+    public InterfaceEmprestimoUsuario(java.awt.Frame parent, boolean modal, int idUsuario) {
         super(parent, modal);
         initComponents();
+        
+        
     }
 
     /**
@@ -30,21 +35,64 @@ public class InterfaceEmprestimoUsuario extends javax.swing.JDialog {
 
         labEmprestimo = new javax.swing.JLabel();
         separador = new javax.swing.JSeparator();
+        painelEmprestimos = new javax.swing.JScrollPane();
+        tabelaEmprestimos = new javax.swing.JTable();
+        renovarLivro = new javax.swing.JButton();
+        fechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labEmprestimo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         labEmprestimo.setText("Empréstimo");
 
+        tabelaEmprestimos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tabelaEmprestimos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "Data de Entrega", "Renovações"
+            }
+        ));
+        tabelaEmprestimos.setColumnSelectionAllowed(true);
+        painelEmprestimos.setViewportView(tabelaEmprestimos);
+
+        renovarLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        renovarLivro.setText("Renovar");
+
+        fechar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        fechar.setText("Fechar");
+        fechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fecharActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(separador, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(painelEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(137, 137, 137)
                 .addComponent(labEmprestimo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(fechar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(renovarLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -53,57 +101,28 @@ public class InterfaceEmprestimoUsuario extends javax.swing.JDialog {
                 .addComponent(labEmprestimo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 151, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(painelEmprestimos, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fechar)
+                    .addComponent(renovarLivro))
+                .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceEmprestimoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceEmprestimoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceEmprestimoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceEmprestimoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                InterfaceEmprestimoUsuario dialog = new InterfaceEmprestimoUsuario(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
-
+    private void fecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_fecharActionPerformed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton fechar;
     private javax.swing.JLabel labEmprestimo;
+    private javax.swing.JScrollPane painelEmprestimos;
+    private javax.swing.JButton renovarLivro;
     private javax.swing.JSeparator separador;
+    private javax.swing.JTable tabelaEmprestimos;
     // End of variables declaration//GEN-END:variables
 }

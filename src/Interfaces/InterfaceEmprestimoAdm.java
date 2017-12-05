@@ -13,6 +13,8 @@ public class InterfaceEmprestimoAdm extends javax.swing.JDialog {
 
     /**
      * Creates new form InterfaceEmprestimo
+     * @param parent
+     * @param modal
      */
     public InterfaceEmprestimoAdm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -30,20 +32,72 @@ public class InterfaceEmprestimoAdm extends javax.swing.JDialog {
 
         labEmprestimo = new javax.swing.JLabel();
         separador = new javax.swing.JSeparator();
+        emprestarLivro = new javax.swing.JButton();
+        devolverLivro = new javax.swing.JButton();
+        labIDLivro = new javax.swing.JLabel();
+        labIDUsuario = new javax.swing.JLabel();
+        campoIDUsuario = new javax.swing.JFormattedTextField();
+        campoIDLivro = new javax.swing.JFormattedTextField();
+        fechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labEmprestimo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         labEmprestimo.setText("Empréstimo");
 
+        emprestarLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        emprestarLivro.setText("Emprestar");
+
+        devolverLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        devolverLivro.setText("Devolver");
+
+        labIDLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labIDLivro.setText("ID Livro");
+
+        labIDUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labIDUsuario.setText("ID Usuário");
+
+        campoIDUsuario.setText("_____");
+        campoIDUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        campoIDLivro.setText("_____");
+        campoIDLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        fechar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        fechar.setText("Fechar");
+        fechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fecharActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(separador, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(separador)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labIDUsuario)
+                    .addComponent(campoIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labIDLivro)
+                    .addComponent(campoIDLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(devolverLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emprestarLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57))
             .addGroup(layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(labEmprestimo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(labEmprestimo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(fechar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -53,59 +107,41 @@ public class InterfaceEmprestimoAdm extends javax.swing.JDialog {
                 .addComponent(labEmprestimo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 151, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(emprestarLivro)
+                        .addGap(18, 18, 18)
+                        .addComponent(devolverLivro))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labIDUsuario)
+                            .addComponent(labIDLivro))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(campoIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoIDLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(fechar)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceEmprestimoAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceEmprestimoAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceEmprestimoAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceEmprestimoAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                InterfaceEmprestimoAdm dialog = new InterfaceEmprestimoAdm(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
-
+    private void fecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_fecharActionPerformed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField campoIDLivro;
+    private javax.swing.JFormattedTextField campoIDUsuario;
+    private javax.swing.JButton devolverLivro;
+    private javax.swing.JButton emprestarLivro;
+    private javax.swing.JButton fechar;
     private javax.swing.JLabel labEmprestimo;
+    private javax.swing.JLabel labIDLivro;
+    private javax.swing.JLabel labIDUsuario;
     private javax.swing.JSeparator separador;
     // End of variables declaration//GEN-END:variables
 }

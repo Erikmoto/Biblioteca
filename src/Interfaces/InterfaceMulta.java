@@ -37,7 +37,7 @@ public class InterfaceMulta extends javax.swing.JDialog {
         labValor = new javax.swing.JLabel();
         rotuloValorMulta = new javax.swing.JLabel();
         realizarPagamento = new javax.swing.JButton();
-        confirmar = new javax.swing.JButton();
+        fechar = new javax.swing.JButton();
         separador = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -60,11 +60,11 @@ public class InterfaceMulta extends javax.swing.JDialog {
             }
         });
 
-        confirmar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        confirmar.setText("OK");
-        confirmar.addActionListener(new java.awt.event.ActionListener() {
+        fechar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        fechar.setText("Fechar");
+        fechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmarActionPerformed(evt);
+                fecharActionPerformed(evt);
             }
         });
 
@@ -79,16 +79,16 @@ public class InterfaceMulta extends javax.swing.JDialog {
                 .addComponent(rotuloValorMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(122, 122, 122))
             .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(realizarPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(171, 171, 171)
                 .addComponent(labMulta)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(separador)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(fechar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(realizarPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,11 +101,11 @@ public class InterfaceMulta extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labValor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(rotuloValorMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(realizarPagamento)
-                    .addComponent(confirmar))
-                .addGap(30, 30, 30))
+                    .addComponent(fechar)
+                    .addComponent(realizarPagamento))
+                .addGap(36, 36, 36))
         );
 
         pack();
@@ -115,12 +115,12 @@ public class InterfaceMulta extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_realizarPagamentoActionPerformed
 
-    private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
+    private void fecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharActionPerformed
         this.dispose();
-    }//GEN-LAST:event_confirmarActionPerformed
+    }//GEN-LAST:event_fecharActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton confirmar;
+    private javax.swing.JButton fechar;
     private javax.swing.JLabel labMulta;
     private javax.swing.JLabel labValor;
     private javax.swing.JButton realizarPagamento;
