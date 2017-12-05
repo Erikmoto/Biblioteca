@@ -6,7 +6,7 @@
 package DAO;
 
 import Classes.Usuario;
-import Conexao.ConnectionFactory;
+import Conexao.ConexaoBancoDados;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +23,35 @@ public class UsuarioDAO {
     private Connection conexao = null;
     
     public UsuarioDAO() {
-        conexao = ConnectionFactory.getConnection();
+        conexao = ConexaoBancoDados.getConnection();
+    }
+    
+    public int encontraIDVazio() {
+        int i = 0;
+        
+        PreparedStatement declaracao = null;
+        ResultSet resultados = null;
+        
+        String sql = "SELECT id FROM biblioteca.usuario";
+        
+        try {
+            declaracao = conexao.prepareStatement(sql);
+            resultados = declaracao.executeQuery();
+            
+            while(resultados.next()) {
+                if(i != Integer.parseInt(resultados.getString(1))) {
+                    break;
+                }
+                
+                i++;
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro: " + ex);
+        } finally {
+            ConexaoBancoDados.closeConnection(conexao, declaracao, resultados);
+        }
+        
+        return i;
     }
     
     public boolean salvar(Usuario usuario) {
@@ -55,8 +83,108 @@ public class UsuarioDAO {
             
             return false;
         } finally {
-            ConnectionFactory.closeConnection(conexao, declaracao);
+            ConexaoBancoDados.closeConnection(conexao, declaracao);
         }
+    }
+    
+    public Usuario procurarUsuario(int idUsuario) {
+        PreparedStatement declaracao = null;
+        ResultSet resultados = null;
+        
+        Usuario usuario = null;
+        
+        String sql = "SELECT * FROM biblioteca.usuario WHERE id = ?";
+        
+        try {
+            declaracao = conexao.prepareStatement(sql);
+            
+            declaracao.setInt(1, idUsuario);
+            
+            resultados = declaracao.executeQuery();
+            
+            while(resultados.next()) {
+                String[] dados = new String[12];
+                
+                for(int i = 0; i < dados.length; i++) {
+                    dados[i] = resultados.getString(i+1);
+                }
+
+                usuario = new Usuario(Integer.parseInt(dados[0]), dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8], dados[9], dados[10], dados[11]);
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro: " + ex);
+        } finally {
+            ConexaoBancoDados.closeConnection(conexao, declaracao, resultados);
+        }
+        
+        return usuario;
+    }
+    
+    public Usuario procurarNomeOuRG(String busca) {
+        PreparedStatement declaracao = null;
+        ResultSet resultados = null;
+        
+        Usuario usuario = null;
+        
+        String sql = "SELECT * FROM biblioteca.usuario WHERE (nome = ? OR rg = ?)";
+        
+        try {
+            declaracao = conexao.prepareStatement(sql);
+            
+            declaracao.setString(1, busca);
+            declaracao.setString(2, busca);
+            
+            resultados = declaracao.executeQuery();
+            
+            while(resultados.next()) {
+                String[] dados = new String[12];
+                
+                for(int i = 0; i < dados.length; i++) {
+                    dados[i] = resultados.getString(i+1);
+                }
+
+                usuario = new Usuario(Integer.parseInt(dados[0]), dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8], dados[9], dados[10], dados[11]);
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro: " + ex);
+        } finally {
+            ConexaoBancoDados.closeConnection(conexao, declaracao, resultados);
+        }
+        
+        return usuario;
+    }
+    
+    public Usuario procurarNomeUsuario(String nomeUsuario) {
+        PreparedStatement declaracao = null;
+        ResultSet resultados = null;
+        
+        Usuario usuario = null;
+        
+        String sql = "SELECT * FROM biblioteca.usuario WHERE nome_usuario = ?";
+        
+        try {
+            declaracao = conexao.prepareStatement(sql);
+            
+            declaracao.setString(1, nomeUsuario);
+            
+            resultados = declaracao.executeQuery();
+            
+            while(resultados.next()) {
+                String[] dados = new String[12];
+                
+                for(int i = 0; i < dados.length; i++) {
+                    dados[i] = resultados.getString(i+1);
+                }
+
+                usuario = new Usuario(Integer.parseInt(dados[0]), dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8], dados[9], dados[10], dados[11]);
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro: " + ex);
+        } finally {
+            ConexaoBancoDados.closeConnection(conexao, declaracao, resultados);
+        }
+        
+        return usuario;
     }
     
     public List<Usuario> listarTodos() {
@@ -85,14 +213,14 @@ public class UsuarioDAO {
         } catch (SQLException ex) {
             System.err.println("Erro: " + ex);
         } finally {
-            ConnectionFactory.closeConnection(conexao, declaracao, resultados);
+            ConexaoBancoDados.closeConnection(conexao, declaracao, resultados);
         }
         
         return usuarios;
     }
     
     public boolean atualizar(Usuario usuario) {
-        String sql = "UPDATE biblioteca.usuario SET (nome, rg, endereco, cep, cidade, uf, telefone, data_de_nascimento) = (?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ?";
+        String sql = "UPDATE biblioteca.usuario SET (nome, rg, endereco, cep, cidade, uf, telefone, data_de_nascimento, email) = (?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ?";
         
         PreparedStatement declaracao = null;
         
@@ -107,7 +235,8 @@ public class UsuarioDAO {
             declaracao.setString(6, usuario.getUF());
             declaracao.setString(7, usuario.getTelefone());
             declaracao.setString(8, usuario.getDataNascimento());
-            declaracao.setInt(9, usuario.getIdUsuario());
+            declaracao.setString(9, usuario.getEmail());
+            declaracao.setInt(10, usuario.getIdUsuario());
             
             declaracao.executeUpdate();
             
@@ -117,7 +246,7 @@ public class UsuarioDAO {
             
             return false;
         } finally {
-            ConnectionFactory.closeConnection(conexao, declaracao);
+            ConexaoBancoDados.closeConnection(conexao, declaracao);
         }
     }
     
@@ -139,7 +268,7 @@ public class UsuarioDAO {
             
             return false;
         } finally {
-            ConnectionFactory.closeConnection(conexao, declaracao);
+            ConexaoBancoDados.closeConnection(conexao, declaracao);
         }
     }
 }

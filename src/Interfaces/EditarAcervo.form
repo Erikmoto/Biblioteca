@@ -142,6 +142,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Buscar&lt;br&gt;Livro&lt;/center&gt;&lt;/html&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarLivroActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="campoID">
           <Properties>
@@ -156,6 +159,8 @@
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoIDFocusGained"/>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoIDFocusLost"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoIDKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoIDKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="livroAnterior">
@@ -209,6 +214,9 @@
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Remover&lt;br&gt;Livro&lt;/center&gt;&lt;/html&gt;"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removerLivroActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="adicionarLivro">
           <Properties>
@@ -217,6 +225,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Adicionar&lt;br&gt;Livro&lt;/center&gt;&lt;/html&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adicionarLivroActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -230,38 +241,45 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cancelar" linkSize="2" min="-2" pref="200" max="-2" attributes="0"/>
                               <Component id="labEditora" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="confirmar" linkSize="2" min="-2" pref="200" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="labAutoria" min="-2" max="-2" attributes="0"/>
                                   <Component id="labNome" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nome" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="autoria" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="editora" pref="450" max="32767" attributes="0"/>
+                                  <Component id="campoNome" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="campoAutoria" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="campoEditora" pref="450" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labEdicao" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="edicao" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labVolume" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="volume" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labAno" min="-2" max="-2" attributes="0"/>
-                              <Component id="ano" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labQuantidade" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="quantidade" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="confirmar" linkSize="2" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="cancelar" linkSize="2" min="-2" pref="200" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labEdicao" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="campoEdicao" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labVolume" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="campoVolume" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labAno" min="-2" max="-2" attributes="0"/>
+                                      <Component id="campoAno" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labQuantidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="campoQuantidade" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
@@ -279,17 +297,17 @@
                       <Group type="102" attributes="0">
                           <Component id="labNome" linkSize="1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="nome" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoNome" linkSize="1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="labAutoria" linkSize="1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="autoria" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoAutoria" linkSize="1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="labEditora" linkSize="1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="editora" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoEditora" linkSize="1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="labEdicao" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -298,15 +316,15 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="edicao" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="volume" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ano" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="campoEdicao" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="campoVolume" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="campoAno" linkSize="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="labQuantidade" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="quantidade" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoQuantidade" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -316,9 +334,9 @@
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="cancelar" linkSize="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="confirmar" linkSize="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="confirmar" linkSize="3" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="cancelar" linkSize="3" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               </Group>
@@ -380,7 +398,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="nome">
+        <Component class="javax.swing.JTextField" name="campoNome">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -388,7 +406,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="autoria">
+        <Component class="javax.swing.JTextField" name="campoAutoria">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -396,7 +414,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="editora">
+        <Component class="javax.swing.JTextField" name="campoEditora">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -404,7 +422,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="edicao">
+        <Component class="javax.swing.JTextField" name="campoEdicao">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -412,7 +430,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="volume">
+        <Component class="javax.swing.JTextField" name="campoVolume">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -420,7 +438,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="ano">
+        <Component class="javax.swing.JTextField" name="campoAno">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -447,6 +465,9 @@
             <Property name="text" type="java.lang.String" value="Confirmar"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmarActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="imagem">
           <Properties>
@@ -477,7 +498,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="quantidade">
+        <Component class="javax.swing.JTextField" name="campoQuantidade">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>

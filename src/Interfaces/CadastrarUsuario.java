@@ -599,6 +599,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
 
         setBounds(0, 0, 736, 519);
     }// </editor-fold>//GEN-END:initComponents
+    private int ID;
     private String nome;
     private String RG;
     private String endereco;
@@ -689,32 +690,39 @@ public class CadastrarUsuario extends javax.swing.JFrame {
                 cadastraAdministrador();
             }
             
-            this.dispose();
-            this.adm.mostraInterface(this.getX(), this.getY());
+            System.out.println(this.ID);
         }
     }
     
-    private void cadastraUsuario() {
-        Usuario usuario = new Usuario(0, this.nome, this.RG, this.endereco, this.CEP, this.cidade, this.UF, this.telefone, this.dataNasc, this.nomeUsuario, this.senha, this.email);
-        
+    private void cadastraUsuario() {        
         UsuarioDAO usuarioDAO = new UsuarioDAO();
+        this.ID = usuarioDAO.encontraIDVazio();
+        
+        usuarioDAO = new UsuarioDAO();
+        Usuario usuario = new Usuario(this.ID, this.nome, this.RG, this.endereco, this.CEP, this.cidade, this.UF, this.telefone, this.dataNasc, this.nomeUsuario, this.senha, this.email);
         
         if(usuarioDAO.salvar(usuario)) {
             JOptionPane.showMessageDialog(this, "Usuário cadastrado com sucesso!");
+            this.dispose();
+            this.adm.mostraInterface(this.getX(), this.getY());
         }
         
         else {
-            JOptionPane.showMessageDialog(this, "Dados Incorretos!");
+            JOptionPane.showMessageDialog(this, "Erro de Conexão");
         }
     }
     
     private void cadastraAdministrador() {
-        ADM admin = new ADM(0, this.nome, this.RG, this.endereco, this.CEP, this.cidade, this.UF, this.telefone, this.dataNasc, this.nomeUsuario, this.senha, this.email);
-        
         ADMDAO admDAO = new ADMDAO();
+        this.ID = admDAO.encontraIDVazio();
+        
+        admDAO = new ADMDAO();
+        ADM admin = new ADM(this.ID, this.nome, this.RG, this.endereco, this.CEP, this.cidade, this.UF, this.telefone, this.dataNasc, this.nomeUsuario, this.senha, this.email);
         
         if(admDAO.salvar(admin)) {
             JOptionPane.showMessageDialog(this, "Administrador cadastrado com sucesso!");
+            this.dispose();
+            this.adm.mostraInterface(this.getX(), this.getY());
         }
         
         else {

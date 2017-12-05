@@ -6,7 +6,12 @@
 package Interfaces;
 
 import Classes.ADM;
+import Classes.Livro;
+import DAO.LivroDAO;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import javax.swing.text.JTextComponent;
 
 /**
@@ -18,6 +23,7 @@ public class EditarAcervo extends javax.swing.JFrame {
     private ADM adm;
     private final Color corFoco = new Color(0, 0, 0);
     private final Color corInicial = new Color(204, 204, 204);
+    private Livro livro;
     
     public EditarAcervo(ADM a) {
         initComponents();
@@ -54,17 +60,17 @@ public class EditarAcervo extends javax.swing.JFrame {
         labAno = new javax.swing.JLabel();
         labVolume = new javax.swing.JLabel();
         labEdicao = new javax.swing.JLabel();
-        nome = new javax.swing.JTextField();
-        autoria = new javax.swing.JTextField();
-        editora = new javax.swing.JTextField();
-        edicao = new javax.swing.JTextField();
-        volume = new javax.swing.JTextField();
-        ano = new javax.swing.JTextField();
+        campoNome = new javax.swing.JTextField();
+        campoAutoria = new javax.swing.JTextField();
+        campoEditora = new javax.swing.JTextField();
+        campoEdicao = new javax.swing.JTextField();
+        campoVolume = new javax.swing.JTextField();
+        campoAno = new javax.swing.JTextField();
         cancelar = new javax.swing.JButton();
         confirmar = new javax.swing.JButton();
         imagem = new javax.swing.JPanel();
         labQuantidade = new javax.swing.JLabel();
-        quantidade = new javax.swing.JTextField();
+        campoQuantidade = new javax.swing.JTextField();
         labAcervo = new javax.swing.JLabel();
         separadorHInf = new javax.swing.JSeparator();
         separadorHSup = new javax.swing.JSeparator();
@@ -78,6 +84,11 @@ public class EditarAcervo extends javax.swing.JFrame {
 
         buscarLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         buscarLivro.setText("<html><center>Buscar<br>Livro</center></html>");
+        buscarLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarLivroActionPerformed(evt);
+            }
+        });
 
         campoID.setForeground(new java.awt.Color(204, 204, 204));
         campoID.setText("ID do Livro");
@@ -88,6 +99,14 @@ public class EditarAcervo extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 campoIDFocusLost(evt);
+            }
+        });
+        campoID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoIDKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoIDKeyTyped(evt);
             }
         });
 
@@ -116,9 +135,19 @@ public class EditarAcervo extends javax.swing.JFrame {
         removerLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         removerLivro.setText("<html><center>Remover<br>Livro</center></html>");
         removerLivro.setEnabled(false);
+        removerLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerLivroActionPerformed(evt);
+            }
+        });
 
         adicionarLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         adicionarLivro.setText("<html><center>Adicionar<br>Livro</center></html>");
+        adicionarLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adicionarLivroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelBuscaLayout = new javax.swing.GroupLayout(painelBusca);
         painelBusca.setLayout(painelBuscaLayout);
@@ -204,23 +233,23 @@ public class EditarAcervo extends javax.swing.JFrame {
         labEdicao.setText("Edição");
         labEdicao.setEnabled(false);
 
-        nome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        nome.setEnabled(false);
+        campoNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoNome.setEnabled(false);
 
-        autoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        autoria.setEnabled(false);
+        campoAutoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoAutoria.setEnabled(false);
 
-        editora.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        editora.setEnabled(false);
+        campoEditora.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoEditora.setEnabled(false);
 
-        edicao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        edicao.setEnabled(false);
+        campoEdicao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoEdicao.setEnabled(false);
 
-        volume.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        volume.setEnabled(false);
+        campoVolume.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoVolume.setEnabled(false);
 
-        ano.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ano.setEnabled(false);
+        campoAno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoAno.setEnabled(false);
 
         cancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cancelar.setText("Cancelar");
@@ -233,6 +262,11 @@ public class EditarAcervo extends javax.swing.JFrame {
         confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         confirmar.setText("Confirmar");
         confirmar.setEnabled(false);
+        confirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarActionPerformed(evt);
+            }
+        });
 
         imagem.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -251,8 +285,8 @@ public class EditarAcervo extends javax.swing.JFrame {
         labQuantidade.setText("Quantidade");
         labQuantidade.setEnabled(false);
 
-        quantidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        quantidade.setEnabled(false);
+        campoQuantidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoQuantidade.setEnabled(false);
 
         javax.swing.GroupLayout painelLivroLayout = new javax.swing.GroupLayout(painelLivro);
         painelLivro.setLayout(painelLivroLayout);
@@ -263,32 +297,36 @@ public class EditarAcervo extends javax.swing.JFrame {
                 .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(painelLivroLayout.createSequentialGroup()
                         .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labEditora)
-                            .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(labAutoria)
                                 .addComponent(labNome)
-                                .addComponent(nome)
-                                .addComponent(autoria)
-                                .addComponent(editora, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)))
+                                .addComponent(campoNome)
+                                .addComponent(campoAutoria)
+                                .addComponent(campoEditora, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(painelLivroLayout.createSequentialGroup()
-                        .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labEdicao)
-                            .addComponent(edicao, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labVolume)
-                            .addComponent(volume, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labAno)
-                            .addComponent(ano, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labQuantidade)
-                            .addComponent(quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(painelLivroLayout.createSequentialGroup()
+                                .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54)
+                                .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painelLivroLayout.createSequentialGroup()
+                                .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labEdicao)
+                                    .addComponent(campoEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labVolume)
+                                    .addComponent(campoVolume, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labAno)
+                                    .addComponent(campoAno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labQuantidade)
+                                    .addComponent(campoQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(22, 22, 22)))
                 .addComponent(imagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -304,17 +342,17 @@ public class EditarAcervo extends javax.swing.JFrame {
                     .addGroup(painelLivroLayout.createSequentialGroup()
                         .addComponent(labNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labAutoria)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(autoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campoAutoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLivroLayout.createSequentialGroup()
                                 .addComponent(labEditora)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(editora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campoEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(labEdicao)
@@ -322,24 +360,24 @@ public class EditarAcervo extends javax.swing.JFrame {
                                     .addComponent(labAno))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(edicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(volume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(campoEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoVolume, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLivroLayout.createSequentialGroup()
                                 .addComponent(labQuantidade)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(campoQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLivroLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(imagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
-                .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(painelLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
 
-        painelLivroLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ano, autoria, edicao, editora, labAno, labAutoria, labEdicao, labEditora, labNome, labVolume, nome, volume});
+        painelLivroLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {campoAno, campoAutoria, campoEdicao, campoEditora, campoNome, campoVolume, labAno, labAutoria, labEdicao, labEditora, labNome, labVolume});
 
         painelLivroLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cancelar, confirmar});
 
@@ -383,13 +421,50 @@ public class EditarAcervo extends javax.swing.JFrame {
         setBounds(0, 0, 736, 513);
     }// </editor-fold>//GEN-END:initComponents
     
+    private int ID;
+    private String nome;
+    private short volume;
+    private short edicao;
+    private String autoria;
+    private String editora;
+    private short ano;
+    private short quantidade;
+    
     private void retornarJanelaAnterior() {
         this.dispose();
         this.adm.mostraInterface(this.getX(), this.getY());
     }
     
+    private void carregaCampos() {
+        campoNome.setText(livro.getNome());
+        campoVolume.setText(String.valueOf(livro.getVolume()));
+        campoEdicao.setText(String.valueOf(livro.getEdicao()));
+        campoAutoria.setText(livro.getAutoria());
+        campoEditora.setText(livro.getEditora());
+        campoAno.setText(String.valueOf(livro.getAno()));
+        campoQuantidade.setText(String.valueOf(livro.getQuantidade()));
+    }
+    
+    private void habilitaEdicaoLivro() {
+        LivroDAO livroDAO = new LivroDAO();
+        
+        ID = Integer.parseInt(this.campoID.getText());
+        
+        livro = livroDAO.buscarLivroID(ID);
+        
+        if(livro != null) {
+            habilitaCampos();
+            carregaCampos();
+            this.removerLivro.setEnabled(true);
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(this, "Erro de Conexão");
+        }
+    }
+    
     private void selecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarActionPerformed
-        // TODO add your handling code here:
+        habilitaEdicaoLivro();
     }//GEN-LAST:event_selecionarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -424,6 +499,144 @@ public class EditarAcervo extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         retornarJanelaAnterior();
     }//GEN-LAST:event_formWindowClosing
+    
+    private void resetaCampos() {
+        this.campoNome.setText("");
+        this.campoVolume.setText("");
+        this.campoEdicao.setText("");
+        this.campoAutoria.setText("");
+        this.campoEditora.setText("");
+        this.campoAno.setText("");
+        this.campoQuantidade.setText("");
+    }
+    
+    private void desabilitaCampos() {
+        int i;
+        Component componente;
+                
+        for(i = 0; i < this.painelLivro.getComponentCount(); i++) {
+            componente = this.painelLivro.getComponent(i);
+            componente.setEnabled(false);
+        }
+        
+        this.cancelar.setEnabled(true);
+    }
+    
+    private void habilitaCampos() {
+        int i;
+        Component componente;
+                
+        for(i = 0; i < this.painelLivro.getComponentCount(); i++) {
+            componente = this.painelLivro.getComponent(i);
+            componente.setEnabled(true);
+        }
+    }
+    
+    private void habilitaAdicaoLivro() {
+        habilitaCampos();
+        
+        this.confirmar.setEnabled(true);
+        this.adicionarLivro.setEnabled(false);
+    }
+    
+    private void adicionarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarLivroActionPerformed
+        habilitaAdicaoLivro();
+    }//GEN-LAST:event_adicionarLivroActionPerformed
+    
+    private void defineAtributos() {
+        nome = this.campoNome.getText();
+        volume = Short.parseShort(this.campoVolume.getText());
+        edicao = Short.parseShort(this.campoEdicao.getText());
+        autoria = this.campoAutoria.getText();
+        editora = this.campoEditora.getText();
+        ano = Short.parseShort(this.campoAno.getText());
+        quantidade = Short.parseShort(this.campoQuantidade.getText());
+    }
+    
+    private void adicionaLivro() {
+        LivroDAO livroDAO = new LivroDAO();
+        
+        ID = livroDAO.encontraIDVazio();
+        
+        defineAtributos();
+        
+        livro = new Livro(ID, nome, volume, edicao, autoria, editora, ano, quantidade);
+        
+        livroDAO = new LivroDAO();
+        
+        if(livroDAO.salvar(livro)) {
+            JOptionPane.showMessageDialog(this, "Livro cadastrado com sucesso!");
+            
+            resetaCampos();
+            desabilitaCampos();
+            
+            this.confirmar.setEnabled(false);
+            this.adicionarLivro.setEnabled(true);
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(this, "Erro de Conexão");
+        }
+    }
+    
+    private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
+        adicionaLivro();
+    }//GEN-LAST:event_confirmarActionPerformed
+
+    private void buscarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLivroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarLivroActionPerformed
+    
+    private void verificaTecla(KeyEvent evt) {
+        char tecla = evt.getKeyChar();
+        
+        if(this.campoID.getText().equals("")) {
+            this.selecionar.setEnabled(false);
+        }
+        
+        if(tecla > 47 && tecla < 58) {
+            selecionar.setEnabled(true);
+        }
+        
+        else {
+            evt.consume();
+        }
+    }
+    
+    private void campoIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoIDKeyTyped
+        verificaTecla(evt);
+    }//GEN-LAST:event_campoIDKeyTyped
+    
+    private void teclaPressionada(KeyEvent evt) {
+        int codigoTecla = evt.getKeyCode();
+        
+        if(this.campoID.getText().equals("")) {
+            this.selecionar.setEnabled(false);
+        }
+        
+        if(codigoTecla != 8 && codigoTecla != 127) {
+            evt.consume();
+        }
+    }
+    
+    private void campoIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoIDKeyPressed
+        teclaPressionada(evt);
+    }//GEN-LAST:event_campoIDKeyPressed
+    
+    private void removeLivro() {
+        LivroDAO usuarioDAO = new LivroDAO();
+        int opcao = JOptionPane.showConfirmDialog(this, "Deseja realmente deletar este livro?");
+        
+        if(opcao == 0) {
+            usuarioDAO.deletar(livro);
+            desabilitaCampos();
+            resetaCampos();
+        }
+    }
+    
+    private void removerLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerLivroActionPerformed
+        removeLivro();
+    }//GEN-LAST:event_removerLivroActionPerformed
     
     /**
      * @param args the command line arguments
@@ -462,14 +675,17 @@ public class EditarAcervo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adicionarLivro;
-    private javax.swing.JTextField ano;
-    private javax.swing.JTextField autoria;
     private javax.swing.JButton buscarLivro;
+    private javax.swing.JTextField campoAno;
+    private javax.swing.JTextField campoAutoria;
+    private javax.swing.JTextField campoEdicao;
+    private javax.swing.JTextField campoEditora;
     private javax.swing.JFormattedTextField campoID;
+    private javax.swing.JTextField campoNome;
+    private javax.swing.JTextField campoQuantidade;
+    private javax.swing.JTextField campoVolume;
     private javax.swing.JButton cancelar;
     private javax.swing.JButton confirmar;
-    private javax.swing.JTextField edicao;
-    private javax.swing.JTextField editora;
     private javax.swing.JPanel imagem;
     private javax.swing.JLabel labAcervo;
     private javax.swing.JLabel labAno;
@@ -481,16 +697,13 @@ public class EditarAcervo extends javax.swing.JFrame {
     private javax.swing.JLabel labQuantidade;
     private javax.swing.JLabel labVolume;
     private javax.swing.JButton livroAnterior;
-    private javax.swing.JTextField nome;
     private javax.swing.JPanel painelBusca;
     private javax.swing.JPanel painelLivro;
     private javax.swing.JButton proximoLivro;
-    private javax.swing.JTextField quantidade;
     private javax.swing.JButton removerLivro;
     private javax.swing.JButton selecionar;
     private javax.swing.JSeparator separadorHInf;
     private javax.swing.JSeparator separadorHSup;
     private javax.swing.JSeparator separadorV;
-    private javax.swing.JTextField volume;
     // End of variables declaration//GEN-END:variables
 }

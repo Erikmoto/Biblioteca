@@ -7,6 +7,8 @@ package Interfaces;
 
 import Classes.ADM;
 import Classes.Usuario;
+import DAO.ADMDAO;
+import DAO.UsuarioDAO;
 import java.awt.Color;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
@@ -24,6 +26,9 @@ public class InterfaceLogin extends javax.swing.JDialog {
     private final String textoValido = "     Nome/Email Confirmado";
     private final String textoInvalido = "     Nome/Email Inexistente";
     private final InterfaceBiblioteca biblioteca;
+    private Usuario usuario;
+    private ADM admin;
+    private boolean isADM;
     
     
     public InterfaceLogin(java.awt.Frame parent, boolean modal) {
@@ -185,7 +190,7 @@ public class InterfaceLogin extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarLoginActionPerformed
-        verificaSenha(this.campoLogin.getText(), this.campoSenha.getPassword());
+        verificaSenha(this.campoSenha.getPassword());
     }//GEN-LAST:event_confirmarLoginActionPerformed
     
     private void retornarJanelaAnterior() {
@@ -215,7 +220,7 @@ public class InterfaceLogin extends javax.swing.JDialog {
             evt.consume();
             
             verificaUsuario(this.campoLogin.getText());
-            verificaSenha(this.campoLogin.getText(), this.campoSenha.getPassword());
+            verificaSenha(this.campoSenha.getPassword());
         }
     }//GEN-LAST:event_teclaDigitada
 
@@ -228,65 +233,65 @@ public class InterfaceLogin extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowClosing
     
     private void verificaUsuario(String login) {
-        //Procurar login no banco de dados
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuario = usuarioDAO.procurarNomeUsuario(login);
         
-        if(login.equals("a") || login.equals("u")) {
+        ADMDAO admDAO = new ADMDAO();
+        admin = admDAO.procurarNomeUsuario(login);
+        
+        if(usuario != null) {
+            this.isADM = false;
             this.verificaLogin = true;
             this.labLogin.setForeground(corValido);
             this.labLogin.setText(rotuloLogin + textoValido);
         }
         
         else {
-            this.verificaLogin = false;
-            this.labLogin.setForeground(corInvalido);
-            this.labLogin.setText(rotuloLogin + textoInvalido);
-        }
-    }
-    
-    private void verificaSenha(String login, char[] senha) {
-        String a = "a";
-        String u = "u";
-        int id = 0;
-        String nome, RG, endereco, CEP, cidade, UF, telefone, dataNascimento, email;
-        
-        char[] s = {};
-        
-        if(this.verificaLogin == true && Arrays.equals(senha, s)){
-            this.dispose();
-            
-            if(login.equals(a)) {
-                nome = "ADM";
-                RG = "00.000.000-0";
-                endereco = "Endereco";
-                CEP = "00000-000";
-                cidade = "Cidade";
-                UF = "UF";
-                telefone = "(00)00000-0000";
-                dataNascimento = "00/00/0000";
-                email = "Email";
-                
-                ADM adm = new ADM(id, nome, RG, endereco, CEP, cidade, UF, telefone, dataNascimento, a, Arrays.toString(senha), email);
-                adm.mostraInterface(this.getX(), this.getY());
+            if(admin != null) {
+                this.isADM = true;
+                this.verificaLogin = true;
+                this.labLogin.setForeground(corValido);
+                this.labLogin.setText(rotuloLogin + textoValido);
             }
             
             else {
-                nome = "Usuário";
-                RG = "00.000.000-0";
-                endereco = "Endereco";
-                CEP = "00000-000";
-                cidade = "Cidade";
-                UF = "UF";
-                telefone = "(00)00000-0000";
-                dataNascimento = "00/00/0000";
-                email = "Email";
-                
-                Usuario usuario = new Usuario(id, nome, RG, endereco, CEP, cidade, UF, telefone, dataNascimento, u, Arrays.toString(senha), email);
-                usuario.mostraInterface(this.getX(), this.getY());
+                this.verificaLogin = false;
+                this.labLogin.setForeground(corInvalido);
+                this.labLogin.setText(rotuloLogin + textoInvalido);
             }
+        }
+    }
+    
+    private void verificaSenha(char[] senha) {      
+        if(this.verificaLogin == true) {
+            if(this.isADM) {
+                if(Arrays.toString(senha).equals(admin.getSenha())) {
+                    this.dispose();
+
+                    admin.mostraInterface(this.getX(), this.getY());
+                }
+
+                else {
+                    JOptionPane.showMessageDialog(null, "Senha Incorreta!");
+                }
+            }
+            
+            else {
+                if(Arrays.toString(senha).equals(usuario.getSenha())) {
+                    this.dispose();
+
+                    usuario.mostraInterface(this.getX(), this.getY());
+                }
+
+                else {
+                    JOptionPane.showMessageDialog(null, "Senha Incorreta!");
+                }
+            }
+            
         }
         
         else {
-            JOptionPane.showMessageDialog(null, "Dados Incorretos!");
+            JOptionPane.showMessageDialog(null, "Nome de Usuário Inexistente!");
         }
     }
     /**

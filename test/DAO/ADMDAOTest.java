@@ -35,7 +35,7 @@ public class ADMDAOTest {
         }
     }
     
-    @Ignore
+    
     @Test
     public void listar() {
         ADMDAO adminDAO = new ADMDAO();
@@ -45,6 +45,8 @@ public class ADMDAOTest {
                 "ID: " + admin.getIdAdmin() + "\n" +
                 "Nome: " + admin.getNome() + "\n" +
                 "RG: " + admin.getRG() + "\n" +
+                "Nome de Usuário: " + admin.getNomeUsuario()+ "\n" +
+                "Senha: " + admin.getSenha()+ "\n" +
                 "\n"
             );
         }

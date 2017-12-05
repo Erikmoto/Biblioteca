@@ -5,7 +5,7 @@
     <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-5,0,0,2,-32"/>
+    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,7,0,0,2,-32"/>
     <SyntheticProperty name="formPosition" type="java.awt.Point" value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,97,119,116,46,80,111,105,110,116,-74,-60,-118,114,52,126,-56,38,2,0,2,73,0,1,120,73,0,1,121,120,112,0,0,0,0,0,0,0,0"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="0"/>
     <SyntheticProperty name="generatePosition" type="boolean" value="true"/>
@@ -119,9 +119,12 @@
                                   <Component id="labEmail" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="2" attributes="0">
-                                  <Component id="fecharConsulta" linkSize="3" alignment="2" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="consultarEmprestimosMultas" linkSize="3" alignment="2" min="-2" pref="170" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="2" attributes="0">
+                                      <Component id="fecharConsulta" linkSize="3" alignment="2" min="-2" pref="170" max="-2" attributes="0"/>
+                                      <Component id="consultarMulta" linkSize="3" alignment="2" min="-2" pref="170" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="consultarEmprestimos" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -190,21 +193,21 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="login" linkSize="2" min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="consultarEmprestimosMultas" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                              <Component id="consultarMulta" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="consultarEmprestimos" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="labEmail" linkSize="2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                               <Component id="email" linkSize="2" min="-2" pref="22" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="fecharConsulta" min="-2" pref="50" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="fecharConsulta" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Component id="separadorV" max="32767" attributes="0"/>
               </Group>
@@ -404,15 +407,15 @@
         <Property name="orientation" type="int" value="1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="consultarEmprestimosMultas">
+    <Component class="javax.swing.JButton" name="consultarMulta">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Empr&#xe9;stimos&lt;br&gt;e&lt;br&gt;Multas&lt;/center&gt;&lt;/html&gt;"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Consultar Multa&lt;/center&gt;&lt;/html&gt;"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarEmprestimosMultasActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarMultaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="fecharConsulta">
@@ -427,6 +430,17 @@
       </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="separadorHSup">
+    </Component>
+    <Component class="javax.swing.JButton" name="consultarEmprestimos">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Empr&#xe9;stimos&lt;/center&gt;&lt;/html&gt;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarEmprestimosActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

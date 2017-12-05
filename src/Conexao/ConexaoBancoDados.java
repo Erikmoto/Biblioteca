@@ -15,7 +15,7 @@ import java.sql.SQLException;
  *
  * @author ryuic
  */
-public class ConnectionFactory {
+public class ConexaoBancoDados {
     private static final String DRIVER = "org.postgresql.Driver";
     private static final String URL = "jdbc:postgresql://localhost:5432/BDLaudeBiblio";
     private static final String USER = "postgres";

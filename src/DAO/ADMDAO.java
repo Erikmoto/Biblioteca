@@ -6,7 +6,7 @@
 package DAO;
 
 import Classes.ADM;
-import Conexao.ConnectionFactory;
+import Conexao.ConexaoBancoDados;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +23,35 @@ public class ADMDAO {
     private Connection conexao = null;
     
     public ADMDAO() {
-        conexao = ConnectionFactory.getConnection();
+        conexao = ConexaoBancoDados.getConnection();
+    }
+    
+    public int encontraIDVazio() {
+        int i = 0;
+        
+        PreparedStatement declaracao = null;
+        ResultSet resultados = null;
+        
+        String sql = "SELECT id FROM biblioteca.adm";
+        
+        try {
+            declaracao = conexao.prepareStatement(sql);
+            resultados = declaracao.executeQuery();
+            
+            while(resultados.next()) {
+                if(i != Integer.parseInt(resultados.getString(1))) {
+                    break;
+                }
+                
+                i++;
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro: " + ex);
+        } finally {
+            ConexaoBancoDados.closeConnection(conexao, declaracao, resultados);
+        }
+        
+        return i;
     }
     
     public boolean salvar(ADM admin) {
@@ -55,8 +83,41 @@ public class ADMDAO {
             
             return false;
         } finally {
-            ConnectionFactory.closeConnection(conexao, declaracao);
+            ConexaoBancoDados.closeConnection(conexao, declaracao);
         }
+    }
+    
+    public ADM procurarNomeUsuario(String nomeUsuario) {
+        PreparedStatement declaracao = null;
+        ResultSet resultados = null;
+        
+        ADM admin = null;
+        
+        String sql = "SELECT * FROM biblioteca.adm WHERE nome_usuario = ?";
+        
+        try {
+            declaracao = conexao.prepareStatement(sql);
+            
+            declaracao.setString(1, nomeUsuario);
+            
+            resultados = declaracao.executeQuery();
+            
+            while(resultados.next()) {
+                String[] dados = new String[12];
+                
+                for(int i = 0; i < dados.length; i++) {
+                    dados[i] = resultados.getString(i+1);
+                }
+
+                admin = new ADM(Integer.parseInt(dados[0]), dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8], dados[9], dados[10], dados[11]);
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro: " + ex);
+        } finally {
+            ConexaoBancoDados.closeConnection(conexao, declaracao, resultados);
+        }
+        
+        return admin;
     }
     
     public List<ADM> listarTodos() {
@@ -85,7 +146,7 @@ public class ADMDAO {
         } catch (SQLException ex) {
             System.err.println("Erro: " + ex);
         } finally {
-            ConnectionFactory.closeConnection(conexao, declaracao, resultados);
+            ConexaoBancoDados.closeConnection(conexao, declaracao, resultados);
         }
         
         return administradores;
@@ -117,7 +178,7 @@ public class ADMDAO {
             
             return false;
         } finally {
-            ConnectionFactory.closeConnection(conexao, declaracao);
+            ConexaoBancoDados.closeConnection(conexao, declaracao);
         }
     }
     
@@ -139,7 +200,7 @@ public class ADMDAO {
             
             return false;
         } finally {
-            ConnectionFactory.closeConnection(conexao, declaracao);
+            ConexaoBancoDados.closeConnection(conexao, declaracao);
         }
     }
 }

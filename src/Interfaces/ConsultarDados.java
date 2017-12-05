@@ -7,7 +7,9 @@ package Interfaces;
 
 import Classes.ADM;
 import Classes.Usuario;
+import DAO.LivroDAO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,9 +17,12 @@ import javax.swing.JFrame;
  */
 public class ConsultarDados extends javax.swing.JFrame {
     private JFrame janelaRetorno;
+    private Usuario usuario;
     
     public ConsultarDados(Usuario u, JFrame janelaRetorno) {
         initComponents();
+        this.usuario = u;
+        
         this.nome.setText(u.getNome());
         this.RG.setText(u.getRG());
         this.endereco.setText(u.getRG());
@@ -33,6 +38,9 @@ public class ConsultarDados extends javax.swing.JFrame {
     
     public ConsultarDados(ADM a, JFrame janelaRetorno) {
         initComponents();
+        
+        this.consultarEmprestimos.setVisible(false);
+        
         this.nome.setText(a.getNome());
         this.RG.setText(a.getRG());
         this.endereco.setText(a.getRG());
@@ -82,9 +90,10 @@ public class ConsultarDados extends javax.swing.JFrame {
         labDataNasc = new javax.swing.JLabel();
         dataNascimento = new javax.swing.JLabel();
         separadorV = new javax.swing.JSeparator();
-        consultarEmprestimosMultas = new javax.swing.JButton();
+        consultarMulta = new javax.swing.JButton();
         fecharConsulta = new javax.swing.JButton();
         separadorHSup = new javax.swing.JSeparator();
+        consultarEmprestimos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -157,11 +166,11 @@ public class ConsultarDados extends javax.swing.JFrame {
 
         separadorV.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        consultarEmprestimosMultas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        consultarEmprestimosMultas.setText("<html><center>Empréstimos<br>e<br>Multas</center></html>");
-        consultarEmprestimosMultas.addActionListener(new java.awt.event.ActionListener() {
+        consultarMulta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        consultarMulta.setText("<html><center>Consultar Multa</center></html>");
+        consultarMulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultarEmprestimosMultasActionPerformed(evt);
+                consultarMultaActionPerformed(evt);
             }
         });
 
@@ -170,6 +179,14 @@ public class ConsultarDados extends javax.swing.JFrame {
         fecharConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fecharConsultaActionPerformed(evt);
+            }
+        });
+
+        consultarEmprestimos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        consultarEmprestimos.setText("<html><center>Empréstimos</center></html>");
+        consultarEmprestimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarEmprestimosActionPerformed(evt);
             }
         });
 
@@ -243,14 +260,16 @@ public class ConsultarDados extends javax.swing.JFrame {
                                         .addComponent(labCons))
                                     .addComponent(labEmail))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                    .addComponent(fecharConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(consultarEmprestimosMultas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                        .addComponent(fecharConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(consultarMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(consultarEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap())))
             .addComponent(separadorHSup, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {consultarEmprestimosMultas, fecharConsulta});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {consultarMulta, fecharConsulta});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,24 +320,24 @@ public class ConsultarDados extends javax.swing.JFrame {
                                 .addComponent(labLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(consultarEmprestimosMultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
+                                .addComponent(consultarMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(consultarEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(labEmail)
                                 .addGap(0, 0, 0)
-                                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(fecharConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fecharConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(separadorV))
                 .addContainerGap())
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {CEP, RG, UF, cidade, dataNascimento, email, endereco, labCEP, labCidade, labDataNasc, labEmail, labEndereco, labLogin, labNome, labRG, labTelefone, labUF, login, nome, telefone});
 
-        setBounds(0, 0, 736, 507);
+        setBounds(0, 0, 736, 519);
     }// </editor-fold>//GEN-END:initComponents
     
     private void retornarJanelaAnterior() {
@@ -335,14 +354,30 @@ public class ConsultarDados extends javax.swing.JFrame {
         retornarJanelaAnterior();
     }//GEN-LAST:event_formWindowClosing
     
-    private void criarInterfaceEmprestimosMultas() {
-        //this.dispose();
-        //this.interfaceEmprestimosMultas.setVisible(true);
+    private void exibirMultas() {
+        LivroDAO livroDAO = new LivroDAO();
+        String multaFormatada;
+        
+        double multa = livroDAO.consultarMulta(usuario.getIdUsuario());
+        
+        multaFormatada = String.format("%.2f", multa).replace('.', ',');
+        
+        InterfaceMulta interfaceMulta = new InterfaceMulta(this, true, multaFormatada);
+        interfaceMulta.setLocation(this.getX() + this.getWidth()/2 - interfaceMulta.getWidth()/2, this.getY() + this.getHeight()/2 - interfaceMulta.getHeight()/2);
+        interfaceMulta.setVisible(true);
     }
     
-    private void consultarEmprestimosMultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEmprestimosMultasActionPerformed
-        criarInterfaceEmprestimosMultas();
-    }//GEN-LAST:event_consultarEmprestimosMultasActionPerformed
+    private void consultarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarMultaActionPerformed
+        exibirMultas();
+    }//GEN-LAST:event_consultarMultaActionPerformed
+    
+    private void editarEmprestimos() {
+        JOptionPane.showMessageDialog(this, "Multa Atual: R$");
+    }
+    
+    private void consultarEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEmprestimosActionPerformed
+        editarEmprestimos();
+    }//GEN-LAST:event_consultarEmprestimosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,7 +420,8 @@ public class ConsultarDados extends javax.swing.JFrame {
     private javax.swing.JLabel RG;
     private javax.swing.JLabel UF;
     private javax.swing.JLabel cidade;
-    private javax.swing.JButton consultarEmprestimosMultas;
+    private javax.swing.JButton consultarEmprestimos;
+    private javax.swing.JButton consultarMulta;
     private javax.swing.JLabel dataNascimento;
     private javax.swing.JLabel email;
     private javax.swing.JLabel endereco;

@@ -6,11 +6,14 @@
 package Interfaces;
 
 import Classes.ADM;
+import Classes.Usuario;
+import DAO.UsuarioDAO;
 import java.awt.Color;
 import java.awt.Component;
 import java.text.ParseException;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -20,6 +23,7 @@ import javax.swing.text.MaskFormatter;
 public class EditarUsuario extends javax.swing.JFrame {
 
     private ADM adm;
+    private Usuario usuario;
     private MaskFormatter formataID;
     private MaskFormatter formataRG;
     private MaskFormatter formataCEP;
@@ -81,8 +85,6 @@ public class EditarUsuario extends javax.swing.JFrame {
         selecionaAdministrador = new javax.swing.JRadioButton();
         selecionaUsuario = new javax.swing.JRadioButton();
         separadorVInt = new javax.swing.JSeparator();
-        labLogin = new javax.swing.JLabel();
-        campoLogin = new javax.swing.JTextField();
         labEmail = new javax.swing.JLabel();
         campoEmail = new javax.swing.JTextField();
         confirmar = new javax.swing.JButton();
@@ -117,6 +119,11 @@ public class EditarUsuario extends javax.swing.JFrame {
 
         buscarUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         buscarUsuario.setText("<html><center>Buscar<br>Usuário</html>");
+        buscarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarUsuarioActionPerformed(evt);
+            }
+        });
 
         selecionar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         selecionar.setText("Selecionar");
@@ -131,6 +138,14 @@ public class EditarUsuario extends javax.swing.JFrame {
         campoBusca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         campoBusca.setForeground(new java.awt.Color(204, 204, 204));
         campoBusca.setText("Busca");
+        campoBusca.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoBuscaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoBuscaFocusLost(evt);
+            }
+        });
 
         labBusca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labBusca.setText("Nome ou RG");
@@ -280,13 +295,6 @@ public class EditarUsuario extends javax.swing.JFrame {
 
         separadorVInt.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        labLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labLogin.setText("Nome de Usuário");
-        labLogin.setEnabled(false);
-
-        campoLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        campoLogin.setEnabled(false);
-
         labEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labEmail.setText("Email");
         labEmail.setEnabled(false);
@@ -327,7 +335,6 @@ public class EditarUsuario extends javax.swing.JFrame {
                             .addComponent(labUF)
                             .addComponent(labTelefone)
                             .addComponent(labDataNascimento)
-                            .addComponent(labLogin)
                             .addComponent(labEmail))
                         .addGap(18, 18, 18)
                         .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -345,7 +352,6 @@ public class EditarUsuario extends javax.swing.JFrame {
                                         .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(selecionaUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(campoDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)))
                                 .addComponent(separadorVInt, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -407,10 +413,6 @@ public class EditarUsuario extends javax.swing.JFrame {
                                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(labDataNascimento)
                                     .addComponent(campoDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(6, 6, 6)
-                                .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(labLogin)
-                                    .addComponent(campoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDadosLayout.createSequentialGroup()
                                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -435,7 +437,7 @@ public class EditarUsuario extends javax.swing.JFrame {
 
         painelDadosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {campoCEP, campoCidade, campoEndereco, campoNome, campoRG, campoTelefone, labCEP, labCidade, labEndereco, labNome, labRG, labTelefone, labUF, selecionaUF});
 
-        painelDadosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {campoEmail, campoLogin, labEmail, labLogin});
+        painelDadosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {campoEmail, labEmail});
 
         cancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cancelar.setText("Cancelar");
@@ -512,9 +514,20 @@ public class EditarUsuario extends javax.swing.JFrame {
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         retornarJanelaAnterior();
     }//GEN-LAST:event_cancelarActionPerformed
-
+    
+    private void removeUsuario() {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        int opcao = JOptionPane.showConfirmDialog(this, "Deseja realmente deletar este usuário?");
+        
+        if(opcao == 0) {
+            usuarioDAO.deletar(usuario);
+            desabilitaCampos();
+            resetaCampos();
+        }
+    }
+    
     private void removerUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerUsuarioActionPerformed
-        // TODO add your handling code here:
+        removeUsuario();
     }//GEN-LAST:event_removerUsuarioActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -534,29 +547,87 @@ public class EditarUsuario extends javax.swing.JFrame {
     private void habilitaCampos() {
         int i;
         Component componente;
-        String nomeComponente;
                 
         for(i = 0; i < this.painelDados.getComponentCount(); i++) {
             componente = this.painelDados.getComponent(i);
-            nomeComponente = componente.getName();
-            
-            if(nomeComponente == null) {
-                componente.setEnabled(true);
-            }
+            componente.setEnabled(true);
+        }
+    }
+    
+    private void desabilitaCampos() {
+        int i;
+        Component componente;
+                
+        for(i = 0; i < this.painelDados.getComponentCount(); i++) {
+            componente = this.painelDados.getComponent(i);
+            componente.setEnabled(false);
+        }
+    }
+    
+    private void resetaCampos() {
+        this.removerUsuario.setEnabled(false);
+
+        this.campoNome.setText("");
+        this.campoRG.setText("__.___.___-_");
+        this.campoEndereco.setText("");
+        this.campoCEP.setText("_____-___");
+        this.campoCidade.setText("");
+        this.selecionaUF.setSelectedItem("-");
+        this.campoTelefone.setText("(__)_____-____");
+        this.campoDataNascimento.setText("__/__/____");
+        this.campoEmail.setText("");
+        this.selecionaUsuario.setSelected(true);
+        this.selecionaCelular.setSelected(true);
+    }
+    
+    private void carregaCampos() {
+        this.removerUsuario.setEnabled(true);
+
+        this.campoNome.setText(usuario.getNome());
+        this.campoRG.setText(usuario.getRG());
+        this.campoEndereco.setText(usuario.getEndereco());
+        this.campoCEP.setText(usuario.getCEP());
+        this.campoCidade.setText(usuario.getCidade());
+        this.selecionaUF.setSelectedItem(usuario.getUF());
+        this.campoTelefone.setText(usuario.getTelefone());
+        this.campoDataNascimento.setText(usuario.getDataNascimento());
+        this.campoEmail.setText(usuario.getEmail());
+        this.selecionaUsuario.setSelected(true);
+
+        if(usuario.getTelefone().length() == 13) {
+            this.selecionaFixo.setSelected(true);
+        }
+
+        else {
+            this.selecionaCelular.setSelected(true);
         }
     }
     
     private void verificaID() {
-        int ID = Integer.parseInt(this.campoID.getText());
-        int tamanho = 10;
-        //boolean IDValido = false;
-
-        if(ID < tamanho+1) {
-            modificaRotulo(this.labID, true);
-            habilitaCampos();
-        }
+        int ID;
+        String texto = this.campoID.getText().trim();
         
-        else {
+        try {
+            ID = Integer.parseInt(texto);
+            
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            usuario = usuarioDAO.procurarUsuario(ID);
+            
+            if(usuario == null) {
+                desabilitaCampos();
+                resetaCampos();
+                modificaRotulo(this.labID, false);
+                JOptionPane.showMessageDialog(this, "Usuário não encontrado!");
+            }
+
+            else {
+                modificaRotulo(this.labID, true);
+                
+                habilitaCampos();
+                carregaCampos();
+            }
+        } catch (NumberFormatException ex) {
+            System.err.println("Erro: " + ex);
             modificaRotulo(this.labID, false);
         }
     }
@@ -564,9 +635,27 @@ public class EditarUsuario extends javax.swing.JFrame {
     private void selecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarActionPerformed
         verificaID();
     }//GEN-LAST:event_selecionarActionPerformed
-
+    
+    private void editaUsuario() {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        
+        usuario.setNome(campoNome.getText());
+        usuario.setRG(campoRG.getText());
+        usuario.setEndereco(campoEndereco.getText());
+        usuario.setCEP(campoCEP.getText());
+        usuario.setCidade(campoCidade.getText());
+        usuario.setUF(selecionaUF.getSelectedItem().toString());
+        usuario.setTelefone(campoTelefone.getText());
+        usuario.setDataNascimento(campoDataNascimento.getText());
+        usuario.setEmail(campoEmail.getText());
+        
+        usuarioDAO.atualizar(usuario);
+        
+        JOptionPane.showMessageDialog(this, "Usuário atualizado com sucesso!");
+    }
+    
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
-        // TODO add your handling code here:
+        editaUsuario();
     }//GEN-LAST:event_confirmarActionPerformed
     
     private void formataCampoID() {
@@ -578,6 +667,7 @@ public class EditarUsuario extends javax.swing.JFrame {
                 this.campoID.setForeground(this.corFoco);
             }
         } catch(ParseException e){
+            System.err.println("Erro ao formatar o campo: " + e);
         }
     }
     
@@ -596,6 +686,53 @@ public class EditarUsuario extends javax.swing.JFrame {
     private void campoIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoIDFocusLost
         reformataCampoID();
     }//GEN-LAST:event_campoIDFocusLost
+    
+    private void realizarBusca() {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        
+        usuario = usuarioDAO.procurarNomeOuRG(campoBusca.getText());
+        
+        if(usuario == null) {
+            desabilitaCampos();
+            resetaCampos();
+            modificaRotulo(this.labID, false);
+            JOptionPane.showMessageDialog(this, "Usuário ou RG não encontrado!");
+        }
+        
+        else {
+            modificaRotulo(this.labID, true);
+            
+            habilitaCampos();
+            carregaCampos();
+        }
+    }
+    
+    private void buscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarUsuarioActionPerformed
+        realizarBusca();
+    }//GEN-LAST:event_buscarUsuarioActionPerformed
+    
+    private void formataCampoBusca() {
+        if(this.campoBusca.getText().equals("Busca")) {
+            this.campoBusca.setForeground(corFoco);
+            this.campoBusca.setCaretPosition(0);
+            this.campoBusca.setText("");
+        }
+    }
+    
+    private void campoBuscaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoBuscaFocusGained
+        formataCampoBusca();
+    }//GEN-LAST:event_campoBuscaFocusGained
+    
+    private void reformataCampoBusca() {
+        if(this.campoBusca.getText().equals("")) {
+            this.campoBusca.setText("Busca");
+            this.campoBusca.setForeground(corSemFoco);
+        }
+    }
+    
+    private void campoBuscaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoBuscaFocusLost
+        reformataCampoBusca();
+    }//GEN-LAST:event_campoBuscaFocusLost
 
     /**
      * @param args the command line arguments
@@ -641,7 +778,6 @@ public class EditarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoEndereco;
     private javax.swing.JFormattedTextField campoID;
-    private javax.swing.JTextField campoLogin;
     private javax.swing.JTextField campoNome;
     private javax.swing.JFormattedTextField campoRG;
     private javax.swing.JFormattedTextField campoTelefone;
@@ -655,7 +791,6 @@ public class EditarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel labEmail;
     private javax.swing.JLabel labEndereco;
     private javax.swing.JLabel labID;
-    private javax.swing.JLabel labLogin;
     private javax.swing.JLabel labNome;
     private javax.swing.JLabel labRG;
     private javax.swing.JLabel labTelefone;
