@@ -1159,9 +1159,6 @@
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Livro"/>
       </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="categoriaSelecionada"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="selecionaAutoria">
       <Properties>
@@ -1173,9 +1170,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Autor(a)"/>
       </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="categoriaSelecionada"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="selecionaEditora">
       <Properties>
@@ -1187,9 +1181,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Editora"/>
       </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="categoriaSelecionada"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="exibirAcervo">
       <Properties>

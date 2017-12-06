@@ -43,6 +43,7 @@ public class InterfaceAdm extends javax.swing.JFrame {
         labUsuarios = new javax.swing.JLabel();
         cadastrarUsuario = new javax.swing.JButton();
         alterarUsuario = new javax.swing.JButton();
+        emprestarLivro = new javax.swing.JButton();
         separadorV = new javax.swing.JSeparator();
         separadorH = new javax.swing.JSeparator();
         labAdm = new javax.swing.JLabel();
@@ -133,20 +134,30 @@ public class InterfaceAdm extends javax.swing.JFrame {
             }
         });
 
+        emprestarLivro.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        emprestarLivro.setText("Empréstimo");
+        emprestarLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emprestarLivroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelUsuariosLayout = new javax.swing.GroupLayout(painelUsuarios);
         painelUsuarios.setLayout(painelUsuariosLayout);
         painelUsuariosLayout.setHorizontalGroup(
             painelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelUsuariosLayout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
-                .addGroup(painelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(cadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(alterarUsuario))
-                .addGap(66, 66, 66))
             .addGroup(painelUsuariosLayout.createSequentialGroup()
                 .addGap(88, 88, 88)
                 .addComponent(labUsuarios)
                 .addContainerGap(76, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelUsuariosLayout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addGroup(painelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(emprestarLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(painelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(cadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(alterarUsuario, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addGap(66, 66, 66))
         );
 
         painelUsuariosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {alterarUsuario, cadastrarUsuario});
@@ -157,13 +168,13 @@ public class InterfaceAdm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(labUsuarios)
                 .addGap(20, 20, 20)
-                .addComponent(cadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(alterarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61))
+                .addComponent(cadastrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(alterarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(emprestarLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-
-        painelUsuariosLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {alterarUsuario, cadastrarUsuario});
 
         separadorV.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -301,49 +312,24 @@ public class InterfaceAdm extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         retornarJanelaAnterior();
     }//GEN-LAST:event_formWindowClosing
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InterfaceAdm().setVisible(true);
-            }
-        });
+    
+    private void criarInterfaceEmprestimoAdm() {
+        InterfaceEmprestimoAdm intEmpAdm = new InterfaceEmprestimoAdm(this, true);
+        intEmpAdm.setLocation(this.getX() + this.getWidth()/2 - intEmpAdm.getWidth()/2, this.getY() + this.getHeight()/2 - intEmpAdm.getHeight()/2);
+        intEmpAdm.setVisible(true);
     }
-
+    
+    private void emprestarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestarLivroActionPerformed
+        criarInterfaceEmprestimoAdm();
+    }//GEN-LAST:event_emprestarLivroActionPerformed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alterarUsuario;
     private javax.swing.JButton cadastrarUsuario;
     private javax.swing.JButton consultarAcervo;
     private javax.swing.JButton consultarDados;
     private javax.swing.JButton editarAcervo;
+    private javax.swing.JButton emprestarLivro;
     private javax.swing.JLabel labAcervo;
     private javax.swing.JLabel labAdm;
     private javax.swing.JLabel labUsuarios;

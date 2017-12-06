@@ -17,12 +17,10 @@ import javax.swing.JFrame;
 public class ConsultarDados extends javax.swing.JFrame {
     private JFrame janelaRetorno;
     private Usuario usuario;
-    private boolean isAdmin;
     
     public ConsultarDados(Usuario u, JFrame janelaRetorno) {
         initComponents();
         this.usuario = u;
-        this.isAdmin = false;
         
         this.nome.setText(u.getNome());
         this.RG.setText(u.getRG());
@@ -39,7 +37,7 @@ public class ConsultarDados extends javax.swing.JFrame {
     
     public ConsultarDados(ADM a, JFrame janelaRetorno) {
         initComponents();
-        this.isAdmin = true;
+        this.consultarMulta.setVisible(false);
         this.consultarEmprestimos.setVisible(false);
         
         this.nome.setText(a.getNome());
@@ -372,28 +370,14 @@ public class ConsultarDados extends javax.swing.JFrame {
         exibirMultas();
     }//GEN-LAST:event_consultarMultaActionPerformed
     
-    private void criarInterfaceEmprestimoAdm() {
-        InterfaceEmprestimoAdm intEmpAdm = new InterfaceEmprestimoAdm(this, true);
-        intEmpAdm.setVisible(true);
-    }
-    
     private void criarInterfaceEmprestimoUsuario() {
         InterfaceEmprestimoUsuario intEmpUsuario = new InterfaceEmprestimoUsuario(this, true, usuario.getIdUsuario());
+        intEmpUsuario.setLocation(this.getX() + this.getWidth()/2 - intEmpUsuario.getWidth()/2, this.getY() + this.getHeight()/2 - intEmpUsuario.getHeight()/2);
         intEmpUsuario.setVisible(true);
     }
     
-    private void editarEmprestimos() {
-        if(this.isAdmin) {
-            criarInterfaceEmprestimoAdm();
-        }
-        
-        else {
-            criarInterfaceEmprestimoUsuario();
-        }
-    }
-    
     private void consultarEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEmprestimosActionPerformed
-        editarEmprestimos();
+        criarInterfaceEmprestimoUsuario();
     }//GEN-LAST:event_consultarEmprestimosActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

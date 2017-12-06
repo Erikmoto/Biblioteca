@@ -5,12 +5,23 @@
  */
 package Interfaces;
 
+import Classes.Livro;
+import DAO.LivroDAO;
+import java.awt.Frame;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ryuic
  */
 public class InterfaceEmprestimoUsuario extends javax.swing.JDialog {
-
+    
+    private final List<Integer> idsLivros;
+    private final int idUsuario;
+    private final Frame parent;
+    private final boolean modal;
+    
     /**
      * Creates new form InterfaceEmprestimo
      * @param parent
@@ -21,7 +32,28 @@ public class InterfaceEmprestimoUsuario extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
+        Livro livro;
+        LivroDAO livroDAO = new LivroDAO();
+        this.idsLivros = livroDAO.consultarEmprestimo(idUsuario);
+        this.idUsuario = idUsuario;
+        this.parent = parent;
+        this.modal = modal;
         
+        for (int i = 0; i < idsLivros.size(); i++) {
+            livroDAO = new LivroDAO();
+            livro = livroDAO.buscarLivroID(idsLivros.get(i));
+            
+            livroDAO = new LivroDAO();
+            String dataEntrega = livroDAO.verificarDataEntrega(idUsuario, idsLivros.get(i));
+            
+            livroDAO = new LivroDAO();
+            short renovacoes = livroDAO.verificarNumeroRenovacoes(idUsuario, idsLivros.get(i));
+            
+            this.tabelaEmprestimos.setValueAt(idsLivros.get(i), i, 0);
+            this.tabelaEmprestimos.setValueAt(livro.getNome(), i, 1);
+            this.tabelaEmprestimos.setValueAt(dataEntrega, i, 2);
+            this.tabelaEmprestimos.setValueAt(renovacoes, i, 3);
+        }
     }
 
     /**
@@ -39,6 +71,8 @@ public class InterfaceEmprestimoUsuario extends javax.swing.JDialog {
         tabelaEmprestimos = new javax.swing.JTable();
         renovarLivro = new javax.swing.JButton();
         fechar = new javax.swing.JButton();
+        campoIDLivro = new javax.swing.JFormattedTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -63,11 +97,17 @@ public class InterfaceEmprestimoUsuario extends javax.swing.JDialog {
                 "ID", "Nome", "Data de Entrega", "Renovações"
             }
         ));
-        tabelaEmprestimos.setColumnSelectionAllowed(true);
+        tabelaEmprestimos.setEnabled(false);
+        tabelaEmprestimos.setRowSelectionAllowed(false);
         painelEmprestimos.setViewportView(tabelaEmprestimos);
 
         renovarLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         renovarLivro.setText("Renovar");
+        renovarLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                renovarLivroActionPerformed(evt);
+            }
+        });
 
         fechar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         fechar.setText("Fechar");
@@ -77,22 +117,33 @@ public class InterfaceEmprestimoUsuario extends javax.swing.JDialog {
             }
         });
 
+        campoIDLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("ID do Livro");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(separador, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-            .addComponent(painelEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(137, 137, 137)
+            .addComponent(separador)
+            .addComponent(painelEmprestimos, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labEmprestimo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(287, 287, 287))
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(fechar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(250, 250, 250)
+                .addComponent(fechar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(renovarLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
+                .addComponent(campoIDLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(renovarLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(141, 141, 141))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,12 +153,16 @@ public class InterfaceEmprestimoUsuario extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(painelEmprestimos, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .addComponent(painelEmprestimos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(renovarLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(campoIDLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fechar)
-                    .addComponent(renovarLivro))
-                .addGap(15, 15, 15))
+                .addComponent(fechar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -117,8 +172,40 @@ public class InterfaceEmprestimoUsuario extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_fecharActionPerformed
     
+    private void verificaIdLivro() {
+        LivroDAO livroDAO = new LivroDAO();
+        
+        for (Integer idLivro : idsLivros) {
+            if(Integer.parseInt(this.campoIDLivro.getText()) == idLivro) {
+                short livroRenovado = livroDAO.renovar(idUsuario, idLivro);
+                
+                if(livroRenovado == 1) {
+                    JOptionPane.showMessageDialog(this, "Livro renovado com sucesso!");
+                    this.dispose();
+                    InterfaceEmprestimoUsuario intEmpUsuario = new InterfaceEmprestimoUsuario(parent, modal, idUsuario);
+                    intEmpUsuario.setLocation(this.getLocation());
+                    intEmpUsuario.setVisible(true);
+                }
+                
+                else {
+                    if(livroRenovado == 0) {
+                        JOptionPane.showMessageDialog(this, "Atingido o limite de renovações para este livro");
+                    }
+                }
+                
+                break;
+            }
+        }
+    }
+    
+    private void renovarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_renovarLivroActionPerformed
+        verificaIdLivro();
+    }//GEN-LAST:event_renovarLivroActionPerformed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField campoIDLivro;
     private javax.swing.JButton fechar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labEmprestimo;
     private javax.swing.JScrollPane painelEmprestimos;
     private javax.swing.JButton renovarLivro;

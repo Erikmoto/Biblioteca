@@ -5,12 +5,21 @@
  */
 package Interfaces;
 
+import DAO.LivroDAO;
+import DAO.UsuarioDAO;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ryuic
  */
 public class InterfaceEmprestimoAdm extends javax.swing.JDialog {
-
+    
+    private final Color corValido = new Color(50, 120, 80);
+    private final Color corInvalido = new Color(120, 80, 50);
+    private final boolean idsValidos[] = new boolean[2];
+    
     /**
      * Creates new form InterfaceEmprestimo
      * @param parent
@@ -47,9 +56,19 @@ public class InterfaceEmprestimoAdm extends javax.swing.JDialog {
 
         emprestarLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         emprestarLivro.setText("Emprestar");
+        emprestarLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emprestarLivroActionPerformed(evt);
+            }
+        });
 
         devolverLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         devolverLivro.setText("Devolver");
+        devolverLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                devolverLivroActionPerformed(evt);
+            }
+        });
 
         labIDLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labIDLivro.setText("ID Livro");
@@ -132,6 +151,86 @@ public class InterfaceEmprestimoAdm extends javax.swing.JDialog {
     private void fecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharActionPerformed
         this.dispose();
     }//GEN-LAST:event_fecharActionPerformed
+    
+    private void verificaIdUsuario(int idUsuario) {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        
+        if(usuarioDAO.procurarUsuario(idUsuario) != null) {
+            this.labIDUsuario.setForeground(corValido);
+            this.idsValidos[0] = true;
+        }
+        
+        else {
+            this.labIDUsuario.setForeground(corInvalido);
+            this.idsValidos[0] = false;
+        }
+    }
+    
+    private void verificaIdLivro(int idLivro) {
+        LivroDAO livroDAO = new LivroDAO();
+        
+        if(livroDAO.buscarLivroID(idLivro) != null) {
+            this.labIDLivro.setForeground(corValido);
+            this.idsValidos[1] = true;
+        }
+        
+        else {
+            this.labIDLivro.setForeground(corInvalido);
+            this.idsValidos[1] = false;
+        }
+    }
+    
+    private void emprestaLivro() {
+        int idUsuario = Integer.parseInt(this.campoIDUsuario.getText());
+        int idLivro = Integer.parseInt(this.campoIDLivro.getText());
+        
+        verificaIdUsuario(idUsuario);
+        verificaIdLivro(idLivro);
+        
+        if(idsValidos[0] == true && idsValidos[1] == true) {
+            LivroDAO livroDAO = new LivroDAO();
+            
+            if(livroDAO.emprestar(idUsuario, idLivro)) {
+                JOptionPane.showMessageDialog(this, "Livro emprestado com sucesso!");
+            }
+            
+            else {
+                JOptionPane.showMessageDialog(this, "Erro ao emprestar livro!");
+            }
+        }
+    }
+    
+    private void emprestarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestarLivroActionPerformed
+        emprestaLivro();
+    }//GEN-LAST:event_emprestarLivroActionPerformed
+    
+    private void devolveLivro() {
+        int idUsuario = Integer.parseInt(this.campoIDUsuario.getText());
+        int idLivro = Integer.parseInt(this.campoIDLivro.getText());
+        
+        verificaIdUsuario(idUsuario);
+        verificaIdLivro(idLivro);
+        
+        if(idsValidos[0] == true && idsValidos[1] == true) {
+            LivroDAO livroDAO = new LivroDAO();
+            
+            if(livroDAO.devolver(idUsuario, idLivro)) {
+                JOptionPane.showMessageDialog(this, "Livro devolvido com sucesso!");
+            }
+            
+            else {
+                JOptionPane.showMessageDialog(this, "Erro ao devolver livro!");
+            }
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(this, "Erro ao devolver livro!");
+        }
+    }
+    
+    private void devolverLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverLivroActionPerformed
+        devolveLivro();
+    }//GEN-LAST:event_devolverLivroActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField campoIDLivro;

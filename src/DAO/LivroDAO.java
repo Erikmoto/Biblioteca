@@ -8,12 +8,18 @@ package DAO;
 import Classes.Livro;
 import Conexao.ConexaoBancoDados;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -309,15 +315,19 @@ public class LivroDAO {
         
         PreparedStatement declaracao = null;
         
-        Date dataAtual = new Date(System.currentTimeMillis());
-        Date dataEntrega = dataAtual;
+        GregorianCalendar data = (GregorianCalendar) GregorianCalendar.getInstance(Locale.getDefault());
+        data.setTimeInMillis(System.currentTimeMillis());
+        data.add(GregorianCalendar.DAY_OF_MONTH, 7);
+        Date dataEntrega = data.getTime();
+        DateFormat formataData = DateFormat.getDateInstance(1, Locale.getDefault());
+        String dataFormatada = formataData.format(dataEntrega);
         
         try {
             declaracao = conexao.prepareStatement(sql);
             
             declaracao.setInt(1, idUsuario);
             declaracao.setInt(2, idLivro);
-            declaracao.setDate(3, dataEntrega);
+            declaracao.setString(3, dataFormatada);
             declaracao.setInt(4, 0);
             
             declaracao.executeUpdate();
@@ -334,17 +344,29 @@ public class LivroDAO {
     
     public short renovar(int idUsuario, int idLivro) {
         String sql = "UPDATE biblioteca.emprestimo SET (data_entrega, renovacoes) = (?, ?) WHERE (id_usuario = ? AND id_livro = ?)";
-        Date dataEntrega = verificarDataEntrega(idUsuario, idLivro);
-        short renovacoes = verificarNumeroRenovacoes(idUsuario, idLivro);
+        Date novaDataEntrega;
+        LivroDAO livroDAO = new LivroDAO();
+        short renovacoes = livroDAO.verificarNumeroRenovacoes(idUsuario, idLivro);
         short MAX_RENOVACOES = 3;
+        
+        GregorianCalendar dataEntrega = (GregorianCalendar) GregorianCalendar.getInstance(Locale.getDefault());
+        DateFormat formataData = DateFormat.getDateInstance(1, Locale.getDefault());
+        String dataFormatada;
         
         if(renovacoes < MAX_RENOVACOES) {
             PreparedStatement declaracao = null;
             
             try {
+                livroDAO = new LivroDAO();
+                
+                dataEntrega.add(GregorianCalendar.DAY_OF_MONTH, 7);
+                dataEntrega.setTime(formataData.parse(livroDAO.verificarDataEntrega(idUsuario, idLivro)));
+                novaDataEntrega = dataEntrega.getTime();
+                dataFormatada = formataData.format(novaDataEntrega);
+                
                 declaracao = conexao.prepareStatement(sql);
 
-                declaracao.setDate(1, dataEntrega);
+                declaracao.setString(1, dataFormatada);
                 declaracao.setInt(2, renovacoes + 1);
                 declaracao.setInt(3, idUsuario);
                 declaracao.setInt(4, idLivro);
@@ -356,6 +378,8 @@ public class LivroDAO {
                 System.err.println("Erro: " + ex);
 
                 return -1;
+            } catch (ParseException ex) {
+                Logger.getLogger(LivroDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConexaoBancoDados.closeConnection(conexao, declaracao);
             }
@@ -365,6 +389,7 @@ public class LivroDAO {
             System.out.println("Atingido o limite de renovações para este livro");
             return 0;
         }
+        return 0;
     }
     
     public boolean devolver(int idUsuario, int idLivro) {
@@ -417,9 +442,10 @@ public class LivroDAO {
         return renovacoes;
     }
     
-    public Date verificarDataEntrega(int idUsuario, int idLivro) {
+    public String verificarDataEntrega(int idUsuario, int idLivro) {
         String sql = "SELECT data_entrega FROM biblioteca.emprestimo WHERE (id_usuario = ? AND id_livro = ?)";
-        Date dataEntrega = null;
+        
+        String dataEntrega = null;
         
         PreparedStatement declaracao = null;
         ResultSet resultados = null;
@@ -433,7 +459,7 @@ public class LivroDAO {
             resultados = declaracao.executeQuery();
             
             while(resultados.next()) {
-                dataEntrega = Date.valueOf(resultados.getString(1));
+                dataEntrega = resultados.getString(1);
             }
         } catch (SQLException ex) {
             System.err.println("Erro: " + ex);
@@ -446,10 +472,14 @@ public class LivroDAO {
     
     public double consultarMulta(int idUsuario) {
         String sql = "SELECT data_entrega FROM biblioteca.emprestimo WHERE id_usuario = ?";
-        Date dataEntrega;
-        Date dataAtual = new Date(System.currentTimeMillis());
+        
+        GregorianCalendar dataEntrega = (GregorianCalendar) GregorianCalendar.getInstance(Locale.getDefault());
+        GregorianCalendar dataAtual = (GregorianCalendar) GregorianCalendar.getInstance(Locale.getDefault());
+        DateFormat formataData = DateFormat.getDateInstance(1, Locale.getDefault());
         int diasAtraso;
         double multa = 0;
+        
+        dataAtual.setTimeInMillis(System.currentTimeMillis());
         
         PreparedStatement declaracao = null;
         ResultSet resultados = null;
@@ -462,12 +492,38 @@ public class LivroDAO {
             resultados = declaracao.executeQuery();
             
             while(resultados.next()) {
-                dataEntrega = Date.valueOf(resultados.getString(1));
-                diasAtraso = dataEntrega.compareTo(dataAtual);
+                dataEntrega.setTime(formataData.parse(resultados.getString(1)));
+                diasAtraso = dataAtual.get(GregorianCalendar.DAY_OF_YEAR) - dataEntrega.get(GregorianCalendar.DAY_OF_YEAR);
                 
                 if(diasAtraso > 0) {
                     multa += valorMultaDia * diasAtraso;
                 }
+            }
+        } catch (SQLException | ParseException ex) {
+            System.err.println("Erro: " + ex);
+        } finally {
+            ConexaoBancoDados.closeConnection(conexao, declaracao, resultados);
+        }
+        
+        return multa;
+    }
+    
+    public List<Integer> consultarEmprestimo(int idUsuario) {
+        String sql = "SELECT id_livro FROM biblioteca.emprestimo WHERE id_usuario = ?";
+        List<Integer> idsLivros = new ArrayList<>();
+        
+        PreparedStatement declaracao = null;
+        ResultSet resultados = null;
+        
+        try {
+            declaracao = conexao.prepareStatement(sql);
+            
+            declaracao.setInt(1, idUsuario);
+            
+            resultados = declaracao.executeQuery();
+            
+            while(resultados.next()) {
+                idsLivros.add(Integer.valueOf(resultados.getString(1)));
             }
         } catch (SQLException ex) {
             System.err.println("Erro: " + ex);
@@ -475,6 +531,6 @@ public class LivroDAO {
             ConexaoBancoDados.closeConnection(conexao, declaracao, resultados);
         }
         
-        return multa;
+        return idsLivros;
     }
 }

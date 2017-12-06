@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -736,29 +737,14 @@ public class ConsultarAcervo extends javax.swing.JFrame {
         selecionaLivro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         selecionaLivro.setSelected(true);
         selecionaLivro.setText("Livro");
-        selecionaLivro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                categoriaSelecionada(evt);
-            }
-        });
 
         categoriaPesquisa.add(selecionaAutoria);
         selecionaAutoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         selecionaAutoria.setText("Autor(a)");
-        selecionaAutoria.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                categoriaSelecionada(evt);
-            }
-        });
 
         categoriaPesquisa.add(selecionaEditora);
         selecionaEditora.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         selecionaEditora.setText("Editora");
-        selecionaEditora.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                categoriaSelecionada(evt);
-            }
-        });
 
         exibirAcervo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         exibirAcervo.setText("Exibir Acervo");
@@ -849,13 +835,17 @@ public class ConsultarAcervo extends javax.swing.JFrame {
                 componente = (JLabel) this.painelLivros.getComponent(i);
                 componente.setText("");
             }
+            
+            else {
+                this.painelLivros.getComponent(i).setName("");
+            }
         }
     }
     
     private void exibeLivros(List<Livro> livros) {
         JLabel componente;
         String nomeComponente;
-        int n = 0, posicaoNome = 0, posicaoAutoria = 0;
+        int n = 0, posicaoNome = 0, posicaoAutoria = 0, numeroPainel = 0;
         
         limparCampos();
         
@@ -882,6 +872,13 @@ public class ConsultarAcervo extends javax.swing.JFrame {
 
                 else {
                     break;
+                }
+            }
+            
+            else {
+                if(numeroPainel < livros.size()) {
+                    this.painelLivros.getComponent(i).setName(String.valueOf(livros.get(numeroPainel).getIdLivro()));
+                    numeroPainel++;
                 }
             }
         }
@@ -968,51 +965,30 @@ public class ConsultarAcervo extends javax.swing.JFrame {
         exibeLivros(acervo.getAcervo());
         exibirAcervo.setEnabled(false);
     }//GEN-LAST:event_exibirAcervoActionPerformed
-
-    private void imagemLivroClicada(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagemLivroClicada
-        System.out.println("Clique");
-    }//GEN-LAST:event_imagemLivroClicada
-
-    private void categoriaSelecionada(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoriaSelecionada
-        
-    }//GEN-LAST:event_categoriaSelecionada
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultarAcervo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultarAcervo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultarAcervo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultarAcervo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    
+    private void mostraLivro(String nomeComponente) {
+        if(!nomeComponente.equals("")) {
+            int idLivro = Integer.parseInt(nomeComponente);
+            LivroDAO livroDAO = new LivroDAO();
+            Livro livro = livroDAO.buscarLivroID(idLivro);
+            
+            String dados = "ID: " + livro.getIdLivro() +
+                    "\n" + "Nome: " + livro.getNome() +
+                    "\n" + "Volume: " + livro.getVolume()+
+                    "\n" + "Edição: " + livro.getEdicao()+
+                    "\n" + "Autoria: " + livro.getAutoria() +
+                    "\n" + "Editora: " + livro.getEditora() +
+                    "\n" + "Ano: " + livro.getAno() +
+                    "\n" + "Quantidade: " + livro.getQuantidade();
+            
+            JOptionPane.showMessageDialog(this, dados);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ConsultarAcervo().setVisible(true);
-            }
-        });
     }
-
+    
+    private void imagemLivroClicada(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagemLivroClicada
+        mostraLivro(evt.getComponent().getName());
+    }//GEN-LAST:event_imagemLivroClicada
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel autoria0;
     private javax.swing.JLabel autoria1;
